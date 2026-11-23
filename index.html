@@ -2,8 +2,182 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>My Melody's Sweet Berry Planner & Calendar 🎀</title>
+
+    <!-- iOS Safari Add to Home Screen Web App Meta & My Melody Icon -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Melody Planner">
+    <link id="appleTouchIconLink" rel="apple-touch-icon" sizes="180x180" href="">
+    <link id="faviconLink" rel="icon" type="image/png" href="">
+
+    <!-- Synchronous 180x180 My Melody PNG Icon Generator for iPhone Home Screen -->
+    <script>
+        (function generateDefaultMelodyAppleTouchIcon() {
+            try {
+                var size = 180;
+                var canvas = document.createElement('canvas');
+                canvas.width = size;
+                canvas.height = size;
+                var ctx = canvas.getContext('2d');
+                if (!ctx) return;
+
+                // 1. Soft pastel pink background (#FAEBF0)
+                ctx.fillStyle = '#FAEBF0';
+                ctx.fillRect(0, 0, size, size);
+
+                // 2. Subtle white polka dots
+                ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+                var dots = [
+                    [26, 28], [90, 20], [154, 30],
+                    [20, 92], [160, 94],
+                    [28, 154], [92, 162], [152, 152]
+                ];
+                for (var i = 0; i < dots.length; i++) {
+                    ctx.beginPath();
+                    ctx.arc(dots[i][0], dots[i][1], 5, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Scale 200x200 vector coordinates cleanly into 180x180 canvas
+                ctx.save();
+                ctx.scale(0.9, 0.9);
+                ctx.translate(0, 8);
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+
+                // 3. Left upright/extended bunny ear (#F6B6C8 with #B37D4E outline)
+                ctx.fillStyle = '#F6B6C8';
+                ctx.strokeStyle = '#B37D4E';
+                ctx.lineWidth = 4.6;
+                ctx.beginPath();
+                ctx.moveTo(64, 76);
+                ctx.bezierCurveTo(42, 68, 22, 56, 23, 40);
+                ctx.bezierCurveTo(24, 25, 41, 22, 58, 31);
+                ctx.bezierCurveTo(72, 38, 82, 48, 86, 58);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // 4. Main pastel-pink hood head (#F6B6C8)
+                ctx.beginPath();
+                ctx.moveTo(54, 104);
+                ctx.bezierCurveTo(51, 76, 70, 56, 102, 56);
+                ctx.bezierCurveTo(130, 56, 148, 76, 146, 104);
+                ctx.bezierCurveTo(145, 125, 132, 138, 114, 142);
+                ctx.bezierCurveTo(94, 146, 70, 144, 60, 132);
+                ctx.bezierCurveTo(55, 125, 55, 114, 54, 104);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // 5. Right folded bunny ear
+                ctx.beginPath();
+                ctx.moveTo(128, 63);
+                ctx.bezierCurveTo(125, 38, 114, 16, 100, 16);
+                ctx.bezierCurveTo(87, 16, 77, 37, 77, 57);
+                ctx.bezierCurveTo(77, 68, 84, 73, 92, 70);
+                ctx.bezierCurveTo(100, 67, 105, 58, 107, 46);
+                ctx.fill();
+                ctx.stroke();
+
+                // 6. White face oval
+                ctx.fillStyle = '#FFFFFF';
+                ctx.beginPath();
+                ctx.moveTo(66, 118);
+                ctx.bezierCurveTo(64, 98, 80, 84, 101, 84);
+                ctx.bezierCurveTo(122, 84, 137, 97, 135, 115);
+                ctx.bezierCurveTo(134, 129, 119, 137, 100, 137);
+                ctx.bezierCurveTo(81, 137, 68, 130, 66, 118);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // 7. Soft rosy cheeks
+                ctx.fillStyle = '#FFD1DF';
+                ctx.beginPath();
+                ctx.ellipse(75, 122, 6, 3.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(126, 119, 6, 3.5, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 8. Dark caramel-brown oval eyes (#B37D4E)
+                ctx.fillStyle = '#B37D4E';
+                ctx.beginPath();
+                ctx.ellipse(79, 112, 4.6, 6.8, -0.1, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.ellipse(121, 108, 4.6, 6.8, -0.1, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 9. Pastel yellow oval nose (#FDF097)
+                ctx.fillStyle = '#FDF097';
+                ctx.strokeStyle = '#B37D4E';
+                ctx.lineWidth = 3.4;
+                ctx.beginPath();
+                ctx.ellipse(100, 117, 4.8, 3.4, 0, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+
+                // 10. Cute curved smile
+                ctx.beginPath();
+                ctx.moveTo(95, 125);
+                ctx.quadraticCurveTo(100, 130, 106, 124);
+                ctx.stroke();
+
+                // 11. Pastel sky-blue scalloped bow (#C6E9F8)
+                ctx.save();
+                ctx.translate(71, 68);
+                ctx.rotate(-0.32);
+                ctx.fillStyle = '#C6E9F8';
+                ctx.strokeStyle = '#B37D4E';
+                ctx.lineWidth = 4.2;
+
+                // Left bow loop
+                ctx.beginPath();
+                ctx.moveTo(-3, 0);
+                ctx.bezierCurveTo(-11, -10, -21, -9, -20, -1);
+                ctx.bezierCurveTo(-20, 1, -18, 2, -16, 3);
+                ctx.bezierCurveTo(-19, 6, -18, 13, -10, 12);
+                ctx.bezierCurveTo(-4, 11, -2, 5, -2, 2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Right bow loop
+                ctx.beginPath();
+                ctx.moveTo(3, 0);
+                ctx.bezierCurveTo(11, -10, 21, -9, 20, -1);
+                ctx.bezierCurveTo(20, 1, 18, 2, 16, 3);
+                ctx.bezierCurveTo(19, 6, 18, 13, 10, 12);
+                ctx.bezierCurveTo(4, 11, 2, 5, 2, 2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+
+                // Center bow knot
+                ctx.beginPath();
+                ctx.arc(0, 1.5, 5.4, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.restore();
+
+                ctx.restore();
+
+                var pngDataUrl = canvas.toDataURL('image/png');
+                var appleLink = document.getElementById('appleTouchIconLink');
+                var favLink = document.getElementById('faviconLink');
+                if (appleLink) appleLink.href = pngDataUrl;
+                if (favLink) favLink.href = pngDataUrl;
+                window.__DEFAULT_MELODY_PNG_ICON__ = pngDataUrl;
+            } catch (e) {
+                // Ignore canvas errors in restricted contexts
+            }
+        })();
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Fredoka (Bubbly Headings) & Quicksand (Rounded Body) -->
@@ -60,6 +234,11 @@
 
     <style>
         /* Custom Kawaii Styling & Polka Dot Pattern */
+        html, body {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
         body {
             font-family: 'Quicksand', sans-serif;
             color: #6D4C5C;
@@ -69,7 +248,17 @@
                 radial-gradient(#FFE8F0 1.75px, #FFF7FA 1.75px);
             background-size: 36px 36px;
             background-position: 0 0, 18px 18px;
-            overflow-x: hidden;
+        }
+
+        /* iOS Safari Form Control Overflow & Alignment Fix */
+        input[type="date"],
+        input[type="time"],
+        select {
+            min-width: 0 !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            -webkit-appearance: none;
         }
 
         h1, h2, h3, h4, .font-bubbly {
@@ -266,8 +455,8 @@
     <!-- Particle Canvas for Confetti / Sparkles / Hearts -->
     <canvas id="sparkleCanvas"></canvas>
 
-    <!-- Mobile Sidebar Backdrop -->
-    <div id="mobileSidebarBackdrop" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-melody-cocoa/40 backdrop-blur-xs z-40 hidden lg:hidden"></div>
+    <!-- Mobile Sidebar Backdrop (Darkens only main screen while keeping z-50 left sidebar bright) -->
+    <div id="mobileSidebarBackdrop" onclick="toggleMobileSidebar(false)" class="fixed inset-0 bg-melody-cocoa/45 backdrop-blur-[2px] z-40 hidden lg:hidden"></div>
 
     <!-- Decorative Floating Musical Notes & Flowers Background Accents -->
     <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 opacity-60" aria-hidden="true">
@@ -278,22 +467,22 @@
     </div>
 
     <!-- TOP RIBBON BANNER -->
-    <div class="bg-gradient-to-r from-melody-300 via-melody-400 to-melody-300 text-white py-1.5 px-4 text-center text-xs sm:text-sm font-semibold tracking-wide shadow-sm relative z-20 flex items-center justify-center gap-2">
+    <div class="bg-gradient-to-r from-melody-300 via-melody-400 to-melody-300 text-white py-1.5 px-3 sm:px-4 text-center text-[11px] sm:text-sm font-semibold tracking-wide shadow-sm relative z-20 flex items-center justify-center gap-1.5 sm:gap-2">
         <span>♪</span>
         <span>Welcome to My Melody's Sweet Uni & Strawberry Planner! Stay cozy & organized every semester</span>
         <span>🎀</span>
     </div>
 
-    <!-- APP SHELL WRAPPER (Collapsible Left Sidebar + Main Content Area) -->
-    <div class="flex-1 flex relative z-10 min-w-0">
+    <!-- APP SHELL WRAPPER (Collapsible Left Sidebar + Main Content Area; no z-index trap so z-50 sidebar stays above z-40 backdrop) -->
+    <div class="flex-1 flex relative min-w-0">
 
         <!-- ==========================================
              COLLAPSIBLE & EXPANDABLE LEFT-SIDE PANEL
              ========================================== -->
-        <aside id="leftSidebar" class="fixed lg:sticky top-0 left-0 h-screen lg:h-[calc(100vh-32px)] w-64 bg-white/95 backdrop-blur-md border-r-2 border-melody-200 shadow-kawaii z-40 lg:z-20 flex flex-col justify-between -translate-x-full lg:translate-x-0 shrink-0">
+        <aside id="leftSidebar" class="fixed lg:sticky top-0 left-0 h-[100dvh] lg:h-[calc(100vh-32px)] w-64 bg-white border-r-2 border-melody-200 shadow-kawaii z-50 lg:z-20 flex flex-col justify-between -translate-x-full lg:translate-x-0 shrink-0">
             
             <!-- Top Sidebar Header & Expand/Collapse Toggle -->
-            <div class="p-3.5 border-b-2 border-dashed border-melody-200">
+            <div class="p-3.5 border-b-2 border-dashed border-melody-200 shrink-0">
                 <div class="sidebar-header-row flex items-center justify-between gap-2">
                     <div class="sidebar-label flex items-center gap-2 min-w-0">
                         <span class="text-xl">🎀</span>
@@ -315,68 +504,71 @@
                 </div>
             </div>
 
-            <!-- Navigation Links -->
-            <nav class="flex-1 overflow-y-auto p-3 space-y-2" aria-label="Uni Planner Modules">
-                <!-- 1. Tasks & Calendar -->
-                <button onclick="navigateToSection('mainWorkspaceGrid', 'nav-planner')" id="nav-planner" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition bg-melody-500 text-white shadow-sm" title="Tasks & Monthly Calendar">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-base shrink-0">🍓</span>
-                        <span class="sidebar-label truncate">Tasks & Calendar</span>
-                    </div>
-                    <span id="sidebarBadgeTasks" class="sidebar-badge bg-white/25 text-white text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
-                </button>
-
-                <!-- 2. Assignment OCR Tracker -->
-                <button onclick="navigateToSection('assignmentTrackerSection', 'nav-assignments')" id="nav-assignments" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Assignment Timeline OCR Tracker">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-base shrink-0">📚</span>
-                        <span class="sidebar-label truncate">Assignment Tracker</span>
-                    </div>
-                    <span id="sidebarBadgeAssignments" class="sidebar-badge bg-melody-100 text-melody-700 border border-melody-200 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
-                </button>
-
-                <!-- 3. Weekly Class Timetable -->
-                <button onclick="navigateToSection('classTimetableSection', 'nav-timetable')" id="nav-timetable" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Weekly Class & Lecture Timetable">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-base shrink-0">🏫</span>
-                        <span class="sidebar-label truncate">Class Timetable</span>
-                    </div>
-                    <span id="sidebarBadgeClasses" class="sidebar-badge bg-melody-lavender text-melody-lavenderDark border border-purple-200 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
-                </button>
-
-                <!-- 4. Sweet Friend Birthdays -->
-                <button onclick="navigateToSection('friendBirthdaysSection', 'nav-birthdays')" id="nav-birthdays" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Sweet Friend Birthdays (Annual)">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-base shrink-0">🎂</span>
-                        <span class="sidebar-label truncate">Friend Birthdays</span>
-                    </div>
-                    <span id="sidebarBadgeBirthdays" class="sidebar-badge bg-melody-butter text-melody-butterDark border border-amber-300 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
-                </button>
-
-                <!-- 5. iOS Calendar & Reminders Sync -->
-                <button onclick="navigateToSection('iosSyncSection', 'nav-iossync')" id="nav-iossync" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="iOS Apple Calendar & Reminders Sync">
-                    <div class="flex items-center gap-3 min-w-0">
-                        <span class="text-base shrink-0">📱</span>
-                        <span class="sidebar-label truncate">iOS Apple Sync</span>
-                    </div>
-                    <span class="sidebar-badge bg-melody-mint text-melody-mintDark border border-emerald-200 text-[10px] font-bubbly px-2 py-0.5 rounded-full shrink-0">iOS</span>
-                </button>
-            </nav>
-
-            <!-- Bottom Quick Semester Week Card -->
-            <div class="p-3 border-t-2 border-dashed border-melody-200">
-                <div class="sidebar-footer-card bg-gradient-to-br from-melody-50 to-melody-100/80 rounded-2xl p-3 border border-melody-200 text-center">
-                    <div class="text-xs font-bubbly font-bold text-melody-700 flex items-center justify-center gap-1.5">
-                        <span>🌸</span>
-                        <span id="sidebarCurrentWeekLabel">Current Semester</span>
-                    </div>
-                    <p id="sidebarWeekDateSub" class="text-[11px] text-melody-cocoaLight font-semibold mt-0.5">
-                        Set Week 1 in Assignment Tracker
-                    </p>
-                    <button onclick="openIosSyncModal()" class="mt-2 w-full btn-kawaii-soft bg-white hover:bg-melody-50 text-melody-600 border border-melody-300 py-1.5 px-2.5 rounded-xl text-[11px] font-bubbly font-bold flex items-center justify-center gap-1.5">
-                        <i class="fa-brands fa-apple"></i>
-                        <span>Quick iPhone Sync</span>
+            <!-- Scrollable Inner Container (Includes nav + bottom Semester Week card with pb-24 for iPhone Safari bottom bar) -->
+            <div class="flex-1 overflow-y-auto flex flex-col justify-between pb-24 sm:pb-6">
+                <!-- Navigation Links -->
+                <nav class="p-3 space-y-2" aria-label="Uni Planner Modules">
+                    <!-- 1. Tasks & Calendar -->
+                    <button onclick="navigateToSection('mainWorkspaceGrid', 'nav-planner')" id="nav-planner" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition bg-melody-500 text-white shadow-sm" title="Tasks & Monthly Calendar">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">🍓</span>
+                            <span class="sidebar-label truncate">Tasks & Calendar</span>
+                        </div>
+                        <span id="sidebarBadgeTasks" class="sidebar-badge bg-white/25 text-white text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
                     </button>
+
+                    <!-- 2. Assignment OCR Tracker -->
+                    <button onclick="navigateToSection('assignmentTrackerSection', 'nav-assignments')" id="nav-assignments" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Assignment Timeline OCR Tracker">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">📚</span>
+                            <span class="sidebar-label truncate">Assignment Tracker</span>
+                        </div>
+                        <span id="sidebarBadgeAssignments" class="sidebar-badge bg-melody-100 text-melody-700 border border-melody-200 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
+                    </button>
+
+                    <!-- 3. Weekly Class Timetable -->
+                    <button onclick="navigateToSection('classTimetableSection', 'nav-timetable')" id="nav-timetable" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Weekly Class & Lecture Timetable">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">🏫</span>
+                            <span class="sidebar-label truncate">Class Timetable</span>
+                        </div>
+                        <span id="sidebarBadgeClasses" class="sidebar-badge bg-melody-lavender text-melody-lavenderDark border border-purple-200 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
+                    </button>
+
+                    <!-- 4. Sweet Friend Birthdays -->
+                    <button onclick="navigateToSection('friendBirthdaysSection', 'nav-birthdays')" id="nav-birthdays" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Sweet Friend Birthdays (Annual)">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">🎂</span>
+                            <span class="sidebar-label truncate">Friend Birthdays</span>
+                        </div>
+                        <span id="sidebarBadgeBirthdays" class="sidebar-badge bg-melody-butter text-melody-butterDark border border-amber-300 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
+                    </button>
+
+                    <!-- 5. iOS Calendar & Reminders Sync -->
+                    <button onclick="navigateToSection('iosSyncSection', 'nav-iossync')" id="nav-iossync" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="iOS Apple Calendar & Reminders Sync">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">📱</span>
+                            <span class="sidebar-label truncate">iOS Apple Sync</span>
+                        </div>
+                        <span class="sidebar-badge bg-melody-mint text-melody-mintDark border border-emerald-200 text-[10px] font-bubbly px-2 py-0.5 rounded-full shrink-0">iOS</span>
+                    </button>
+                </nav>
+
+                <!-- Bottom Quick Semester Week Card -->
+                <div class="p-3 border-t-2 border-dashed border-melody-200 mt-auto">
+                    <div class="sidebar-footer-card bg-gradient-to-br from-melody-50 to-melody-100/80 rounded-2xl p-3 border border-melody-200 text-center">
+                        <div class="text-xs font-bubbly font-bold text-melody-700 flex items-center justify-center gap-1.5">
+                            <span>🌸</span>
+                            <span id="sidebarCurrentWeekLabel">Current Semester</span>
+                        </div>
+                        <p id="sidebarWeekDateSub" class="text-[11px] text-melody-cocoaLight font-semibold mt-0.5">
+                            Set Week 1 in Assignment Tracker
+                        </p>
+                        <button onclick="openIosSyncModal()" class="mt-2 w-full btn-kawaii-soft bg-white hover:bg-melody-50 text-melody-600 border border-melody-300 py-1.5 px-2.5 rounded-xl text-[11px] font-bubbly font-bold flex items-center justify-center gap-1.5">
+                            <i class="fa-brands fa-apple"></i>
+                            <span>Quick iPhone Sync</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -384,94 +576,99 @@
         <!-- RIGHT MAIN COLUMN (Header + Workspace + Footer) -->
         <div class="flex-1 flex flex-col min-w-0">
 
-    <!-- MAIN HEADER SECTION -->
+    <!-- MAIN HEADER SECTION (iPhone-First Responsive 3-Row Header) -->
     <header class="relative z-10 bg-white/90 backdrop-blur-md border-b-2 border-melody-200 shadow-kawaii-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-5">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-5">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3.5 sm:py-5">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3.5 sm:gap-5">
                 
-                <!-- Mobile Drawer Trigger + Brand Identity + Authentic Sanrio My Melody Mascot -->
-                <div class="flex items-center gap-3 sm:gap-4 w-full lg:w-auto">
-                    <!-- Mobile Sidebar Open Button -->
-                    <button onclick="toggleMobileSidebar(true)" class="lg:hidden btn-kawaii-soft w-11 h-11 rounded-2xl bg-melody-100 hover:bg-melody-200 text-melody-600 border-2 border-melody-300 flex items-center justify-center shrink-0" title="Open Uni Navigation Menu">
-                        <i class="fa-solid fa-bars text-base"></i>
-                    </button>
+                <!-- Left Brand Block (Row 1: Hamburger + Avatar + Title | Row 2: Full-width Horizontal Pill Row on Mobile) -->
+                <div class="flex flex-col gap-2.5 w-full lg:w-auto min-w-0">
+                    <!-- Row 1: Hamburger + Avatar + Title & Subtitle -->
+                    <div class="flex items-center gap-3 sm:gap-4 w-full min-w-0">
+                        <!-- Mobile Sidebar Open Button -->
+                        <button onclick="toggleMobileSidebar(true)" class="lg:hidden btn-kawaii-soft w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-melody-100 hover:bg-melody-200 text-melody-600 border-2 border-melody-300 flex items-center justify-center shrink-0" title="Open Uni Navigation Menu">
+                            <i class="fa-solid fa-bars text-base"></i>
+                        </button>
 
-                    <div class="relative group shrink-0">
-                        <!-- Main Mascot Avatar Container (Click for sweet cheer) -->
-                        <div id="headerMascotAvatar" onclick="triggerMascotCheer()" title="Click Melody for a sweet cheer! ♪" class="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-b from-melody-50 to-melody-100 border-4 border-melody-200 shadow-kawaii flex items-center justify-center overflow-hidden cursor-pointer relative">
-                            <!-- Dynamically populated with Authentic Sanrio My Melody SVG or Custom Uploaded Image -->
+                        <div class="relative group shrink-0">
+                            <!-- Main Mascot Avatar Container (Click for sweet cheer) -->
+                            <div id="headerMascotAvatar" onclick="triggerMascotCheer()" title="Click Melody for a sweet cheer! ♪" class="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-b from-melody-50 to-melody-100 border-4 border-melody-200 shadow-kawaii flex items-center justify-center overflow-hidden cursor-pointer relative">
+                                <!-- Dynamically populated with Authentic Sanrio My Melody SVG or Custom Uploaded Image -->
+                            </div>
+
+                            <!-- Cute Speech Bubble Badge -->
+                            <span onclick="triggerMascotCheer()" class="cursor-pointer absolute -bottom-1 -right-1 bg-melody-500 hover:bg-melody-600 text-white text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 rounded-full font-bubbly shadow-sm border-2 border-white transition">
+                                ♪ Hi!
+                            </span>
+
+                            <!-- Edit / Upload Custom Melody Image Button -->
+                            <button onclick="openMascotModal(event)" class="absolute -top-1 -left-1 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white hover:bg-melody-100 text-melody-600 border-2 border-melody-300 shadow-sm flex items-center justify-center transition transform hover:scale-110" title="Change or Upload My Melody Picture">
+                                <i class="fa-solid fa-camera text-[10px] sm:text-[11px]"></i>
+                            </button>
                         </div>
 
-                        <!-- Cute Speech Bubble Badge -->
-                        <span onclick="triggerMascotCheer()" class="cursor-pointer absolute -bottom-1 -right-1 bg-melody-500 hover:bg-melody-600 text-white text-xs px-2.5 py-0.5 rounded-full font-bubbly shadow-sm border-2 border-white transition">
-                            ♪ Hi!
-                        </span>
-
-                        <!-- Edit / Upload Custom Melody Image Button -->
-                        <button onclick="openMascotModal(event)" class="absolute -top-1 -left-1 w-7 h-7 rounded-full bg-white hover:bg-melody-100 text-melody-600 border-2 border-melody-300 shadow-sm flex items-center justify-center transition transform hover:scale-110" title="Change or Upload My Melody Picture">
-                            <i class="fa-solid fa-camera text-[11px]"></i>
-                        </button>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+                                <h1 class="text-lg sm:text-3xl font-bold text-melody-600 tracking-tight leading-tight">
+                                    Melody's Sweet Planner
+                                </h1>
+                                <span class="bg-melody-100 text-melody-600 border border-melody-300 text-[11px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 shrink-0">
+                                    <i class="fa-solid fa-graduation-cap text-[10px]"></i> Uni Edition
+                                </span>
+                            </div>
+                            <p id="greetingSubtitle" class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5 line-clamp-2">
+                                Let's make today magical, one little berry task at a time! 🍓
+                            </p>
+                        </div>
                     </div>
 
-                    <div class="min-w-0">
-                        <div class="flex items-center gap-2 flex-wrap">
-                            <h1 class="text-xl sm:text-3xl font-bold text-melody-600 tracking-tight flex items-center gap-2">
-                                <span>Melody's Sweet Planner</span>
-                            </h1>
-                            <span class="bg-melody-100 text-melody-600 border border-melody-300 text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-graduation-cap text-[10px]"></i> Uni Edition
-                            </span>
-                        </div>
-                        <p id="greetingSubtitle" class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
-                            Let's make today magical, one little berry task at a time! 🍓
-                        </p>
-                        <div class="flex flex-wrap items-center gap-2 mt-2 text-xs text-melody-600 font-semibold">
-                            <span id="liveDateBadge" class="bg-melody-50 px-3 py-1 rounded-full border border-melody-200 inline-flex items-center gap-1.5">
-                                <i class="fa-regular fa-calendar-heart text-melody-500"></i>
-                                <span>Loading date...</span>
-                            </span>
-                            <button id="soundToggleBtn" onclick="toggleSound()" class="bg-melody-50 hover:bg-melody-100 px-3 py-1 rounded-full border border-melody-200 inline-flex items-center gap-1.5 transition" title="Toggle cute sound effects">
-                                <i id="soundIcon" class="fa-solid fa-volume-high text-melody-500"></i>
-                                <span id="soundLabel">Chimes On</span>
-                            </button>
-                            <button onclick="openMascotModal(event)" class="bg-melody-100/80 hover:bg-melody-200/80 text-melody-700 px-3 py-1 rounded-full border border-melody-300 inline-flex items-center gap-1.5 transition" title="Switch pose or upload your own My Melody image">
-                                <i class="fa-solid fa-wand-magic-sparkles text-melody-500"></i>
-                                <span>Change Melody Pic</span>
-                            </button>
-                            <!-- Quick Jump / Next Birthday Header Pill -->
-                            <button onclick="scrollToBirthdaysSection()" id="headerBirthdayPill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Jump to Sweet Friend Birthdays">
-                                <span>🎂</span>
-                                <span id="headerBirthdayText">0 Friend Birthdays</span>
-                            </button>
-                            <!-- Quick iOS Sync Header Pill -->
-                            <button onclick="openIosSyncModal()" class="bg-melody-mint/90 hover:bg-emerald-100 text-melody-mintDark px-3 py-1 rounded-full border border-emerald-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Sync to iPhone Calendar & Reminders">
-                                <i class="fa-brands fa-apple"></i>
-                                <span>iOS Sync</span>
-                            </button>
-                        </div>
+                    <!-- Row 2: Full-width Horizontal Wrapping Pill Bar (2–3 pills per row on iPhone, never vertical stack) -->
+                    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 sm:gap-2 w-full text-[11px] sm:text-xs text-melody-600 font-semibold">
+                        <span id="liveDateBadge" class="bg-melody-50 px-2.5 sm:px-3 py-1 rounded-full border border-melody-200 inline-flex items-center gap-1.5">
+                            <i class="fa-regular fa-calendar-heart text-melody-500"></i>
+                            <span>Loading date...</span>
+                        </span>
+                        <button id="soundToggleBtn" onclick="toggleSound()" class="bg-melody-50 hover:bg-melody-100 px-2.5 sm:px-3 py-1 rounded-full border border-melody-200 inline-flex items-center gap-1.5 transition" title="Toggle cute sound effects">
+                            <i id="soundIcon" class="fa-solid fa-volume-high text-melody-500"></i>
+                            <span id="soundLabel">Chimes On</span>
+                        </button>
+                        <button onclick="openMascotModal(event)" class="bg-melody-100/80 hover:bg-melody-200/80 text-melody-700 px-2.5 sm:px-3 py-1 rounded-full border border-melody-300 inline-flex items-center gap-1.5 transition" title="Switch pose or upload your own My Melody image">
+                            <i class="fa-solid fa-wand-magic-sparkles text-melody-500"></i>
+                            <span>Change Melody Pic</span>
+                        </button>
+                        <!-- Quick Jump / Next Birthday Header Pill -->
+                        <button onclick="scrollToBirthdaysSection()" id="headerBirthdayPill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Jump to Sweet Friend Birthdays">
+                            <span>🎂</span>
+                            <span id="headerBirthdayText">0 Friend Birthdays</span>
+                        </button>
+                        <!-- Quick iOS Sync Header Pill -->
+                        <button onclick="openIosSyncModal()" class="bg-melody-mint/90 hover:bg-emerald-100 text-melody-mintDark px-2.5 sm:px-3 py-1 rounded-full border border-emerald-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Sync to iPhone Calendar & Reminders">
+                            <i class="fa-brands fa-apple"></i>
+                            <span>iOS Sync</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- View Mode Switcher & Primary Action -->
-                <div class="flex flex-wrap items-center justify-center gap-3 w-full lg:w-auto justify-end">
+                <!-- Row 3: View Mode Switcher & Primary Action (Full-width 3-col bar + New Sweet Task button on iPhone) -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-end gap-2.5 w-full lg:w-auto">
                     <!-- View Mode Segmented Pill -->
-                    <div class="bg-melody-100 p-1.5 rounded-2xl border-2 border-melody-200 flex items-center gap-1 shadow-inner">
-                        <button onclick="setViewMode('split')" id="viewBtn-split" class="view-mode-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                    <div class="bg-melody-100 p-1.5 rounded-2xl border-2 border-melody-200 grid grid-cols-3 sm:flex items-center gap-1 shadow-inner w-full sm:w-auto">
+                        <button onclick="setViewMode('split')" id="viewBtn-split" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
                             <i class="fa-solid fa-columns"></i>
                             <span>Split View</span>
                         </button>
-                        <button onclick="setViewMode('list')" id="viewBtn-list" class="view-mode-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                        <button onclick="setViewMode('list')" id="viewBtn-list" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
                             <i class="fa-solid fa-list-check"></i>
                             <span>Task List</span>
                         </button>
-                        <button onclick="setViewMode('calendar')" id="viewBtn-calendar" class="view-mode-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                        <button onclick="setViewMode('calendar')" id="viewBtn-calendar" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
                             <i class="fa-regular fa-calendar-days"></i>
                             <span>Calendar</span>
                         </button>
                     </div>
 
                     <!-- New Task Button -->
-                    <button onclick="openTaskModal()" class="btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 hover:from-melody-600 hover:to-melody-500 text-white font-bubbly font-semibold px-5 py-2.5 rounded-2xl text-sm sm:text-base flex items-center gap-2 border-2 border-white">
+                    <button onclick="openTaskModal()" class="btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 hover:from-melody-600 hover:to-melody-500 text-white font-bubbly font-semibold px-5 py-2.5 rounded-2xl text-xs sm:text-base flex items-center justify-center gap-2 border-2 border-white w-full sm:w-auto shrink-0">
                         <i class="fa-solid fa-plus-circle"></i>
                         <span>New Sweet Task</span>
                     </button>
@@ -479,72 +676,72 @@
             </div>
 
             <!-- PROGRESS BAR & STATS DASHBOARD -->
-            <div class="mt-5 pt-4 border-t-2 border-dashed border-melody-200 grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+            <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t-2 border-dashed border-melody-200 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-center">
                 
                 <!-- Today's Sweet Progress Bar -->
-                <div class="lg:col-span-5 bg-gradient-to-r from-melody-50 via-white to-melody-50 p-3.5 rounded-2xl border-2 border-melody-200 shadow-sm">
+                <div class="lg:col-span-5 bg-gradient-to-r from-melody-50 via-white to-melody-50 p-3 sm:p-3.5 rounded-2xl border-2 border-melody-200 shadow-sm">
                     <div class="flex items-center justify-between mb-1.5">
                         <div class="flex items-center gap-2">
                             <span class="text-base">🍓</span>
-                            <span class="font-bubbly font-bold text-sm text-melody-700">Today's Sweet Progress</span>
+                            <span class="font-bubbly font-bold text-xs sm:text-sm text-melody-700">Today's Sweet Progress</span>
                         </div>
-                        <span id="progressPercentageText" class="font-bubbly font-bold text-sm text-melody-600 bg-melody-100 px-2.5 py-0.5 rounded-full border border-melody-200">
+                        <span id="progressPercentageText" class="font-bubbly font-bold text-xs sm:text-sm text-melody-600 bg-melody-100 px-2.5 py-0.5 rounded-full border border-melody-200">
                             0%
                         </span>
                     </div>
-                    <div class="w-full h-4 bg-melody-100 rounded-full overflow-hidden p-0.5 border border-melody-200 relative">
+                    <div class="w-full h-3.5 sm:h-4 bg-melody-100 rounded-full overflow-hidden p-0.5 border border-melody-200 relative">
                         <div id="progressBarFill" class="h-full bg-gradient-to-r from-melody-400 via-melody-500 to-pink-400 rounded-full transition-all duration-500 ease-out relative" style="width: 0%">
                             <div class="absolute right-1 top-1/2 -translate-y-1/2 text-[9px] text-white leading-none">♥</div>
                         </div>
                     </div>
-                    <p id="progressSubtext" class="text-xs text-melody-cocoaLight mt-1.5 font-medium">
+                    <p id="progressSubtext" class="text-[11px] sm:text-xs text-melody-cocoaLight mt-1.5 font-medium">
                         Complete tasks to fill Melody's strawberry basket!
                     </p>
                 </div>
 
-                <!-- 4 Kawaii Stat Counter Cards -->
-                <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <!-- 4 Kawaii Stat Counter Cards (Compact 2x2 grid on iPhone, 4-col on sm+) -->
+                <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-2">
                     <!-- Total Tasks -->
-                    <button onclick="quickFilterStatus('all')" class="bg-white hover:bg-melody-50 p-3 rounded-2xl border-2 border-melody-200 shadow-sm flex items-center gap-3 text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-melody-100 text-melody-600 flex items-center justify-center text-lg group-hover:scale-110 transition">
+                    <button onclick="quickFilterStatus('all')" class="bg-white hover:bg-melody-50 p-2.5 sm:p-3 rounded-2xl border-2 border-melody-200 shadow-sm flex items-center gap-2.5 sm:gap-3 text-left transition group min-w-0">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-melody-100 text-melody-600 flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition shrink-0">
                             🎀
                         </div>
-                        <div>
-                            <div id="statTotal" class="font-bubbly font-bold text-xl text-melody-700 leading-tight">0</div>
-                            <div class="text-xs font-semibold text-melody-cocoaLight">Total Tasks</div>
+                        <div class="min-w-0">
+                            <div id="statTotal" class="font-bubbly font-bold text-lg sm:text-xl text-melody-700 leading-tight">0</div>
+                            <div class="text-[11px] sm:text-xs font-semibold text-melody-cocoaLight truncate">Total Tasks</div>
                         </div>
                     </button>
 
                     <!-- Completed -->
-                    <button onclick="quickFilterStatus('completed')" class="bg-white hover:bg-emerald-50/50 p-3 rounded-2xl border-2 border-emerald-200 shadow-sm flex items-center gap-3 text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-melody-mint text-melody-mintDark flex items-center justify-center text-lg group-hover:scale-110 transition">
+                    <button onclick="quickFilterStatus('completed')" class="bg-white hover:bg-emerald-50/50 p-2.5 sm:p-3 rounded-2xl border-2 border-emerald-200 shadow-sm flex items-center gap-2.5 sm:gap-3 text-left transition group min-w-0">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-melody-mint text-melody-mintDark flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition shrink-0">
                             ✨
                         </div>
-                        <div>
-                            <div id="statCompleted" class="font-bubbly font-bold text-xl text-melody-mintDark leading-tight">0</div>
-                            <div class="text-xs font-semibold text-melody-cocoaLight">Completed</div>
+                        <div class="min-w-0">
+                            <div id="statCompleted" class="font-bubbly font-bold text-lg sm:text-xl text-melody-mintDark leading-tight">0</div>
+                            <div class="text-[11px] sm:text-xs font-semibold text-melody-cocoaLight truncate">Completed</div>
                         </div>
                     </button>
 
                     <!-- Pending -->
-                    <button onclick="quickFilterStatus('pending')" class="bg-white hover:bg-purple-50/50 p-3 rounded-2xl border-2 border-purple-200 shadow-sm flex items-center gap-3 text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-melody-lavender text-melody-lavenderDark flex items-center justify-center text-lg group-hover:scale-110 transition">
+                    <button onclick="quickFilterStatus('pending')" class="bg-white hover:bg-purple-50/50 p-2.5 sm:p-3 rounded-2xl border-2 border-purple-200 shadow-sm flex items-center gap-2.5 sm:gap-3 text-left transition group min-w-0">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-melody-lavender text-melody-lavenderDark flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition shrink-0">
                             🧁
                         </div>
-                        <div>
-                            <div id="statPending" class="font-bubbly font-bold text-xl text-melody-lavenderDark leading-tight">0</div>
-                            <div class="text-xs font-semibold text-melody-cocoaLight">Pending</div>
+                        <div class="min-w-0">
+                            <div id="statPending" class="font-bubbly font-bold text-lg sm:text-xl text-melody-lavenderDark leading-tight">0</div>
+                            <div class="text-[11px] sm:text-xs font-semibold text-melody-cocoaLight truncate">Pending</div>
                         </div>
                     </button>
 
                     <!-- Overdue -->
-                    <button onclick="quickFilterStatus('overdue')" class="bg-white hover:bg-rose-50/60 p-3 rounded-2xl border-2 border-rose-200 shadow-sm flex items-center gap-3 text-left transition group">
-                        <div class="w-10 h-10 rounded-xl bg-melody-strawberry text-melody-strawberryDark flex items-center justify-center text-lg group-hover:scale-110 transition">
+                    <button onclick="quickFilterStatus('overdue')" class="bg-white hover:bg-rose-50/60 p-2.5 sm:p-3 rounded-2xl border-2 border-rose-200 shadow-sm flex items-center gap-2.5 sm:gap-3 text-left transition group min-w-0">
+                        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-melody-strawberry text-melody-strawberryDark flex items-center justify-center text-base sm:text-lg group-hover:scale-110 transition shrink-0">
                             ⏰
                         </div>
-                        <div>
-                            <div id="statOverdue" class="font-bubbly font-bold text-xl text-melody-strawberryDark leading-tight">0</div>
-                            <div class="text-xs font-semibold text-melody-cocoaLight">Overdue</div>
+                        <div class="min-w-0">
+                            <div id="statOverdue" class="font-bubbly font-bold text-lg sm:text-xl text-melody-strawberryDark leading-tight">0</div>
+                            <div class="text-[11px] sm:text-xs font-semibold text-melody-cocoaLight truncate">Overdue</div>
                         </div>
                     </button>
                 </div>
@@ -611,21 +808,21 @@
                         <!-- Quick Options Row -->
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
                             <!-- Due Date -->
-                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200">
-                                <i class="fa-regular fa-calendar text-melody-500 text-xs mr-1.5"></i>
-                                <input type="date" id="quickDateInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full cursor-pointer">
+                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
+                                <i class="fa-regular fa-calendar text-melody-500 text-xs mr-1.5 shrink-0"></i>
+                                <input type="date" id="quickDateInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
                             </div>
 
                             <!-- Time -->
-                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200">
-                                <i class="fa-regular fa-clock text-melody-500 text-xs mr-1.5"></i>
-                                <input type="time" id="quickTimeInput" value="14:00" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full cursor-pointer">
+                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
+                                <i class="fa-regular fa-clock text-melody-500 text-xs mr-1.5 shrink-0"></i>
+                                <input type="time" id="quickTimeInput" value="14:00" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
                             </div>
 
                             <!-- Priority -->
-                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200">
-                                <i class="fa-solid fa-flag text-melody-500 text-xs mr-1.5"></i>
-                                <select id="quickPriorityInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full cursor-pointer">
+                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
+                                <i class="fa-solid fa-flag text-melody-500 text-xs mr-1.5 shrink-0"></i>
+                                <select id="quickPriorityInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
                                     <option value="low">🌱 Low (Mint)</option>
                                     <option value="medium" selected>💜 Medium (Lavender)</option>
                                     <option value="high">🍓 High (Berry)</option>
@@ -633,9 +830,9 @@
                             </div>
 
                             <!-- Category -->
-                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200">
-                                <i class="fa-solid fa-tag text-melody-500 text-xs mr-1.5"></i>
-                                <select id="quickCategoryInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full cursor-pointer">
+                            <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
+                                <i class="fa-solid fa-tag text-melody-500 text-xs mr-1.5 shrink-0"></i>
+                                <select id="quickCategoryInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
                                     <option value="Melody">🎵 Melody</option>
                                     <option value="Study">📚 Study</option>
                                     <option value="Work">💼 Work</option>
@@ -922,75 +1119,78 @@
                     </div>
 
                     <!-- Semester Week 1 Reference Date Setting -->
-                    <div class="bg-white px-3.5 py-2 rounded-2xl border-2 border-melody-200 shadow-sm flex flex-wrap items-center gap-2">
-                        <label for="semesterWeek1Input" class="text-xs font-bold text-melody-700 flex items-center gap-1.5">
+                    <div class="bg-white px-3.5 py-2 rounded-2xl border-2 border-melody-200 shadow-sm flex flex-wrap items-center gap-2 w-full sm:w-auto min-w-0 overflow-hidden">
+                        <label for="semesterWeek1Input" class="text-xs font-bold text-melody-700 flex items-center gap-1.5 shrink-0">
                             <span>🗓️ Semester Week 1 Monday:</span>
                         </label>
-                        <input 
-                            type="date" 
-                            id="semesterWeek1Input" 
-                            onchange="saveSemesterWeek1Date()"
-                            class="bg-melody-50 border border-melody-200 rounded-xl px-2.5 py-1 text-xs font-bold text-melody-cocoa focus:outline-none cursor-pointer"
-                        >
+                        <div class="flex-1 sm:flex-initial min-w-0 overflow-hidden">
+                            <input 
+                                type="date" 
+                                id="semesterWeek1Input" 
+                                onchange="saveSemesterWeek1Date()"
+                                class="bg-melody-50 border border-melody-200 rounded-xl px-2.5 py-1 text-xs font-bold text-melody-cocoa focus:outline-none cursor-pointer w-full min-w-0 max-w-full"
+                            >
+                        </div>
                     </div>
                 </div>
 
+                <!-- Two-Column Layout: Left Image OCR & Manual Add, Right Staging & Tracked Assignments -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
                     
-                    <!-- Left Column: Image Upload Dropzone + Manual Quick Assignment Form -->
-                    <div class="lg:col-span-5 flex flex-col gap-4">
-                        <!-- Image Upload Card -->
+                    <!-- Left Column: Image Timeline Uploader + Manual Entry -->
+                    <div class="lg:col-span-5 flex flex-col gap-4 min-w-0">
+                        <!-- OCR Image Upload Card -->
                         <div class="bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm">
-                            <div class="flex items-center justify-between mb-2.5">
-                                <h3 class="font-bubbly font-bold text-base text-melody-700 flex items-center gap-2">
-                                    <span>📸</span>
-                                    <span>Scan Assignment Timeline Image</span>
-                                </h3>
-                                <button type="button" onclick="loadSampleSyllabusOcrDemo()" class="text-[11px] font-bold text-melody-600 hover:text-melody-800 bg-melody-50 hover:bg-melody-100 px-2.5 py-1 rounded-full border border-melody-200 transition" title="Test parser with a sample university assignment table">
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <div class="flex items-center gap-2">
+                                    <span class="text-lg">📸</span>
+                                    <h3 class="font-bubbly font-bold text-base sm:text-lg text-melody-700">
+                                        Scan Assignment Timeline
+                                    </h3>
+                                </div>
+                                <button type="button" onclick="loadSampleSyllabusOcrDemo()" class="text-[11px] font-bubbly font-bold bg-melody-100 hover:bg-melody-200 text-melody-700 px-2.5 py-1 rounded-full border border-melody-300 transition">
                                     Try Sample Table ✨
                                 </button>
                             </div>
 
-                            <label id="assignmentUploadDropzone" class="flex flex-col items-center justify-center text-center p-5 rounded-2xl border-2 border-dashed border-melody-300 bg-melody-50/70 hover:bg-melody-100/70 cursor-pointer transition group">
-                                <div class="w-12 h-12 rounded-full bg-white border-2 border-melody-200 flex items-center justify-center text-melody-500 text-xl mb-2 group-hover:scale-110 transition shadow-sm">
+                            <label class="flex flex-col items-center justify-center gap-2 w-full p-5 rounded-2xl border-2 border-dashed border-melody-300 bg-melody-50/80 hover:bg-melody-100/70 text-center cursor-pointer transition">
+                                <div class="w-11 h-11 rounded-2xl bg-white border border-melody-200 flex items-center justify-center text-melody-500 text-xl shadow-sm">
                                     <i class="fa-solid fa-file-image"></i>
                                 </div>
-                                <span class="font-bubbly font-bold text-sm text-melody-700">
-                                    Upload Syllabus / Assignment Screenshot
-                                </span>
-                                <span class="text-xs text-melody-cocoaLight font-medium mt-1">
-                                    Detects Week # (e.g. Week 5) or Dates, Title & What to Do
-                                </span>
+                                <div class="text-xs sm:text-sm font-bold text-melody-700">
+                                    Tap to Upload Syllabus / Assignment Image
+                                </div>
+                                <div class="text-[11px] text-melody-cocoaLight font-medium">
+                                    Detects Week # or Dates, Assignment Titles & What to Do (PNG, JPG, WEBP)
+                                </div>
                                 <input type="file" id="assignmentImageInput" accept="image/*" onchange="handleAssignmentImageUpload(event)" class="hidden">
                             </label>
 
-                            <!-- Uploaded Image Preview & OCR Progress Bar -->
-                            <div id="ocrProgressContainer" class="hidden mt-3.5 bg-melody-50 rounded-2xl p-3 border border-melody-200">
-                                <div class="flex items-center justify-between text-xs font-bold text-melody-700 mb-1.5">
-                                    <span id="ocrStatusLabel" class="flex items-center gap-1.5">
-                                        <i class="fa-solid fa-spinner fa-spin text-melody-500"></i> Reading assignment timeline...
-                                    </span>
+                            <!-- OCR Progress Bar -->
+                            <div id="ocrProgressContainer" class="hidden mt-3 bg-melody-50 p-3 rounded-2xl border border-melody-200">
+                                <div class="flex items-center justify-between text-xs font-bold text-melody-700 mb-1">
+                                    <span id="ocrStatusLabel">Scanning image...</span>
                                     <span id="ocrPercentLabel">0%</span>
                                 </div>
-                                <div class="w-full h-2.5 bg-white rounded-full overflow-hidden border border-melody-200">
-                                    <div id="ocrProgressBar" class="h-full bg-gradient-to-r from-melody-400 to-melody-500 rounded-full transition-all duration-200" style="width: 0%"></div>
+                                <div class="w-full h-2.5 bg-melody-100 rounded-full overflow-hidden">
+                                    <div id="ocrProgressBar" class="h-full bg-gradient-to-r from-melody-400 to-melody-500 rounded-full transition-all duration-300" style="width: 0%"></div>
                                 </div>
                             </div>
 
-                            <!-- Uploaded Image Thumbnail & Raw OCR Text Toggle -->
-                            <div id="uploadedAssignmentPreviewBox" class="hidden mt-3.5 space-y-2">
-                                <div class="relative rounded-2xl overflow-hidden border-2 border-melody-200 bg-melody-50 max-h-40 flex items-center justify-center">
-                                    <img id="uploadedAssignmentImg" src="" alt="Uploaded assignment timeline" class="max-h-40 w-auto object-contain">
+                            <!-- Uploaded Image Preview & Raw OCR Text Editor -->
+                            <div id="uploadedAssignmentPreviewBox" class="hidden mt-3 space-y-2.5">
+                                <div class="rounded-2xl overflow-hidden border border-melody-200 max-h-36 bg-melody-50 flex items-center justify-center">
+                                    <img id="uploadedAssignmentImg" src="" alt="Uploaded assignment timeline" class="max-h-36 w-auto object-contain">
                                 </div>
-                                <details class="text-xs bg-melody-50/80 rounded-xl p-2.5 border border-melody-200">
-                                    <summary class="font-bold text-melody-700 cursor-pointer select-none">
-                                        View / Edit Raw Detected Text & Re-Parse ♪
-                                    </summary>
-                                    <textarea id="rawOcrTextArea" rows="4" class="mt-2 w-full p-2 rounded-xl bg-white border border-melody-200 text-xs font-mono text-melody-cocoa focus:outline-none"></textarea>
-                                    <button type="button" onclick="reparseFromRawOcrText()" class="mt-1.5 btn-kawaii-soft bg-melody-100 hover:bg-melody-200 text-melody-700 px-3 py-1 rounded-xl text-xs font-bold">
-                                        Re-Extract Assignments ✨
-                                    </button>
-                                </details>
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <label for="rawOcrTextArea" class="text-[11px] font-bold text-melody-700">Detected Text (Editable before parsing):</label>
+                                        <button type="button" onclick="reparseFromRawOcrText()" class="text-[11px] font-bold text-melody-600 hover:text-melody-800 underline">
+                                            Re-Extract Rows ↻
+                                        </button>
+                                    </div>
+                                    <textarea id="rawOcrTextArea" rows="3" class="w-full p-2.5 rounded-xl bg-melody-50 border border-melody-200 text-xs font-medium text-melody-cocoa focus:outline-none focus:border-melody-400"></textarea>
+                                </div>
                             </div>
                         </div>
 
@@ -1002,13 +1202,17 @@
                             </h3>
                             <form onsubmit="handleManualAssignmentAdd(event)" class="space-y-2.5">
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                    <input type="text" id="manualAssignTitle" required placeholder="Assignment Title (e.g. Lab 2)" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
-                                    <div class="flex gap-1.5">
-                                        <input type="number" id="manualAssignWeek" min="1" max="52" placeholder="Week #" oninput="syncManualWeekToDate()" class="w-20 px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa" title="Optional Week Number">
-                                        <input type="date" id="manualAssignDate" required class="flex-1 px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <div class="min-w-0 overflow-hidden">
+                                        <input type="text" id="manualAssignTitle" required placeholder="Assignment Title (e.g. Lab 2)" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    </div>
+                                    <div class="flex gap-1.5 min-w-0 overflow-hidden">
+                                        <input type="number" id="manualAssignWeek" min="1" max="52" placeholder="Week #" oninput="syncManualWeekToDate()" class="w-20 shrink-0 px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa" title="Optional Week Number">
+                                        <div class="flex-1 min-w-0 overflow-hidden">
+                                            <input type="date" id="manualAssignDate" required class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                        </div>
                                     </div>
                                 </div>
-                                <input type="text" id="manualAssignDesc" placeholder="What to do (e.g. Submit PDF report & ERD diagram)" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-semibold text-melody-cocoa">
+                                <input type="text" id="manualAssignDesc" placeholder="What to do (e.g. Submit PDF report & ERD diagram)" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-semibold text-melody-cocoa">
                                 <button type="submit" class="w-full btn-kawaii bg-melody-500 hover:bg-melody-600 text-white font-bubbly font-semibold py-2 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-1.5">
                                     <i class="fa-solid fa-plus-circle"></i>
                                     <span>Add Assignment Deadline to Calendar</span>
@@ -1017,69 +1221,57 @@
                         </div>
                     </div>
 
-                    <!-- Right Column: Extracted Assignments Staging Review + Active Uni Assignments List -->
-                    <div class="lg:col-span-7 flex flex-col gap-4">
-                        
-                        <!-- Staging Area for Newly Detected Assignments from Image -->
-                        <div id="extractedAssignmentsStagingBox" class="hidden bg-gradient-to-r from-melody-butter/70 via-white to-melody-100/70 rounded-3xl p-4 sm:p-5 border-2 border-amber-300 shadow-sm animate-pop">
-                            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b border-dashed border-amber-300">
+                    <!-- Right Column: Extracted Staging Review + Tracked Assignments List -->
+                    <div class="lg:col-span-7 flex flex-col gap-4 min-w-0">
+                        <!-- Staging Box for OCR Extracted Assignments -->
+                        <div id="extractedAssignmentsStagingBox" class="hidden bg-gradient-to-br from-amber-50 via-white to-melody-50 rounded-3xl p-4 sm:p-5 border-2 border-amber-300 shadow-kawaii-sm">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                                 <div class="flex items-center gap-2">
-                                    <span class="text-xl">✨</span>
-                                    <div>
-                                        <h3 class="font-bubbly font-bold text-base text-melody-700">
-                                            Detected Assignments Ready to Import
-                                        </h3>
-                                        <p class="text-[11px] font-semibold text-melody-cocoaLight">
-                                            Review or adjust the extracted Week/Deadline, Title & What to Do below:
-                                        </p>
-                                    </div>
+                                    <span class="text-lg">✨</span>
+                                    <h3 class="font-bubbly font-bold text-base text-melody-700">
+                                        Review Detected Assignments
+                                    </h3>
                                 </div>
                                 <div class="flex items-center gap-2">
-                                    <button type="button" onclick="clearExtractedStaging()" class="px-3 py-1.5 rounded-xl bg-white hover:bg-rose-50 text-rose-500 border border-rose-200 text-xs font-bold">
+                                    <button type="button" onclick="clearExtractedStaging()" class="text-xs font-bold text-melody-cocoaLight hover:text-rose-600 px-2.5 py-1 rounded-xl bg-white border border-melody-200">
                                         Discard
                                     </button>
-                                    <button type="button" onclick="importAllStagedAssignments()" class="btn-kawaii bg-melody-500 hover:bg-melody-600 text-white font-bubbly font-bold px-4 py-1.5 rounded-xl text-xs flex items-center gap-1.5">
+                                    <button type="button" onclick="importAllStagedAssignments()" class="btn-kawaii bg-melody-500 hover:bg-melody-600 text-white font-bubbly font-bold text-xs px-3.5 py-1.5 rounded-xl flex items-center gap-1.5">
                                         <i class="fa-solid fa-calendar-plus"></i>
-                                        <span>Import All to Calendar</span>
+                                        <span>Save & Pin All Deadlines</span>
                                     </button>
                                 </div>
                             </div>
-
-                            <div id="extractedStagingList" class="space-y-2.5 max-h-72 overflow-y-auto pr-1">
-                                <!-- Staged OCR rows injected here -->
-                            </div>
+                            <div id="extractedStagingList" class="space-y-2.5 max-h-72 overflow-y-auto pr-1"></div>
                         </div>
 
-                        <!-- Active Tracked Uni Assignments Board -->
+                        <!-- Tracked Assignments List Card -->
                         <div class="bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm">
                             <div class="flex items-center justify-between mb-3">
                                 <div class="flex items-center gap-2">
                                     <span class="text-lg">🎓</span>
                                     <h3 class="font-bubbly font-bold text-base sm:text-lg text-melody-700">
-                                        Tracked Uni Assignments & Deadlines
+                                        Tracked Course Assignments
                                     </h3>
                                 </div>
-                                <span class="text-xs font-semibold text-melody-cocoaLight">
-                                    Synced with Task List & Calendar ♪
-                                </span>
+                                <span class="text-[11px] font-semibold text-melody-cocoaLight">Synced with Calendar & Task List</span>
                             </div>
-
-                            <div id="trackedAssignmentsListContainer" class="space-y-2.5 max-h-[340px] overflow-y-auto pr-1">
-                                <!-- Dynamically populated from Study/Assignment tasks -->
+                            <div id="trackedAssignmentsListContainer" class="space-y-2.5 max-h-[420px] overflow-y-auto pr-1">
+                                <!-- Dynamically rendered -->
                             </div>
                         </div>
-
                     </div>
+
                 </div>
             </section>
 
             <!-- ==========================================
-                 2. WEEKLY CLASS & LECTURE TIMETABLE (SUGGESTION A)
+                 2. WEEKLY CLASS & LECTURE TIMETABLE SECTION
                  ========================================== -->
             <section id="classTimetableSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-lavender/25 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-melody-lavender to-melody-100 border-2 border-purple-200 flex items-center justify-center text-2xl shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-melody-lavender border-2 border-purple-200 flex items-center justify-center text-2xl shadow-sm">
                             🏫
                         </div>
                         <div>
@@ -1092,48 +1284,46 @@
                                 </span>
                             </div>
                             <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
-                                Organize your weekly lectures, tutorials & labs with live "Up Next Class" tracking! ♪
+                                Organize your recurring university lectures, tutorials & labs with live "Up Next" class tracking ♪
                             </p>
                         </div>
                     </div>
 
-                    <!-- Toggle Show Classes on Monthly Calendar -->
-                    <label class="bg-white px-3.5 py-2 rounded-2xl border-2 border-melody-200 shadow-sm flex items-center gap-2.5 cursor-pointer select-none">
-                        <input type="checkbox" id="showClassesOnCalendarToggle" onchange="toggleShowClassesOnCalendar()" class="melody-checkbox !w-5 !h-5">
-                        <span class="text-xs font-bold text-melody-700">Show Classes on Monthly Calendar</span>
+                    <label class="bg-white px-3.5 py-2 rounded-2xl border-2 border-melody-200 shadow-sm flex items-center gap-2 text-xs font-bold text-melody-700 cursor-pointer">
+                        <input type="checkbox" id="showClassesOnCalendarToggle" checked onchange="toggleShowClassesOnCalendar()" class="melody-checkbox !w-4 !h-4">
+                        <span>Show Classes on Monthly Calendar</span>
                     </label>
                 </div>
 
-                <!-- Up Next / Today's Class Live Banner -->
-                <div id="upNextClassBanner" class="mb-5 bg-gradient-to-r from-melody-lavender/60 via-white to-melody-100/70 rounded-2xl p-4 border-2 border-purple-200 flex flex-wrap items-center justify-between gap-3">
-                    <!-- Dynamically populated with today's upcoming/ongoing class -->
+                <!-- Live Up Next Class Banner -->
+                <div id="upNextClassBanner" class="bg-gradient-to-r from-melody-lavender/60 via-white to-melody-100/70 rounded-2xl p-3.5 sm:p-4 border-2 border-purple-200 mb-5 shadow-sm">
+                    <!-- Dynamically populated -->
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                    
                     <!-- Left Form: Add / Edit Weekly Class -->
-                    <div class="lg:col-span-4 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm">
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm min-w-0 overflow-hidden">
                         <div class="flex items-center justify-between mb-3">
-                            <h3 id="classFormTitle" class="font-bubbly font-bold text-base text-melody-700 flex items-center gap-2">
+                            <h3 id="classFormTitle" class="font-bubbly font-bold text-base sm:text-lg text-melody-700 flex items-center gap-2">
                                 <span>🎀</span>
                                 <span>Add Weekly Class</span>
                             </h3>
                             <button type="button" id="cancelEditClassBtn" onclick="resetClassForm()" class="hidden text-xs font-bold text-melody-500 hover:text-melody-700 underline">
-                                Cancel
+                                Cancel Edit
                             </button>
                         </div>
 
                         <form id="classTimetableForm" onsubmit="handleSaveClassItem(event)" class="space-y-3">
                             <input type="hidden" id="classEditId">
 
-                            <div class="grid grid-cols-2 gap-2">
-                                <div>
+                            <div class="grid grid-cols-2 gap-2.5">
+                                <div class="min-w-0 overflow-hidden">
                                     <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Course Code *</label>
-                                    <input type="text" id="classCodeInput" required placeholder="e.g. CS204" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <input type="text" id="classCodeInput" required placeholder="e.g. CS204" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                                 </div>
-                                <div>
+                                <div class="min-w-0 overflow-hidden">
                                     <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Class Type</label>
-                                    <select id="classTypeInput" class="w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <select id="classTypeInput" class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                                         <option value="Lecture">📖 Lecture</option>
                                         <option value="Tutorial">✏️ Tutorial</option>
                                         <option value="Lab">💻 Lab</option>
@@ -1142,15 +1332,16 @@
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="min-w-0 overflow-hidden">
                                 <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Subject Name *</label>
-                                <input type="text" id="classSubjectInput" required placeholder="e.g. Software Engineering" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                <input type="text" id="classSubjectInput" required placeholder="e.g. Software Engineering" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                             </div>
 
-                            <div class="grid grid-cols-3 gap-2">
-                                <div>
+                            <!-- Responsive Day + Start/End Row: Day spans full width on iPhone, Start & End sit side-by-side in roomy 2-col row -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                                <div class="col-span-2 sm:col-span-1 min-w-0 overflow-hidden">
                                     <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Day *</label>
-                                    <select id="classDayInput" class="w-full px-2 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <select id="classDayInput" class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                                         <option value="1">Monday</option>
                                         <option value="2">Tuesday</option>
                                         <option value="3">Wednesday</option>
@@ -1160,19 +1351,19 @@
                                         <option value="0">Sunday</option>
                                     </select>
                                 </div>
-                                <div>
+                                <div class="min-w-0 overflow-hidden">
                                     <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Start *</label>
-                                    <input type="time" id="classStartInput" value="09:00" required class="w-full px-2 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <input type="time" id="classStartInput" value="09:00" required class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                                 </div>
-                                <div>
+                                <div class="min-w-0 overflow-hidden">
                                     <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">End *</label>
-                                    <input type="time" id="classEndInput" value="11:00" required class="w-full px-2 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <input type="time" id="classEndInput" value="11:00" required class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
                                 </div>
                             </div>
 
-                            <div>
+                            <div class="min-w-0 overflow-hidden">
                                 <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Room / Venue / Lecturer</label>
-                                <input type="text" id="classRoomInput" placeholder="e.g. Block B, Room 302 (Dr. Amy)" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-semibold text-melody-cocoa">
+                                <input type="text" id="classRoomInput" placeholder="e.g. Block B, Room 302 (Dr. Amy)" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-semibold text-melody-cocoa">
                             </div>
 
                             <button type="submit" class="w-full btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 hover:from-melody-600 hover:to-melody-500 text-white font-bubbly font-semibold py-2.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-1.5 border-2 border-white">
@@ -1182,9 +1373,8 @@
                         </form>
                     </div>
 
-                    <!-- Right Timetable Grid / Day Tabs -->
-                    <div class="lg:col-span-8 flex flex-col gap-3">
-                        <!-- Day Filter Tabs -->
+                    <!-- Right Column: Day Filter Tabs + Class Cards Grid -->
+                    <div class="lg:col-span-7 flex flex-col gap-3.5 min-w-0">
                         <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
                             <button onclick="setTimetableDayFilter('all')" id="ttDayTab-all" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">All Week 🌸</button>
                             <button onclick="setTimetableDayFilter('1')" id="ttDayTab-1" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Mon</button>
@@ -1196,44 +1386,20 @@
                             <button onclick="setTimetableDayFilter('0')" id="ttDayTab-0" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Sun</button>
                         </div>
 
-                        <div id="classTimetableListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[380px] overflow-y-auto pr-1">
-                            <!-- Dynamically populated by JS -->
+                        <div id="classTimetableListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- Dynamically rendered -->
                         </div>
                     </div>
-
                 </div>
             </section>
 
             <!-- ==========================================
-                 3. FULL-WIDTH SANRIO MY MELODY SWEET FRIEND BIRTHDAYS SECTION
+                 3. SWEET FRIEND BIRTHDAYS SECTION (EVERY YEAR)
                  ========================================== -->
-            <section id="friendBirthdaysSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-50/80 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
-                
-                <!-- Decorative Sanrio My Melody Ribbon & Strawberry Cake Sticker in Corner -->
-                <div class="absolute -top-2 -right-2 pointer-events-none opacity-90 hidden sm:block">
-                    <svg width="96" height="96" viewBox="0 0 100 100" fill="none">
-                        <!-- Soft Pastel Sparkles -->
-                        <circle cx="22" cy="24" r="3" fill="#FFD447"/>
-                        <circle cx="82" cy="76" r="2.5" fill="#FF8FB4"/>
-                        <!-- Cute Strawberry Shortcake Slice -->
-                        <g transform="translate(36, 26) rotate(8)">
-                            <!-- Cake Base -->
-                            <path d="M8 26 L44 26 L44 42 C44 45, 41 47, 38 47 L14 47 C11 47, 8 45, 8 42 Z" fill="#FFF5C0" stroke="#3D2329" stroke-width="2.4" stroke-linejoin="round"/>
-                            <!-- Pink Strawberry Cream Layer -->
-                            <rect x="8" y="34" width="36" height="5" fill="#FFB8D0"/>
-                            <!-- Whipped Cream Top -->
-                            <path d="M6 26 Q12 20 18 26 Q24 20 30 26 Q36 20 42 26 Q46 23 46 27 L6 27 Z" fill="#FFFFFF" stroke="#3D2329" stroke-width="2.2" stroke-linejoin="round"/>
-                            <!-- Little Strawberry on Top -->
-                            <path d="M26 11 C31 11, 33 16, 31 20 C29 23, 27 24, 26 24 C25 24, 23 23, 21 20 C19 16, 21 11, 26 11 Z" fill="#FF5C8A" stroke="#3D2329" stroke-width="2.2"/>
-                            <path d="M22 12 Q26 15 30 12 Q26 8 22 12 Z" fill="#52B788" stroke="#3D2329" stroke-width="1.8"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <!-- Section Header -->
+            <section id="friendBirthdaysSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-50/90 to-amber-50/40 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-melody-butter to-melody-100 border-2 border-melody-300 flex items-center justify-center text-2xl shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-melody-butter border-2 border-amber-300 flex items-center justify-center text-2xl shadow-sm shrink-0">
                             🎂
                         </div>
                         <div>
@@ -1245,7 +1411,7 @@
                                     0 Friends Saved
                                 </span>
                                 <span class="bg-melody-butter text-melody-butterDark border border-amber-300 text-xs font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
-                                    <i class="fa-solid fa-repeat text-[10px]"></i> Recurs Every Year
+                                    <i class="fa-solid fa-arrows-rotate text-[10px]"></i> Recurs Every Year
                                 </span>
                             </div>
                             <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
@@ -1255,11 +1421,9 @@
                     </div>
                 </div>
 
-                <!-- Two-Column Layout: Left Add/Edit Birthday Form, Right Upcoming & All Saved Birthdays -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-                    
                     <!-- Left Form: Record Friend Birthday -->
-                    <div class="lg:col-span-5 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm">
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm min-w-0 overflow-hidden">
                         <div class="flex items-center justify-between mb-3">
                             <div class="flex items-center gap-2">
                                 <span class="text-lg">🍰</span>
@@ -1272,38 +1436,38 @@
                             </button>
                         </div>
 
-                        <form id="friendBirthdayForm" onsubmit="handleSaveFriendBirthday(event)" class="space-y-3.5">
+                        <form id="friendBirthdayForm" onsubmit="handleSaveFriendBirthday(event)" class="space-y-3.5 w-full min-w-0">
                             <input type="hidden" id="birthdayEditId">
 
                             <!-- Friend Name -->
-                            <div>
+                            <div class="w-full min-w-0 overflow-hidden">
                                 <label class="block text-xs font-bold text-melody-700 uppercase tracking-wider mb-1">
                                     Friend's Name <span class="text-melody-500">*</span>
                                 </label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-heart absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-400 text-xs"></i>
+                                <div class="relative w-full min-w-0 overflow-hidden">
+                                    <i class="fa-solid fa-heart absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-400 text-xs pointer-events-none"></i>
                                     <input 
                                         type="text" 
                                         id="friendNameInput" 
                                         required
                                         placeholder="e.g., Flat, My Sweet Piano, Bestie ♪"
-                                        class="w-full pl-9 pr-4 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa placeholder-melody-cocoaLight/70 transition"
+                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-4 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa placeholder-melody-cocoaLight/70 transition"
                                     >
                                 </div>
                             </div>
 
-                            <!-- Birthday Date -->
-                            <div>
+                            <!-- Birthday Date (Strictly constrained to container width on iOS Safari) -->
+                            <div class="w-full min-w-0 overflow-hidden">
                                 <label class="block text-xs font-bold text-melody-700 uppercase tracking-wider mb-1">
                                     Birthday Date <span class="text-melody-500">*</span>
                                 </label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-cake-candles absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-500 text-xs"></i>
+                                <div class="relative w-full min-w-0 overflow-hidden rounded-2xl">
+                                    <i class="fa-solid fa-cake-candles absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-500 text-xs pointer-events-none z-10"></i>
                                     <input 
                                         type="date" 
                                         id="friendBirthDateInput" 
                                         required
-                                        class="w-full pl-9 pr-4 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa cursor-pointer transition"
+                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-3 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa cursor-pointer transition"
                                     >
                                 </div>
                                 <p class="text-[11px] text-melody-cocoaLight mt-1 font-medium">
@@ -1312,17 +1476,17 @@
                             </div>
 
                             <!-- Gift Idea / Sweet Wish Note -->
-                            <div>
+                            <div class="w-full min-w-0 overflow-hidden">
                                 <label class="block text-xs font-bold text-melody-700 uppercase tracking-wider mb-1">
                                     Gift Idea or Sweet Wish (Optional)
                                 </label>
-                                <div class="relative">
-                                    <i class="fa-solid fa-gift absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-400 text-xs"></i>
+                                <div class="relative w-full min-w-0 overflow-hidden">
+                                    <i class="fa-solid fa-gift absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-400 text-xs pointer-events-none"></i>
                                     <input 
                                         type="text" 
                                         id="friendWishInput" 
                                         placeholder="e.g., Strawberry shortcake & pink ribbon plushie 🎀"
-                                        class="w-full pl-9 pr-4 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa placeholder-melody-cocoaLight/70 transition"
+                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-4 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa placeholder-melody-cocoaLight/70 transition"
                                     >
                                 </div>
                             </div>
@@ -1334,44 +1498,43 @@
                         </form>
                     </div>
 
-                    <!-- Right List: Upcoming & Recorded Friend Birthdays -->
-                    <div class="lg:col-span-7 flex flex-col gap-3">
-                        <div class="flex flex-wrap items-center justify-between gap-2">
-                            <div class="flex items-center gap-2">
-                                <span class="text-base">🎈</span>
-                                <h3 class="font-bubbly font-bold text-base sm:text-lg text-melody-700">
-                                    Upcoming & Saved Friend Birthdays
+                    <!-- Right Column: Upcoming & Saved Friend Birthdays Grid -->
+                    <div class="lg:col-span-7 flex flex-col gap-3 min-w-0">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="font-bubbly font-bold text-base sm:text-lg text-melody-700 flex items-center gap-2">
+                                    <span>🎈</span>
+                                    <span>Upcoming & Saved Friend Birthdays</span>
                                 </h3>
+                                <p class="text-xs text-melody-cocoaLight font-semibold">
+                                    Sorted by closest upcoming celebration ✨
+                                </p>
                             </div>
-                            <span class="text-xs font-semibold text-melody-cocoaLight">
-                                Sorted by closest upcoming celebration ✨
-                            </span>
                         </div>
 
-                        <div id="friendBirthdaysListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-h-[360px] overflow-y-auto pr-1">
-                            <!-- Dynamically populated by JS -->
+                        <div id="friendBirthdaysListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <!-- Dynamically rendered -->
                         </div>
                     </div>
-
                 </div>
             </section>
 
             <!-- ==========================================
-                 4. iOS APPLE CALENDAR & APPLE REMINDERS SYNC SECTION
+                 4. iOS APPLE CALENDAR & APPLE REMINDERS SYNC HUB
                  ========================================== -->
-            <section id="iosSyncSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-mint/25 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="iosSyncSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-mint/30 to-melody-lavender/25 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-melody-mint to-white border-2 border-emerald-200 flex items-center justify-center text-2xl text-melody-mintDark shadow-sm">
-                            <i class="fa-brands fa-apple"></i>
+                        <div class="w-12 h-12 rounded-2xl bg-melody-mint border-2 border-emerald-200 flex items-center justify-center text-2xl shadow-sm shrink-0">
+                            📱
                         </div>
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
                                 <h2 class="font-bubbly font-bold text-xl sm:text-2xl text-melody-700 leading-tight">
                                     iOS iPhone Calendar & Reminders Sync
                                 </h2>
-                                <span class="bg-melody-mint text-melody-mintDark border border-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
-                                    One-Tap iOS Bridge
+                                <span class="bg-melody-mint text-melody-mintDark border border-emerald-300 text-xs font-bold px-2.5 py-0.5 rounded-full inline-flex items-center gap-1">
+                                    <i class="fa-brands fa-apple"></i> iOS Ready
                                 </span>
                             </div>
                             <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
@@ -1518,7 +1681,7 @@
 
                 <!-- Date & Time Row -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div class="min-w-0 overflow-hidden">
                         <label class="block text-xs font-bold text-melody-700 uppercase tracking-wider mb-1">
                             Due Date <span class="text-melody-500">*</span>
                         </label>
@@ -1526,10 +1689,10 @@
                             type="date" 
                             id="modalDateInput" 
                             required
-                            class="w-full px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa"
+                            class="w-full min-w-0 max-w-full box-border px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa"
                         >
                     </div>
-                    <div>
+                    <div class="min-w-0 overflow-hidden">
                         <label class="block text-xs font-bold text-melody-700 uppercase tracking-wider mb-1">
                             Time
                         </label>
@@ -1537,7 +1700,7 @@
                             type="time" 
                             id="modalTimeInput" 
                             value="14:00"
-                            class="w-full px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa"
+                            class="w-full min-w-0 max-w-full box-border px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-semibold text-melody-cocoa"
                         >
                     </div>
                 </div>
@@ -1899,10 +2062,56 @@
             showToast('Could not load that image URL; switched to Classic My Melody 🎀', '🌷');
         }
 
+        function updateAppleTouchIconFromSource(imageSrc) {
+            const appleLink = document.getElementById('appleTouchIconLink');
+            const favLink = document.getElementById('faviconLink');
+            if (!appleLink && !favLink) return;
+
+            if (!imageSrc) {
+                if (window.__DEFAULT_MELODY_PNG_ICON__) {
+                    if (appleLink) appleLink.href = window.__DEFAULT_MELODY_PNG_ICON__;
+                    if (favLink) favLink.href = window.__DEFAULT_MELODY_PNG_ICON__;
+                }
+                return;
+            }
+
+            // Convert custom uploaded/URL image into a crisp 180x180 PNG for iOS Safari Home Screen
+            const img = new Image();
+            img.crossOrigin = 'anonymous';
+            img.onload = function() {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 180;
+                    canvas.height = 180;
+                    const ctx = canvas.getContext('2d');
+                    ctx.fillStyle = '#FAEBF0';
+                    ctx.fillRect(0, 0, 180, 180);
+                    ctx.drawImage(img, 0, 0, 180, 180);
+                    const pngUrl = canvas.toDataURL('image/png');
+                    if (appleLink) appleLink.href = pngUrl;
+                    if (favLink) favLink.href = pngUrl;
+                } catch (e) {
+                    if (appleLink) appleLink.href = imageSrc;
+                    if (favLink) favLink.href = imageSrc;
+                }
+            };
+            img.onerror = function() {
+                if (appleLink) appleLink.href = imageSrc;
+                if (favLink) favLink.href = imageSrc;
+            };
+            img.src = imageSrc;
+        }
+
         function renderMascotAvatar() {
             const avatarContainer = document.getElementById('headerMascotAvatar');
             if (avatarContainer) {
                 avatarContainer.innerHTML = getMascotHtml('w-full h-full');
+            }
+
+            if (mascotConfig.type === 'custom' && mascotConfig.value) {
+                updateAppleTouchIconFromSource(mascotConfig.value);
+            } else {
+                updateAppleTouchIconFromSource(null);
             }
 
             ['classic', 'bow', 'strawberry'].forEach(key => {
