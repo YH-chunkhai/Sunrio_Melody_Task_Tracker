@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>My Melody's Sweet Berry Planner & Calendar 🎀</title>
+    <title>Le Yao's Planner & Calendar 🎀</title>
 
     <!-- iOS Safari Add to Home Screen Web App Meta & My Melody Icon -->
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -466,10 +466,10 @@
         <div class="absolute bottom-24 right-16 text-melody-300 text-xl animate-note" style="animation-delay: 1.8s;">🍓</div>
     </div>
 
-    <!-- TOP RIBBON BANNER -->
+        <!-- TOP RIBBON BANNER -->
     <div class="bg-gradient-to-r from-melody-300 via-melody-400 to-melody-300 text-white py-1.5 px-3 sm:px-4 text-center text-[11px] sm:text-sm font-semibold tracking-wide shadow-sm relative z-20 flex items-center justify-center gap-1.5 sm:gap-2">
         <span>♪</span>
-        <span>Welcome to My Melody's Sweet Uni & Strawberry Planner! Stay cozy & organized every semester</span>
+        <span>Welcome to Yao Yao's Planner! Stay cozy & organized every semester</span>
         <span>🎀</span>
     </div>
 
@@ -544,7 +544,16 @@
                         <span id="sidebarBadgeBirthdays" class="sidebar-badge bg-melody-butter text-melody-butterDark border border-amber-300 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
                     </button>
 
-                    <!-- 5. iOS Calendar & Reminders Sync -->
+                    <!-- 5. Expenses Tracker -->
+                    <button onclick="navigateToSection('expensesTrackerSection', 'nav-expenses')" id="nav-expenses" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="Track daily expenses and monthly budgets">
+                        <div class="flex items-center gap-3 min-w-0">
+                            <span class="text-base shrink-0">💰</span>
+                            <span class="sidebar-label truncate">Expenses Tracker</span>
+                        </div>
+                        <span id="sidebarBadgeExpenses" class="sidebar-badge bg-melody-butter text-melody-butterDark border border-amber-300 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">RM0</span>
+                    </button>
+
+                    <!-- 6. iOS Calendar & Reminders Sync -->
                     <button onclick="navigateToSection('iosSyncSection', 'nav-iossync')" id="nav-iossync" class="sidebar-nav-btn w-full flex items-center justify-between gap-2.5 px-3.5 py-2.5 rounded-2xl text-xs sm:text-sm font-bold transition text-melody-cocoa hover:bg-melody-100" title="iOS Apple Calendar & Reminders Sync">
                         <div class="flex items-center gap-3 min-w-0">
                             <span class="text-base shrink-0">📱</span>
@@ -585,14 +594,15 @@
                 <div class="flex flex-col gap-2.5 w-full lg:w-auto min-w-0">
                     <!-- Row 1: Hamburger + Avatar + Title & Subtitle -->
                     <div class="flex items-center gap-3 sm:gap-4 w-full min-w-0">
-                        <!-- Mobile Sidebar Open Button -->
-                        <button onclick="toggleMobileSidebar(true)" class="lg:hidden btn-kawaii-soft w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-melody-100 hover:bg-melody-200 text-melody-600 border-2 border-melody-300 flex items-center justify-center shrink-0" title="Open Uni Navigation Menu">
+                        <!-- Mobile Sidebar Open Button (fixed while scrolling) -->
+                        <span class="lg:hidden w-10 h-10 sm:w-11 sm:h-11 shrink-0" aria-hidden="true"></span>
+                        <button onclick="toggleMobileSidebar(true)" class="lg:hidden fixed top-4 left-4 z-[60] btn-kawaii-soft w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-melody-100 hover:bg-melody-200 text-melody-600 border-2 border-melody-300 flex items-center justify-center shrink-0" title="Open Uni Navigation Menu">
                             <i class="fa-solid fa-bars text-base"></i>
                         </button>
 
                         <div class="relative group shrink-0">
                             <!-- Main Mascot Avatar Container (Click for sweet cheer) -->
-                            <div id="headerMascotAvatar" onclick="triggerMascotCheer()" title="Click Melody for a sweet cheer! ♪" class="w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-b from-melody-50 to-melody-100 border-4 border-melody-200 shadow-kawaii flex items-center justify-center overflow-hidden cursor-pointer relative">
+                            <div id="headerMascotAvatar" onclick="triggerMascotCheer()" title="Click Melody for a sweet cheer! ♪" class="w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-gradient-to-b from-melody-50 to-melody-100 border-4 border-melody-200 shadow-kawaii flex items-center justify-center overflow-hidden cursor-pointer relative">
                                 <!-- Dynamically populated with Authentic Sanrio My Melody SVG or Custom Uploaded Image -->
                             </div>
 
@@ -602,18 +612,18 @@
                             </span>
 
                             <!-- Edit / Upload Custom Melody Image Button -->
-                            <button onclick="openMascotModal(event)" class="absolute -top-1 -left-1 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white hover:bg-melody-100 text-melody-600 border-2 border-melody-300 shadow-sm flex items-center justify-center transition transform hover:scale-110" title="Change or Upload My Melody Picture">
+                            <button onclick="openMascotModal(event)" class="absolute -top-0 -left-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white hover:bg-melody-100 text-melody-600 border-2 border-melody-300 shadow-sm flex items-center justify-center transition transform hover:scale-110" title="Change or Upload My Melody Picture">
                                 <i class="fa-solid fa-camera text-[10px] sm:text-[11px]"></i>
                             </button>
                         </div>
 
                         <div class="min-w-0 flex-1">
                             <div class="flex items-center gap-1.5 sm:gap-2 flex-wrap">
-                                <h1 class="text-lg sm:text-3xl font-bold text-melody-600 tracking-tight leading-tight">
-                                    Melody's Sweet Planner
+                                <h1 class="text-2xl sm:text-4xl font-bold text-melody-600 tracking-tight leading-tight">
+                                    Yao Yao's Planner
                                 </h1>
                                 <span class="bg-melody-100 text-melody-600 border border-melody-300 text-[11px] sm:text-xs font-bold px-2 sm:px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 shrink-0">
-                                    <i class="fa-solid fa-graduation-cap text-[10px]"></i> Uni Edition
+                                    <i class="fa-solid fa-graduation-cap text-[10px]"></i> Sun U the best
                                 </span>
                             </div>
                             <p id="greetingSubtitle" class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5 line-clamp-2">
@@ -628,55 +638,42 @@
                             <i class="fa-regular fa-calendar-heart text-melody-500"></i>
                             <span>Loading date...</span>
                         </span>
-                        <button id="soundToggleBtn" onclick="toggleSound()" class="bg-melody-50 hover:bg-melody-100 px-2.5 sm:px-3 py-1 rounded-full border border-melody-200 inline-flex items-center gap-1.5 transition" title="Toggle cute sound effects">
-                            <i id="soundIcon" class="fa-solid fa-volume-high text-melody-500"></i>
-                            <span id="soundLabel">Chimes On</span>
-                        </button>
-                        <button onclick="openMascotModal(event)" class="bg-melody-100/80 hover:bg-melody-200/80 text-melody-700 px-2.5 sm:px-3 py-1 rounded-full border border-melody-300 inline-flex items-center gap-1.5 transition" title="Switch pose or upload your own My Melody image">
-                            <i class="fa-solid fa-wand-magic-sparkles text-melody-500"></i>
-                            <span>Change Melody Pic</span>
-                        </button>
                         <!-- Quick Jump / Next Birthday Header Pill -->
                         <button onclick="scrollToBirthdaysSection()" id="headerBirthdayPill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Jump to Sweet Friend Birthdays">
                             <span>🎂</span>
                             <span id="headerBirthdayText">0 Friend Birthdays</span>
                         </button>
-                        <!-- Quick iOS Sync Header Pill -->
-                        <button onclick="openIosSyncModal()" class="bg-melody-mint/90 hover:bg-emerald-100 text-melody-mintDark px-2.5 sm:px-3 py-1 rounded-full border border-emerald-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Sync to iPhone Calendar & Reminders">
-                            <i class="fa-brands fa-apple"></i>
-                            <span>iOS Sync</span>
+                        <button onclick="navigateToSection('expensesTrackerSection', 'nav-expenses')" id="todayExpensePill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Open Expenses Tracker">
+                            <span>🍓</span>
+                            <span>Today: RM 0.00</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- Row 3: View Mode Switcher & Primary Action (Full-width 3-col bar + New Sweet Task button on iPhone) -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-end gap-2.5 w-full lg:w-auto">
+                <!-- Row 3: View Mode Switcher & Primary Action -->
+                <div class="flex items-center justify-end gap-2 w-full lg:w-auto">
                     <!-- View Mode Segmented Pill -->
-                    <div class="bg-melody-100 p-1.5 rounded-2xl border-2 border-melody-200 grid grid-cols-3 sm:flex items-center gap-1 shadow-inner w-full sm:w-auto">
-                        <button onclick="setViewMode('split')" id="viewBtn-split" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
-                            <i class="fa-solid fa-columns"></i>
-                            <span>Split View</span>
-                        </button>
-                        <button onclick="setViewMode('list')" id="viewBtn-list" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                    <div class="bg-melody-100 p-1.5 rounded-2xl border-2 border-melody-200 grid grid-cols-2 sm:flex items-center gap-1 shadow-inner flex-1 min-w-0 sm:flex-none sm:w-auto">
+                        <button onclick="setViewMode('list')" id="viewBtn-list" class="view-mode-btn justify-center px-1.5 sm:px-3.5 py-2 rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center gap-1 sm:gap-1.5">
                             <i class="fa-solid fa-list-check"></i>
                             <span>Task List</span>
                         </button>
-                        <button onclick="setViewMode('calendar')" id="viewBtn-calendar" class="view-mode-btn justify-center px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5">
+                        <button onclick="setViewMode('calendar')" id="viewBtn-calendar" class="view-mode-btn justify-center px-1.5 sm:px-3.5 py-2 rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center gap-1 sm:gap-1.5">
                             <i class="fa-regular fa-calendar-days"></i>
                             <span>Calendar</span>
                         </button>
                     </div>
 
                     <!-- New Task Button -->
-                    <button onclick="openTaskModal()" class="btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 hover:from-melody-600 hover:to-melody-500 text-white font-bubbly font-semibold px-5 py-2.5 rounded-2xl text-xs sm:text-base flex items-center justify-center gap-2 border-2 border-white w-full sm:w-auto shrink-0">
+                    <button onclick="openTaskModal()" class="btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 hover:from-melody-600 hover:to-melody-500 text-white font-bubbly font-semibold px-3 sm:px-5 py-2.5 rounded-2xl text-[11px] sm:text-base flex items-center justify-center gap-1.5 sm:gap-2 border-2 border-white w-auto whitespace-nowrap shrink-0">
                         <i class="fa-solid fa-plus-circle"></i>
-                        <span>New Sweet Task</span>
+                        <span>New Task</span>
                     </button>
                 </div>
             </div>
 
             <!-- PROGRESS BAR & STATS DASHBOARD -->
-            <div class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t-2 border-dashed border-melody-200 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-center">
+            <div id="dashboardSection" class="mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t-2 border-dashed border-melody-200 grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4 items-center">
                 
                 <!-- Today's Sweet Progress Bar -->
                 <div class="lg:col-span-5 bg-gradient-to-r from-melody-50 via-white to-melody-50 p-3 sm:p-3.5 rounded-2xl border-2 border-melody-200 shadow-sm">
@@ -755,8 +752,8 @@
     <!-- MAIN CONTENT WORKSPACE -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 relative z-10">
         
-        <!-- Dynamic Layout Grid (Adapts to Split / List / Calendar view modes) -->
-        <div id="mainWorkspaceGrid" class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <!-- Dynamic Layout Grid (Adapts to List / Calendar view modes) -->
+        <div id="mainWorkspaceGrid" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
             <!-- ==========================================
                  LEFT / TASK LIST PANEL
@@ -823,9 +820,9 @@
                             <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
                                 <i class="fa-solid fa-flag text-melody-500 text-xs mr-1.5 shrink-0"></i>
                                 <select id="quickPriorityInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
-                                    <option value="low">🌱 Low (Mint)</option>
-                                    <option value="medium" selected>💜 Medium (Lavender)</option>
-                                    <option value="high">🍓 High (Berry)</option>
+                                    <option value="low">🌱 Low</option>
+                                    <option value="medium" selected>💜 Medium</option>
+                                    <option value="high">🍓 High</option>
                                 </select>
                             </div>
 
@@ -833,9 +830,9 @@
                             <div class="flex items-center bg-melody-50 rounded-xl px-2.5 py-1.5 border border-melody-200 min-w-0 overflow-hidden">
                                 <i class="fa-solid fa-tag text-melody-500 text-xs mr-1.5 shrink-0"></i>
                                 <select id="quickCategoryInput" class="bg-transparent text-xs font-bold text-melody-cocoa focus:outline-none w-full min-w-0 max-w-full cursor-pointer">
-                                    <option value="Melody">🎵 Melody</option>
+                                    <option value="Home">🎵 Home</option>
                                     <option value="Study">📚 Study</option>
-                                    <option value="Work">💼 Work</option>
+                                    <option value="Pet">🐶 Pet</option>
                                     <option value="Self-Care">🍓 Self-Care</option>
                                     <option value="Shopping">🎀 Shopping</option>
                                 </select>
@@ -887,20 +884,20 @@
                             <button onclick="setCategoryFilter('all')" id="catPill-all" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
                                 🌸 All
                             </button>
-                            <button onclick="setCategoryFilter('Melody')" id="catPill-Melody" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
-                                🎵 Melody
+                            <button onclick="setCategoryFilter('Home')" id="catPill-Home" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
+                                🏡 Home
                             </button>
                             <button onclick="setCategoryFilter('Study')" id="catPill-Study" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
                                 📚 Study
                             </button>
-                            <button onclick="setCategoryFilter('Work')" id="catPill-Work" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
-                                💼 Work
+                            <button onclick="setCategoryFilter('Pet')" id="catPill-Pet" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
+                                🐶 Pet
                             </button>
                             <button onclick="setCategoryFilter('Self-Care')" id="catPill-Self-Care" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
-                                🍓 Self-Care
+                                💅 Self-Care
                             </button>
                             <button onclick="setCategoryFilter('Shopping')" id="catPill-Shopping" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
-                                🎀 Shopping
+                                🎁 Shopping
                             </button>
                         </div>
 
@@ -1094,7 +1091,7 @@
                  1. ASSIGNMENT TIMELINE OCR TRACKER SECTION
                  (Upload image of assignment timeline -> detect Week/Date, Title & What to do)
                  ========================================== -->
-            <section id="assignmentTrackerSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-50/80 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="assignmentTrackerSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-50/80 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-melody-100 to-melody-200 border-2 border-melody-300 flex items-center justify-center text-2xl shadow-sm">
@@ -1113,7 +1110,7 @@
                                 </span>
                             </div>
                             <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
-                                Upload a screenshot or photo of your syllabus/assignment schedule — Melody abstracts the Week/Date, Title & What to Do and pins the deadline to your calendar! 🎀
+                                Upload a PDF or photo of your assignment schedule — Melody abstracts all and pins the deadline to your calendar! 🎀
                             </p>
                         </div>
                     </div>
@@ -1148,9 +1145,6 @@
                                         Scan Assignment Timeline
                                     </h3>
                                 </div>
-                                <button type="button" onclick="loadSampleSyllabusOcrDemo()" class="text-[11px] font-bubbly font-bold bg-melody-100 hover:bg-melody-200 text-melody-700 px-2.5 py-1 rounded-full border border-melody-300 transition">
-                                    Try Sample Table ✨
-                                </button>
                             </div>
 
                             <label class="flex flex-col items-center justify-center gap-2 w-full p-5 rounded-2xl border-2 border-dashed border-melody-300 bg-melody-50/80 hover:bg-melody-100/70 text-center cursor-pointer transition">
@@ -1158,7 +1152,7 @@
                                     <i class="fa-solid fa-file-image"></i>
                                 </div>
                                 <div class="text-xs sm:text-sm font-bold text-melody-700">
-                                    Tap to Upload Syllabus / Assignment Image
+                                    Tap to Upload Image/PDF
                                 </div>
                                 <div class="text-[11px] text-melody-cocoaLight font-medium">
                                     Detects Week # or Dates, Assignment Titles & What to Do (PNG, JPG, WEBP)
@@ -1268,7 +1262,7 @@
             <!-- ==========================================
                  2. WEEKLY CLASS & LECTURE TIMETABLE SECTION
                  ========================================== -->
-            <section id="classTimetableSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-lavender/25 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="classTimetableSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-lavender/25 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-melody-lavender border-2 border-purple-200 flex items-center justify-center text-2xl shadow-sm">
@@ -1396,7 +1390,7 @@
             <!-- ==========================================
                  3. SWEET FRIEND BIRTHDAYS SECTION (EVERY YEAR)
                  ========================================== -->
-            <section id="friendBirthdaysSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-50/90 to-amber-50/40 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="friendBirthdaysSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-50/90 to-amber-50/40 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-melody-butter border-2 border-amber-300 flex items-center justify-center text-2xl shadow-sm shrink-0">
@@ -1405,7 +1399,7 @@
                         <div>
                             <div class="flex items-center gap-2 flex-wrap">
                                 <h2 class="font-bubbly font-bold text-xl sm:text-2xl text-melody-700 leading-tight">
-                                    Sweet Friend Birthdays
+                                    Yao Yao's Friend Birthdays
                                 </h2>
                                 <span id="birthdayCountBadge" class="bg-melody-100 text-melody-700 border border-melody-300 text-xs font-bold px-2.5 py-0.5 rounded-full">
                                     0 Friends Saved
@@ -1522,7 +1516,7 @@
             <!-- ==========================================
                  4. iOS APPLE CALENDAR & APPLE REMINDERS SYNC HUB
                  ========================================== -->
-            <section id="iosSyncSection" class="lg:col-span-12 bg-gradient-to-br from-white via-melody-mint/30 to-melody-lavender/25 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="iosSyncSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-mint/30 to-melody-lavender/25 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
                         <div class="w-12 h-12 rounded-2xl bg-melody-mint border-2 border-emerald-200 flex items-center justify-center text-2xl shadow-sm shrink-0">
@@ -1558,10 +1552,6 @@
                                     <p class="text-xs font-semibold text-melody-cocoaLight">Imports directly into iPhone / iPad default Calendar</p>
                                 </div>
                             </div>
-
-                            <p class="text-xs text-melody-cocoa font-medium leading-relaxed mb-3">
-                                Generates an Apple-compatible <strong>.ics Calendar Bundle</strong> containing your scheduled tasks, assignment deadlines, yearly recurring friend birthdays (<code class="bg-melody-50 px-1 rounded">RRULE:YEARLY</code>), and weekly classes.
-                            </p>
 
                             <div class="space-y-1.5 bg-melody-50/80 p-3 rounded-2xl border border-melody-100 text-xs font-bold text-melody-cocoa">
                                 <label class="flex items-center gap-2 cursor-pointer">
@@ -1599,7 +1589,7 @@
                             </div>
 
                             <p class="text-xs text-melody-cocoa font-medium leading-relaxed mb-3">
-                                Exports all pending tasks & assignment deadlines as RFC 5545 <strong>VTODO Reminders</strong> with due dates, priority flags, and 30-minute early alerts — or sends them via <strong>Apple Shortcuts</strong>.
+                                Exports all pending tasks & assignment deadlines <strong>TODO Reminders</strong> with due dates, priority flags, and 30-minute early alerts — or sends them via <strong>Apple Shortcuts</strong>.
                             </p>
 
                             <div class="bg-melody-50/80 p-3 rounded-2xl border border-melody-100 text-[11px] font-semibold text-melody-cocoaLight space-y-1">
@@ -1620,6 +1610,116 @@
                         </div>
                     </div>
 
+                </div>
+            </section>
+
+            <!-- ==========================================
+                 5. SWEET EXPENSES TRACKER
+                 ========================================== -->
+            <section id="expensesTrackerSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-50/80 to-melody-butter/20 rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+                <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-2xl bg-melody-butter border-2 border-amber-300 flex items-center justify-center text-2xl shadow-sm shrink-0">💰</div>
+                        <div>
+                            <h2 class="font-bubbly font-bold text-xl sm:text-2xl text-melody-700 leading-tight">Expenses Tracker</h2>
+                            <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">Keep each sweet expense organised and gently stay within budget.</p>
+                        </div>
+                    </div>
+                    <button onclick="exportExpensesCsv()" class="btn-kawaii-soft bg-white hover:bg-melody-50 text-melody-700 border border-melody-300 px-3.5 py-2 rounded-2xl text-xs font-bubbly font-bold flex items-center gap-1.5">
+                        <i class="fa-solid fa-download"></i> Export CSV
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
+                    <div class="bg-white rounded-2xl border-2 border-melody-200 p-3 sm:p-4">
+                        <p class="text-[11px] sm:text-xs text-melody-cocoaLight font-bold">Today</p>
+                        <p id="expenseTodayTotal" class="font-bubbly font-bold text-lg sm:text-2xl text-melody-700 mt-1">RM 0.00</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border-2 border-indigo-200 p-3 sm:p-4">
+                        <p class="text-[11px] sm:text-xs text-melody-cocoaLight font-bold">This Week</p>
+                        <p id="expenseWeekTotal" class="font-bubbly font-bold text-lg sm:text-2xl text-indigo-700 mt-1">RM 0.00</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border-2 border-emerald-200 p-3 sm:p-4">
+                        <p class="text-[11px] sm:text-xs text-melody-cocoaLight font-bold">This Month</p>
+                        <p id="expenseMonthTotal" class="font-bubbly font-bold text-lg sm:text-2xl text-melody-mintDark mt-1">RM 0.00</p>
+                    </div>
+                    <div class="bg-white rounded-2xl border-2 border-amber-200 p-3 sm:p-4">
+                        <p class="text-[11px] sm:text-xs text-melody-cocoaLight font-bold">Largest Expense</p>
+                        <p id="expenseLargest" class="font-bubbly font-bold text-lg sm:text-2xl text-amber-700 mt-1">RM 0.00</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-[0.85fr_1.15fr] gap-5">
+                    <div class="bg-white/95 rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm h-fit">
+                        <h3 id="expenseFormTitle" class="font-bubbly font-bold text-lg text-melody-700 mb-4">Add an Expense</h3>
+                        <form id="expenseForm" onsubmit="saveExpense(event)" class="space-y-3">
+                            <input type="hidden" id="expenseId">
+                            <div>
+                                <label class="text-xs font-bold text-melody-cocoa mb-1 block">Expense name</label>
+                                <input id="expenseName" type="text" required maxlength="80" placeholder="Lunch, bus fare..." class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none focus:border-melody-400">
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-xs font-bold text-melody-cocoa mb-1 block">Amount (RM)</label>
+                                    <input id="expenseAmount" type="number" required min="0.01" step="0.01" placeholder="0.00" class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none focus:border-melody-400">
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-melody-cocoa mb-1 block">Date</label>
+                                    <input id="expenseDate" type="date" required class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none focus:border-melody-400">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-xs font-bold text-melody-cocoa mb-1 block">Category</label>
+                                    <select id="expenseCategory" class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none">
+                                        <option>Food</option><option>Transport</option><option>Study</option><option>Shopping</option><option>Home</option><option>Other</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold text-melody-cocoa mb-1 block">Payment</label>
+                                    <select id="expensePayment" class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none">
+                                        <option>Cash</option><option>Bank Card</option><option>E-Wallet</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-melody-cocoa mb-1 block">Note <span class="text-melody-cocoaLight">(optional)</span></label>
+                                <input id="expenseNote" type="text" maxlength="120" placeholder="A little detail..." class="w-full bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none focus:border-melody-400">
+                            </div>
+                            <div class="flex gap-2">
+                                <button type="submit" class="flex-1 btn-kawaii bg-gradient-to-r from-melody-500 to-melody-400 text-white font-bubbly font-bold py-2.5 px-4 rounded-2xl border-2 border-white text-sm">
+                                    <i class="fa-solid fa-plus-circle"></i> Save Expense
+                                </button>
+                                <button type="button" onclick="resetExpenseForm()" class="btn-kawaii-soft px-3 rounded-2xl border border-melody-300 text-melody-600 font-bold text-sm">Clear</button>
+                            </div>
+                        </form>
+
+                        <div class="mt-5 pt-4 border-t-2 border-dashed border-melody-200">
+                            <label class="text-xs font-bold text-melody-cocoa mb-1 block">Monthly budget (RM)</label>
+                            <div class="flex gap-2">
+                                <input id="expenseBudget" type="number" min="0" step="0.01" onchange="saveExpenseBudget()" class="flex-1 bg-melody-50 border-2 border-melody-200 rounded-2xl px-3 py-2.5 text-sm text-melody-cocoa outline-none">
+                                <button onclick="saveExpenseBudget()" class="btn-kawaii-soft px-3.5 rounded-2xl border border-melody-300 text-melody-600 font-bold text-xs">Save</button>
+                            </div>
+                            <div class="mt-3 bg-melody-100 h-3 rounded-full overflow-hidden">
+                                <div id="expenseBudgetFill" class="h-full bg-gradient-to-r from-melody-400 to-melody-500 rounded-full transition-all" style="width:0%"></div>
+                            </div>
+                            <p id="expenseBudgetText" class="text-[11px] font-bold text-melody-cocoaLight mt-1.5">Set a monthly budget to begin.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/95 rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <h3 class="font-bubbly font-bold text-lg text-melody-700">Recent Expenses</h3>
+                            <select id="expenseFilter" onchange="renderExpenses()" class="bg-melody-50 border-2 border-melody-200 rounded-xl px-2.5 py-1.5 text-xs font-bold text-melody-cocoa">
+                                <option value="all">All Expenses</option>
+                                <option value="today">Today</option>
+                                <option value="week">This Week</option>
+                                <option value="month">This Month</option>
+                            </select>
+                        </div>
+                        <div id="expenseCategoryPills" class="flex flex-wrap gap-1.5 mb-3"></div>
+                        <div id="expensesList" class="space-y-2 max-h-[430px] overflow-y-auto pr-1"></div>
+                    </div>
                 </div>
             </section>
 
@@ -1654,7 +1754,7 @@
                 <div class="flex items-center gap-2.5">
                     <span class="text-2xl">🍓</span>
                     <h3 id="modalTitleText" class="font-bubbly font-bold text-xl text-melody-700">
-                        Add New Sweet Task
+                        Add New Task
                     </h3>
                 </div>
                 <button onclick="closeTaskModal()" class="w-8 h-8 rounded-full bg-melody-100 hover:bg-melody-200 text-melody-600 flex items-center justify-center transition">
@@ -1715,9 +1815,9 @@
                             id="modalPriorityInput"
                             class="w-full px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa"
                         >
-                            <option value="low">🌱 Low (Mint Breeze)</option>
-                            <option value="medium">💜 Medium (Lavender Dream)</option>
-                            <option value="high">🍓 High (Strawberry Berry)</option>
+                            <option value="low">🌱 Low</option>
+                            <option value="medium">💜 Medium</option>
+                            <option value="high">🍓 High</option>
                         </select>
                     </div>
                     <div>
@@ -1728,11 +1828,11 @@
                             id="modalCategoryInput"
                             class="w-full px-3.5 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa"
                         >
-                            <option value="Melody">🎵 Melody</option>
+                            <option value="Home">🏡 Home</option>
                             <option value="Study">📚 Study</option>
-                            <option value="Work">💼 Work</option>
-                            <option value="Self-Care">🍓 Self-Care</option>
-                            <option value="Shopping">🎀 Shopping</option>
+                            <option value="Pet">🐶 Pet</option>
+                            <option value="Self-Care">💅 Self-Care</option>
+                            <option value="Shopping">🎁 Shopping</option>
                         </select>
                     </div>
                 </div>
@@ -1897,6 +1997,8 @@
         const SEMESTER_WEEK1_KEY = 'melody_semester_week1_v1';
         const SHOW_CLASSES_CAL_KEY = 'melody_show_classes_cal_v1';
         const SIDEBAR_COLLAPSED_KEY = 'melody_sidebar_collapsed_v1';
+        const EXPENSES_STORAGE_KEY = 'melody_expenses_v1';
+        const EXPENSE_BUDGET_KEY = 'melody_expense_budget_v1';
 
         /* ==========================================
            AUTHENTIC SANRIO MY MELODY SVG ILLUSTRATIONS
@@ -2216,10 +2318,12 @@
         let showClassesOnCalendar = true;
         let currentTimetableDayFilter = 'all';
         let isDesktopSidebarCollapsed = false;
+        let expenses = [];
+        let expenseCategoryFilter = 'All';
 
-        let currentViewMode = 'split'; // 'split' | 'list' | 'calendar'
+        let currentViewMode = 'list'; // 'list' | 'calendar'
         let currentStatusFilter = 'all'; // 'all' | 'pending' | 'completed' | 'overdue'
-        let currentCategoryFilter = 'all'; // 'all' | 'Melody' | 'Study' | 'Work' | 'Self-Care' | 'Shopping'
+        let currentCategoryFilter = 'all'; // 'all' | 'Home' | 'Study' | 'Pet' | 'Self-Care' | 'Shopping'
         let activeDateFilter = null; // null or 'YYYY-MM-DD'
         
         // Calendar Navigation State
@@ -2233,11 +2337,11 @@
 
         // Category Metadata
         const CATEGORY_META = {
-            'Melody':    { icon: '🎵', badgeBg: 'bg-pink-100', badgeText: 'text-pink-700', border: 'border-pink-200' },
+            'Home':      { icon: '🏡', badgeBg: 'bg-pink-100', badgeText: 'text-pink-700', border: 'border-pink-200' },
             'Study':     { icon: '📚', badgeBg: 'bg-indigo-100', badgeText: 'text-indigo-700', border: 'border-indigo-200' },
-            'Work':      { icon: '💼', badgeBg: 'bg-amber-100', badgeText: 'text-amber-800', border: 'border-amber-200' },
-            'Self-Care': { icon: '🍓', badgeBg: 'bg-rose-100', badgeText: 'text-rose-700', border: 'border-rose-200' },
-            'Shopping':  { icon: '🎀', badgeBg: 'bg-purple-100', badgeText: 'text-purple-700', border: 'border-purple-200' }
+            'Pet':       { icon: '🐶', badgeBg: 'bg-amber-100', badgeText: 'text-amber-800', border: 'border-amber-200' },
+            'Self-Care': { icon: '💅', badgeBg: 'bg-rose-100', badgeText: 'text-rose-700', border: 'border-rose-200' },
+            'Shopping':  { icon: '🎁', badgeBg: 'bg-purple-100', badgeText: 'text-purple-700', border: 'border-purple-200' }
         };
 
         // Priority Metadata
@@ -2479,7 +2583,10 @@
                 if (raw !== null) {
                     const parsed = JSON.parse(raw);
                     if (Array.isArray(parsed)) {
-                        tasks = parsed;
+                        tasks = parsed.map(task => ({
+                            ...task,
+                            category: task.category === 'Melody' ? 'Home' : task.category === 'Work' ? 'Pet' : task.category
+                        }));
                         return;
                     }
                 }
@@ -2521,6 +2628,194 @@
             } catch (e) {
                 console.error('Failed to save friend birthdays to localStorage:', e);
             }
+        }
+
+        function loadExpensesFromStorage() {
+            try {
+                const raw = localStorage.getItem(EXPENSES_STORAGE_KEY);
+                expenses = raw ? JSON.parse(raw) : [];
+                if (!Array.isArray(expenses)) expenses = [];
+            } catch (e) {
+                console.error('Failed to read expenses:', e);
+                expenses = [];
+            }
+        }
+
+        function saveExpensesToStorage() {
+            try {
+                localStorage.setItem(EXPENSES_STORAGE_KEY, JSON.stringify(expenses));
+            } catch (e) {
+                console.error('Failed to save expenses:', e);
+            }
+        }
+
+        function expenseAmount(value) {
+            return `RM ${Number(value || 0).toFixed(2)}`;
+        }
+
+        function resetExpenseForm() {
+            const form = document.getElementById('expenseForm');
+            if (form) form.reset();
+            document.getElementById('expenseId').value = '';
+            document.getElementById('expenseDate').value = TODAY_STR;
+            document.getElementById('expenseFormTitle').textContent = 'Add an Expense';
+        }
+
+        function saveExpense(event) {
+            event.preventDefault();
+            const id = document.getElementById('expenseId').value;
+            const record = {
+                id: id || `expense-${Date.now()}`,
+                name: document.getElementById('expenseName').value.trim(),
+                amount: Number(document.getElementById('expenseAmount').value),
+                date: document.getElementById('expenseDate').value,
+                category: document.getElementById('expenseCategory').value,
+                payment: document.getElementById('expensePayment').value,
+                note: document.getElementById('expenseNote').value.trim(),
+                createdAt: new Date().toISOString()
+            };
+
+            if (!record.name || !record.date || record.amount <= 0) {
+                showToast('Please enter a name and valid amount.', '🥺');
+                return;
+            }
+
+            const index = expenses.findIndex(item => item.id === id);
+            if (index >= 0) {
+                expenses[index] = record;
+                showToast('Expense updated!', '✨');
+            } else {
+                expenses.push(record);
+                showToast('Expense added!', '🍓');
+            }
+            saveExpensesToStorage();
+            resetExpenseForm();
+            renderExpenses();
+        }
+
+        function editExpense(id) {
+            const record = expenses.find(item => item.id === id);
+            if (!record) return;
+            document.getElementById('expenseId').value = record.id;
+            document.getElementById('expenseName').value = record.name;
+            document.getElementById('expenseAmount').value = record.amount;
+            document.getElementById('expenseDate').value = record.date;
+            document.getElementById('expenseCategory').value = record.category;
+            document.getElementById('expensePayment').value = record.payment;
+            document.getElementById('expenseNote').value = record.note || '';
+            document.getElementById('expenseFormTitle').textContent = 'Edit Expense';
+        }
+
+        function deleteExpense(id) {
+            openConfirmModal('Remove this expense?', 'This expense will be removed from your tracker.', () => {
+                expenses = expenses.filter(item => item.id !== id);
+                saveExpensesToStorage();
+                renderExpenses();
+                showToast('Expense removed.', '🌸');
+            });
+        }
+
+        function filterExpenseCategory(category) {
+            expenseCategoryFilter = category;
+            renderExpenses();
+        }
+
+        function saveExpenseBudget() {
+            const budget = Number(document.getElementById('expenseBudget').value || 0);
+            localStorage.setItem(EXPENSE_BUDGET_KEY, String(Math.max(0, budget)));
+            renderExpenses();
+            showToast('Monthly budget saved!', '💰');
+        }
+
+        function renderExpenses() {
+            loadExpensesFromStorage();
+            const today = TODAY_STR;
+            const now = new Date();
+            const monthPrefix = formatDateStr(now).slice(0, 7);
+            const weekStart = new Date(now);
+            const day = weekStart.getDay();
+            weekStart.setDate(weekStart.getDate() - (day === 0 ? 6 : day - 1));
+            const weekStartStr = formatDateStr(weekStart);
+
+            const todayExpenses = expenses.filter(item => item.date === today);
+            const weekExpenses = expenses.filter(item => item.date >= weekStartStr && item.date <= today);
+            const monthExpenses = expenses.filter(item => item.date && item.date.startsWith(monthPrefix));
+            const todayTotal = todayExpenses.reduce((sum, item) => sum + Number(item.amount), 0);
+            const weekTotal = weekExpenses.reduce((sum, item) => sum + Number(item.amount), 0);
+            const monthTotal = monthExpenses.reduce((sum, item) => sum + Number(item.amount), 0);
+            const largest = expenses.reduce((max, item) => Number(item.amount) > max ? Number(item.amount) : max, 0);
+
+            document.getElementById('expenseTodayTotal').textContent = expenseAmount(todayTotal);
+            document.getElementById('expenseWeekTotal').textContent = expenseAmount(weekTotal);
+            document.getElementById('expenseMonthTotal').textContent = expenseAmount(monthTotal);
+            document.getElementById('expenseLargest').textContent = expenseAmount(largest);
+
+            const pill = document.getElementById('todayExpensePill');
+            if (pill) pill.innerHTML = `<span>🍓</span><span>Today: ${expenseAmount(todayTotal)}</span>`;
+            const badge = document.getElementById('sidebarBadgeExpenses');
+            if (badge) badge.textContent = expenseAmount(todayTotal).replace('RM ', 'RM');
+
+            const budget = Number(localStorage.getItem(EXPENSE_BUDGET_KEY) || 0);
+            document.getElementById('expenseBudget').value = budget || '';
+            const percent = budget > 0 ? Math.min(100, (monthTotal / budget) * 100) : 0;
+            document.getElementById('expenseBudgetFill').style.width = `${percent}%`;
+            document.getElementById('expenseBudgetText').textContent = budget > 0
+                ? `${expenseAmount(Math.max(0, budget - monthTotal))} remaining of ${expenseAmount(budget)}`
+                : 'Set a monthly budget to begin.';
+
+            const categoryIcons = { Food: '🍔', Transport: '🚗', Study: '📚', Shopping: '🛍️', Home: '🏠', Other: '🎁' };
+            const categories = ['All', 'Food', 'Transport', 'Study', 'Shopping', 'Home', 'Other'];
+            document.getElementById('expenseCategoryPills').innerHTML = categories.map(category => {
+                const active = expenseCategoryFilter === category;
+                return `<button onclick="filterExpenseCategory('${category}')" class="px-2.5 py-1 rounded-full border text-[11px] font-bold transition ${active ? 'bg-melody-500 text-white border-melody-500' : 'bg-melody-50 text-melody-700 border-melody-200'}">${category === 'All' ? '🎀 All' : `${categoryIcons[category]} ${category}`}</button>`;
+            }).join('');
+
+            const filter = document.getElementById('expenseFilter').value;
+            let filtered = [...expenses];
+            if (filter === 'today') filtered = filtered.filter(item => item.date === today);
+            if (filter === 'week') filtered = filtered.filter(item => item.date >= weekStartStr && item.date <= today);
+            if (filter === 'month') filtered = filtered.filter(item => item.date && item.date.startsWith(monthPrefix));
+            if (expenseCategoryFilter !== 'All') filtered = filtered.filter(item => item.category === expenseCategoryFilter);
+            filtered.sort((a, b) => (b.date || '').localeCompare(a.date || '') || (b.createdAt || '').localeCompare(a.createdAt || ''));
+
+            const list = document.getElementById('expensesList');
+            if (!filtered.length) {
+                list.innerHTML = '<div class="text-center py-10 text-xs font-bold text-melody-cocoaLight">No expenses match this view yet. 🌸</div>';
+                return;
+            }
+
+            list.innerHTML = filtered.map(item => `
+                <div class="flex items-center gap-3 bg-melody-50/70 border border-melody-200 rounded-2xl p-3">
+                    <div class="w-10 h-10 rounded-xl bg-melody-100 flex items-center justify-center text-lg shrink-0">${categoryIcons[item.category] || '🎁'}</div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-2">
+                            <p class="font-bubbly font-bold text-sm text-melody-700 truncate">${escapeHtml(item.name)}</p>
+                            <p class="font-bubbly font-bold text-sm text-melody-600 shrink-0">${expenseAmount(item.amount)}</p>
+                        </div>
+                        <p class="text-[11px] text-melody-cocoaLight font-semibold truncate">${formatPrettyDate(item.date)} • ${escapeHtml(item.category)} • ${escapeHtml(item.payment)}${item.note ? ` • ${escapeHtml(item.note)}` : ''}</p>
+                    </div>
+                    <button onclick="editExpense('${item.id}')" class="w-8 h-8 rounded-xl bg-white border border-melody-200 text-melody-600 hover:bg-melody-100 shrink-0" title="Edit"><i class="fa-solid fa-pencil text-xs"></i></button>
+                    <button onclick="deleteExpense('${item.id}')" class="w-8 h-8 rounded-xl bg-white border border-rose-200 text-rose-500 hover:bg-rose-50 shrink-0" title="Delete"><i class="fa-solid fa-trash text-xs"></i></button>
+                </div>
+            `).join('');
+        }
+
+        function exportExpensesCsv() {
+            if (!expenses.length) {
+                showToast('No expenses to export yet.', '🌸');
+                return;
+            }
+            const rows = [['Name', 'Amount (RM)', 'Date', 'Category', 'Payment', 'Note']];
+            expenses.forEach(item => rows.push([item.name, item.amount, item.date, item.category, item.payment, item.note || '']));
+            const csv = rows.map(row => row.map(value => `"${String(value).replace(/"/g, '""')}"`).join(',')).join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `melody-expenses-${TODAY_STR}.csv`;
+            link.click();
+            URL.revokeObjectURL(url);
+            showToast('Expenses exported to CSV!', '💰');
         }
 
         function loadUniModulesFromStorage() {
@@ -2616,7 +2911,7 @@
             toggleMobileSidebar(false);
 
             // Update active nav button highlight
-            ['nav-planner', 'nav-assignments', 'nav-timetable', 'nav-birthdays', 'nav-iossync'].forEach(id => {
+            ['nav-planner', 'nav-assignments', 'nav-timetable', 'nav-birthdays', 'nav-iossync', 'nav-expenses'].forEach(id => {
                 const btn = document.getElementById(id);
                 if (!btn) return;
                 if (id === navBtnId) {
@@ -2626,10 +2921,53 @@
                 }
             });
 
-            const el = document.getElementById(sectionId);
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const workspace = document.getElementById('mainWorkspaceGrid');
+            const taskSection = document.getElementById('taskListSection');
+            const calendarSection = document.getElementById('calendarSection');
+            const dashboard = document.getElementById('dashboardSection');
+            const featureIds = [
+                'assignmentTrackerSection',
+                'classTimetableSection',
+                'friendBirthdaysSection',
+                'iosSyncSection',
+                'expensesTrackerSection'
+            ];
+
+            if (!workspace) return;
+
+            featureIds.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) section.classList.add('hidden');
+            });
+
+            if (sectionId === 'mainWorkspaceGrid') {
+                if (dashboard) dashboard.classList.add('hidden');
+                workspace.classList.remove('hidden');
+                workspace.classList.add('grid');
+                if (taskSection) taskSection.classList.remove('hidden');
+                if (calendarSection) calendarSection.classList.remove('hidden');
+                setViewMode(currentViewMode);
+            } else {
+                if (dashboard) dashboard.classList.add('hidden');
+
+                if (taskSection) taskSection.classList.add('hidden');
+                if (calendarSection) calendarSection.classList.add('hidden');
+
+                if (sectionId === 'assignmentTrackerSection') {
+                    workspace.classList.remove('hidden');
+                    workspace.classList.add('grid');
+                    const target = document.getElementById(sectionId);
+                    if (target) target.classList.remove('hidden');
+                } else {
+                    workspace.classList.remove('hidden');
+                    workspace.classList.add('grid');
+                    const target = document.getElementById(sectionId);
+                    if (target) target.classList.remove('hidden');
+                }
             }
+
+            const el = document.getElementById(sectionId);
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function updateSidebarBadgesAndWeek() {
@@ -2757,17 +3095,6 @@
             parseAssignmentTimelineText(rawText);
         }
 
-        function loadSampleSyllabusOcrDemo() {
-            const sampleText = [
-                'Week 4 | Assignment 1: ER Diagram & Schema | Design normalized database tables and submit PDF',
-                'Week 7 | Midterm Lab Test | Practical SQL query assessment in Computer Lab 2',
-                'Week 10 | Group Project Prototype | Build working frontend & demo user authentication flow',
-                'Week 13 | Final Report & Presentation | Submit final documentation and 10-minute slide deck'
-            ].join('\n');
-            document.getElementById('uploadedAssignmentPreviewBox').classList.remove('hidden');
-            document.getElementById('rawOcrTextArea').value = sampleText;
-            parseAssignmentTimelineText(sampleText);
-        }
 
         /**
          * Smart parser that abstracts Week numbers / Dates, Assignment Titles,
@@ -3062,7 +3389,7 @@
                             No Assignments Tracked Yet!
                         </h4>
                         <p class="text-xs text-melody-cocoaLight font-medium mt-1 max-w-md mx-auto">
-                            Upload a photo/screenshot of your course assignment timeline on the left or click "Try Sample Table ✨" to auto-detect deadlines!
+                            Upload a photo/screenshot of your course assignment timeline on the left!
                         </p>
                     </div>
                 `;
@@ -3627,19 +3954,16 @@
             const taskSec = document.getElementById('taskListSection');
             const calSec = document.getElementById('calendarSection');
 
-            ['split', 'list', 'calendar'].forEach(m => {
+            ['list', 'calendar'].forEach(m => {
                 const btn = document.getElementById(`viewBtn-${m}`);
                 if (m === mode) {
-                    btn.className = 'view-mode-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 bg-melody-500 text-white shadow-sm';
+                    btn.className = 'view-mode-btn justify-center px-1.5 sm:px-3.5 py-2 rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center gap-1 sm:gap-1.5 bg-melody-500 text-white shadow-sm';
                 } else {
-                    btn.className = 'view-mode-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold transition flex items-center gap-1.5 text-melody-700 hover:bg-melody-200/60';
+                    btn.className = 'view-mode-btn justify-center px-1.5 sm:px-3.5 py-2 rounded-xl text-[11px] sm:text-sm font-bold transition flex items-center gap-1 sm:gap-1.5 text-melody-700 hover:bg-melody-200/60';
                 }
             });
 
-            if (mode === 'split') {
-                taskSec.className = 'lg:col-span-6 flex flex-col gap-5';
-                calSec.className = 'lg:col-span-6 flex flex-col gap-5';
-            } else if (mode === 'list') {
+            if (mode === 'list') {
                 taskSec.className = 'lg:col-span-12 max-w-4xl mx-auto w-full flex flex-col gap-5';
                 calSec.className = 'hidden';
             } else if (mode === 'calendar') {
@@ -3657,8 +3981,9 @@
         function quickFilterStatus(status) {
             currentStatusFilter = status;
             activeDateFilter = null;
+            navigateToSection('mainWorkspaceGrid', 'nav-planner');
             if (currentViewMode === 'calendar') {
-                setViewMode('split');
+                setViewMode('list');
             }
             playKawaiiSound('pop');
             renderAll();
@@ -3805,8 +4130,8 @@
                 document.getElementById('modalCategoryInput').value = t.category;
                 document.getElementById('modalNotesInput').value = t.notes || '';
             } else {
-                modalTitle.textContent = 'Add New Sweet Task 🍓';
-                saveBtnText.textContent = 'Save Sweet Task';
+                modalTitle.textContent = 'Add New Task 🍓';
+                saveBtnText.textContent = 'Save Task';
                 document.getElementById('modalTaskId').value = '';
                 document.getElementById('modalTitleInput').value = '';
                 document.getElementById('modalDateInput').value = prefillDate || selectedCalendarDate || TODAY_STR;
@@ -3868,7 +4193,7 @@
                     createdAt: Date.now()
                 });
                 spawnSparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 26);
-                showToast('New sweet task added! ♪', '🍓');
+                showToast('New task added! ♪', '🍓');
             }
 
             selectedCalendarDate = dueDate;
@@ -4027,7 +4352,7 @@
                 }
             });
 
-            ['all', 'Melody', 'Study', 'Work', 'Self-Care', 'Shopping'].forEach(cat => {
+            ['all', 'Home', 'Study', 'Pet', 'Self-Care', 'Shopping'].forEach(cat => {
                 const pill = document.getElementById(`catPill-${cat}`);
                 if (!pill) return;
                 if (cat === currentCategoryFilter) {
@@ -4092,7 +4417,7 @@
             });
 
             const container = document.getElementById('taskListContainer');
-            document.getElementById('taskCountSummary').textContent = `Showing ${filtered.length} sweet task${filtered.length === 1 ? '' : 's'}`;
+            document.getElementById('taskCountSummary').textContent = `Showing ${filtered.length} task${filtered.length === 1 ? '' : 's'}`;
 
             if (filtered.length === 0) {
                 const isTotallyEmpty = tasks.length === 0;
@@ -4105,7 +4430,7 @@
                             ${isTotallyEmpty ? 'Your To-Do List is Blank & Ready! 🎀' : 'No matching tasks found here!'}
                         </h4>
                         <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-1 max-w-xs mx-auto">
-                            ${isTotallyEmpty ? 'Type a task in the Quick Berry Task box above or click "New Sweet Task" to begin ♪' : 'Try adjusting your search or category filter above ♪'}
+                            ${isTotallyEmpty ? 'Type a task in the Quick Berry Task box above or click "New Task" to begin ♪' : 'Try adjusting your search or category filter above ♪'}
                         </p>
                     </div>
                 `;
@@ -4223,7 +4548,7 @@
         function jumpCalendarToDate(dateStr) {
             selectCalendarDate(dateStr);
             if (currentViewMode === 'list') {
-                setViewMode('split');
+                setViewMode('calendar');
             }
             const calEl = document.getElementById('calendarSection');
             if (calEl && !calEl.classList.contains('hidden')) {
@@ -4831,9 +5156,19 @@
             loadTasksFromStorage();
             loadBirthdaysFromStorage();
             loadUniModulesFromStorage();
+            loadExpensesFromStorage();
+            resetExpenseForm();
 
-            setViewMode('split');
+            setViewMode('list');
             renderAll();
+            renderExpenses();
+            const workspace = document.getElementById('mainWorkspaceGrid');
+            const dashboard = document.getElementById('dashboardSection');
+            if (workspace) {
+                workspace.classList.remove('hidden');
+                workspace.classList.add('grid');
+            }
+            if (dashboard) dashboard.classList.remove('hidden');
 
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
