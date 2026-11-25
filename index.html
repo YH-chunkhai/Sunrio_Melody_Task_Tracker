@@ -458,6 +458,10 @@
 </head>
 <body class="min-h-screen flex flex-col selection:bg-melody-300 selection:text-melody-700">
 
+    <div id="appSplashScreen" role="status" aria-label="Loading planner" class="fixed inset-0 z-[10000] flex items-center justify-center bg-[#FFF0F5] transition-opacity duration-500">
+        <img src="melody-splash.gif" alt="" class="w-full max-w-[500px] max-h-[65vh] object-contain">
+    </div>
+
     <!-- Particle Canvas for Confetti / Sparkles / Hearts -->
     <canvas id="sparkleCanvas"></canvas>
 
@@ -6004,6 +6008,31 @@
             if (dashboard) dashboard.classList.remove('hidden');
 
             initializeFirebaseCloudSync();
+
+            const splashScreen = document.getElementById('appSplashScreen');
+            if (splashScreen) {
+                const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (prefersReducedMotion) {
+                    splashScreen.remove();
+                } else {
+                    let dismissalStarted = false;
+                    const dismissSplash = () => {
+                        if (dismissalStarted) return;
+                        dismissalStarted = true;
+                        window.setTimeout(() => {
+                            splashScreen.classList.add('opacity-0', 'pointer-events-none');
+                            window.setTimeout(() => splashScreen.remove(), 500);
+                        }, 900);
+                    };
+                    const splashImage = splashScreen.querySelector('img');
+                    if (splashImage && !splashImage.complete) {
+                        splashImage.addEventListener('load', dismissSplash, { once: true });
+                        splashImage.addEventListener('error', dismissSplash, { once: true });
+                    } else {
+                        dismissSplash();
+                    }
+                }
+            }
 
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
