@@ -640,7 +640,6 @@
                         </span>
                         <!-- Quick Jump / Next Birthday Header Pill -->
                         <button onclick="scrollToBirthdaysSection()" id="headerBirthdayPill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Jump to Sweet Friend Birthdays">
-                            <span>🎂</span>
                             <span id="headerBirthdayText">0 Friend Birthdays</span>
                         </button>
                         <button onclick="navigateToSection('expensesTrackerSection', 'nav-expenses')" id="todayExpensePill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Open Expenses Tracker">
@@ -1542,10 +1541,16 @@
                                 <div class="relative w-full min-w-0 overflow-hidden rounded-2xl">
                                     <i class="fa-solid fa-cake-candles absolute left-3.5 top-1/2 -translate-y-1/2 text-melody-500 text-xs pointer-events-none z-10"></i>
                                     <input 
-                                        type="date" 
+                                        type="text" 
                                         id="friendBirthDateInput" 
                                         required
-                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-3 py-3 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa cursor-pointer transition"
+                                        inputmode="numeric"
+                                        autocomplete="bday"
+                                        maxlength="10"
+                                        pattern="(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}"
+                                        placeholder="DD/MM/YYYY"
+                                        oninput="formatBirthdayDateInput(this)"
+                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-3 py-3 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa placeholder-melody-cocoaLight/70 transition"
                                     >
                                 </div>
                                 <p class="text-[11px] text-melody-cocoaLight mt-1 font-medium">
@@ -5160,14 +5165,48 @@
             return { diffDays, nextDateStr, turningAge };
         }
 
+        function formatBirthdayDateInput(input) {
+            const digits = input.value.replace(/\D/g, '').slice(0, 8);
+            if (digits.length <= 2) {
+                input.value = digits;
+            } else if (digits.length <= 4) {
+                input.value = `${digits.slice(0, 2)}/${digits.slice(2)}`;
+            } else {
+                input.value = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4)}`;
+            }
+        }
+
+        function parseBirthdayDateInput(value) {
+            const match = value.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+            if (!match) return null;
+
+            const day = Number(match[1]);
+            const month = Number(match[2]);
+            const year = Number(match[3]);
+            const date = new Date(year, month - 1, day);
+            if (year < 1 || date.getFullYear() !== year || date.getMonth() !== month - 1 || date.getDate() !== day) {
+                return null;
+            }
+            return `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        }
+
+        function formatBirthdayDateForInput(isoDate) {
+            const match = isoDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+            return match ? `${match[3]}/${match[2]}/${match[1]}` : '';
+        }
+
         function handleSaveFriendBirthday(e) {
             e.preventDefault();
             const editId = document.getElementById('birthdayEditId').value;
             const name = document.getElementById('friendNameInput').value.trim();
-            const birthDate = document.getElementById('friendBirthDateInput').value;
+            const birthDate = parseBirthdayDateInput(document.getElementById('friendBirthDateInput').value.trim());
             const wish = document.getElementById('friendWishInput').value.trim();
 
-            if (!name || !birthDate) return;
+            if (!name) return;
+            if (!birthDate) {
+                showToast('Enter a valid birthday as DD/MM/YYYY.', '🥺');
+                return;
+            }
 
             if (editId) {
                 const existing = friendBirthdays.find(b => b.id === editId);
@@ -5208,7 +5247,7 @@
 
             document.getElementById('birthdayEditId').value = item.id;
             document.getElementById('friendNameInput').value = item.name;
-            document.getElementById('friendBirthDateInput').value = item.birthDate;
+            document.getElementById('friendBirthDateInput').value = formatBirthdayDateForInput(item.birthDate);
             document.getElementById('friendWishInput').value = item.wish || '';
 
             document.getElementById('birthdayFormTitle').textContent = `Edit ${item.name}'s Birthday 🎀`;
