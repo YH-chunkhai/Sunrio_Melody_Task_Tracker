@@ -532,7 +532,7 @@
                             <span class="text-base shrink-0">🏫</span>
                             <span class="sidebar-label truncate">Class Timetable</span>
                         </div>
-                        <span id="sidebarBadgeClasses" class="sidebar-badge bg-melody-lavender text-melody-lavenderDark border border-purple-200 text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
+                        <span id="sidebarBadgeClasses" class="sidebar-badge bg-[#E5FFFF] text-[#008F99] border border-[#00DDE0] text-[11px] font-bubbly px-2 py-0.5 rounded-full shrink-0">0</span>
                     </button>
 
                     <!-- 4. Sweet Friend Birthdays -->
@@ -862,17 +862,17 @@
                         </div>
 
                         <!-- Status Filter Tabs -->
-                        <div class="flex bg-melody-50 p-1 rounded-2xl border border-melody-200 shrink-0 overflow-x-auto">
-                            <button onclick="setStatusFilter('all')" id="statusTab-all" class="status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap">
+                        <div class="grid grid-cols-4 w-full sm:w-auto bg-melody-50 p-1 rounded-2xl border border-melody-200 shrink-0">
+                            <button onclick="setStatusFilter('all')" id="statusTab-all" class="status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center">
                                 All
                             </button>
-                            <button onclick="setStatusFilter('pending')" id="statusTab-pending" class="status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap">
+                            <button onclick="setStatusFilter('pending')" id="statusTab-pending" class="status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center">
                                 Pending
                             </button>
-                            <button onclick="setStatusFilter('completed')" id="statusTab-completed" class="status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap">
+                            <button onclick="setStatusFilter('completed')" id="statusTab-completed" class="status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center">
                                 Done ✨
                             </button>
-                            <button onclick="setStatusFilter('overdue')" id="statusTab-overdue" class="status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap">
+                            <button onclick="setStatusFilter('overdue')" id="statusTab-overdue" class="status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center">
                                 Overdue
                             </button>
                         </div>
@@ -999,7 +999,7 @@
                             <span class="inline-flex items-center gap-1 text-melody-butterDark font-bold">
                                 <span>🎂</span> Friend B-Day
                             </span>
-                            <span id="calendarClassLegendBadge" class="hidden inline-flex items-center gap-1 text-melody-lavenderDark font-bold">
+                            <span id="calendarClassLegendBadge" class="hidden inline-flex items-center gap-1 text-[#008F99] font-bold">
                                 <span>🏫</span> Uni Class
                             </span>
                         </div>
@@ -1262,10 +1262,10 @@
             <!-- ==========================================
                  2. WEEKLY CLASS & LECTURE TIMETABLE SECTION
                  ========================================== -->
-            <section id="classTimetableSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-melody-lavender/25 to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
+            <section id="classTimetableSection" class="hidden lg:col-span-12 bg-gradient-to-br from-white via-[#F0FFFF] to-white rounded-3xl p-5 sm:p-6 border-2 border-melody-200 shadow-kawaii relative overflow-hidden">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 mb-5 border-b-2 border-dashed border-melody-200">
                     <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-2xl bg-melody-lavender border-2 border-purple-200 flex items-center justify-center text-2xl shadow-sm">
+                        <div class="w-12 h-12 rounded-2xl bg-[#E5FFFF] border-2 border-[#00DDE0] flex items-center justify-center text-2xl shadow-sm">
                             🏫
                         </div>
                         <div>
@@ -1273,7 +1273,7 @@
                                 <h2 class="font-bubbly font-bold text-xl sm:text-2xl text-melody-700 leading-tight">
                                     Weekly Class & Lecture Timetable
                                 </h2>
-                                <span id="classCountBadge" class="bg-melody-lavender text-melody-lavenderDark border border-purple-200 text-xs font-bold px-2.5 py-0.5 rounded-full">
+                                <span id="classCountBadge" class="bg-[#E5FFFF] text-[#008F99] border border-[#00DDE0] text-xs font-bold px-2.5 py-0.5 rounded-full">
                                     0 Weekly Classes
                                 </span>
                             </div>
@@ -1289,8 +1289,54 @@
                     </label>
                 </div>
 
+                <!-- Current Semester & Monthly Subject Blocks -->
+                <div class="bg-white/95 rounded-2xl p-4 border-2 border-melody-300 shadow-sm mb-5">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <div>
+                            <h3 class="font-bubbly font-bold text-sm sm:text-base text-melody-700">Current Semester Setup</h3>
+                            <p class="text-[11px] text-melody-cocoaLight font-semibold">Add the subject blocks or rotations in this semester.</p>
+                        </div>
+                        <span id="activeSemesterBlockBadge" class="bg-melody-100 text-melody-700 border border-melody-300 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full">No Active Block</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_auto] gap-2">
+                        <div>
+                            <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Semester</label>
+                            <input id="semesterNameInput" type="text" placeholder="e.g. Semester 1 2026" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Semester Start</label>
+                            <input id="semesterStartInput" type="date" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Semester End</label>
+                            <input id="semesterEndInput" type="date" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                        </div>
+                        <button type="button" onclick="saveCurrentSemester()" class="sm:self-end bg-gradient-to-r from-melody-500 to-melody-400 text-white font-bubbly font-bold px-3.5 py-2 rounded-xl text-xs border-2 border-white">Save Semester</button>
+                    </div>
+
+                    <div class="mt-3 pt-3 border-t-2 border-dashed border-melody-200">
+                        <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_auto] gap-2">
+                            <div>
+                                <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Block / Subject</label>
+                                <input id="semesterBlockNameInput" type="text" placeholder="e.g. Block 1 - Anatomy" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Block Start</label>
+                                <input id="semesterBlockStartInput" type="date" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Block End</label>
+                                <input id="semesterBlockEndInput" type="date" class="w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:outline-none text-xs font-bold text-melody-cocoa">
+                            </div>
+                            <button type="button" onclick="addSemesterBlock()" class="sm:self-end bg-white text-melody-600 border-2 border-melody-300 font-bubbly font-bold px-3.5 py-2 rounded-xl text-xs">+ Add Block</button>
+                        </div>
+                        <div id="semesterBlockList" class="flex flex-wrap gap-2 mt-3"></div>
+                    </div>
+                </div>
+
                 <!-- Live Up Next Class Banner -->
-                <div id="upNextClassBanner" class="bg-gradient-to-r from-melody-lavender/60 via-white to-melody-100/70 rounded-2xl p-3.5 sm:p-4 border-2 border-purple-200 mb-5 shadow-sm">
+                <div id="upNextClassBanner" class="bg-gradient-to-r from-[#DFFFFF] via-white to-melody-100/70 rounded-2xl p-3.5 sm:p-4 border-2 border-[#00DDE0] mb-5 shadow-sm">
                     <!-- Dynamically populated -->
                 </div>
 
@@ -1329,6 +1375,28 @@
                             <div class="min-w-0 overflow-hidden">
                                 <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Subject Name *</label>
                                 <input type="text" id="classSubjectInput" required placeholder="e.g. Software Engineering" class="w-full min-w-0 max-w-full px-3 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                            </div>
+
+                            <div class="min-w-0 overflow-hidden">
+                                <label class="block text-[11px] font-bold text-melody-700 uppercase mb-1">Semester Block</label>
+                                <select id="classBlockInput" class="w-full min-w-0 max-w-full px-2.5 py-2 rounded-xl bg-melody-50 border border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-xs font-bold text-melody-cocoa">
+                                    <option value="">Whole Semester</option>
+                                </select>
+                            </div>
+
+                            <label class="bg-melody-50 border border-melody-200 rounded-xl px-3 py-2 flex items-center gap-2 text-xs font-bold text-melody-700 cursor-pointer">
+                                <input type="checkbox" id="multipleWeekdaysToggle" onchange="toggleMultipleWeekdays()" class="melody-checkbox !w-4 !h-4">
+                                <span>Multiple weekdays</span>
+                            </label>
+
+                            <div id="multipleWeekdaysPanel" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-1.5 bg-melody-50/70 border border-melody-200 rounded-2xl p-2.5">
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="1"><span>Monday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="2"><span>Tuesday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="3"><span>Wednesday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="4"><span>Thursday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="5"><span>Friday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="6"><span>Saturday</span></label>
+                                <label class="flex items-center gap-1.5 text-[11px] font-bold text-melody-cocoa cursor-pointer"><input type="checkbox" class="multiple-weekday melody-checkbox !w-3.5 !h-3.5" value="0"><span>Sunday</span></label>
                             </div>
 
                             <!-- Responsive Day + Start/End Row: Day spans full width on iPhone, Start & End sit side-by-side in roomy 2-col row -->
@@ -1409,7 +1477,7 @@
                                 </span>
                             </div>
                             <p class="text-xs sm:text-sm text-melody-cocoaLight font-medium mt-0.5">
-                                Record your dear friends' names & birthdays — My Melody will automatically celebrate them on your calendar every year! 🎀
+                                Record your dear friends' names & birthdays — Melody will automatically celebrate them on your calendar every year! 🎀
                             </p>
                         </div>
                     </div>
@@ -1999,6 +2067,7 @@
         const SIDEBAR_COLLAPSED_KEY = 'melody_sidebar_collapsed_v1';
         const EXPENSES_STORAGE_KEY = 'melody_expenses_v1';
         const EXPENSE_BUDGET_KEY = 'melody_expense_budget_v1';
+        const SEMESTER_BLOCKS_KEY = 'melody_semester_blocks_v1';
 
         /* ==========================================
            AUTHENTIC SANRIO MY MELODY SVG ILLUSTRATIONS
@@ -2320,6 +2389,7 @@
         let isDesktopSidebarCollapsed = false;
         let expenses = [];
         let expenseCategoryFilter = 'All';
+        let currentSemester = { name: '', startDate: '', endDate: '', blocks: [], activeBlockId: '' };
 
         let currentViewMode = 'list'; // 'list' | 'calendar'
         let currentStatusFilter = 'all'; // 'all' | 'pending' | 'completed' | 'overdue'
@@ -2763,8 +2833,8 @@
                 ? `${expenseAmount(Math.max(0, budget - monthTotal))} remaining of ${expenseAmount(budget)}`
                 : 'Set a monthly budget to begin.';
 
-            const categoryIcons = { Food: '🍔', Transport: '🚗', Study: '📚', Shopping: '🛍️', Home: '🏠', Other: '🎁' };
-            const categories = ['All', 'Food', 'Transport', 'Study', 'Shopping', 'Home', 'Other'];
+            const categoryIcons = { Food: '🍔',Home: '🏠' , Study: '📚', Shopping: '🛍️', Transport: '🚗', Other: '🎁' };
+            const categories = ['All', 'Food', 'Home', 'Study', 'Shopping', 'Transport', 'Other'];
             document.getElementById('expenseCategoryPills').innerHTML = categories.map(category => {
                 const active = expenseCategoryFilter === category;
                 return `<button onclick="filterExpenseCategory('${category}')" class="px-2.5 py-1 rounded-full border text-[11px] font-bold transition ${active ? 'bg-melody-500 text-white border-melody-500' : 'bg-melody-50 text-melody-700 border-melody-200'}">${category === 'All' ? '🎀 All' : `${categoryIcons[category]} ${category}`}</button>`;
@@ -2820,10 +2890,28 @@
 
         function loadUniModulesFromStorage() {
             try {
+                const savedSemester = localStorage.getItem(SEMESTER_BLOCKS_KEY);
+                if (savedSemester) {
+                    const parsed = JSON.parse(savedSemester);
+                    if (parsed && typeof parsed === 'object') {
+                        currentSemester = {
+                            name: parsed.name || '',
+                            startDate: parsed.startDate || '',
+                            endDate: parsed.endDate || '',
+                            blocks: Array.isArray(parsed.blocks) ? parsed.blocks : [],
+                            activeBlockId: parsed.activeBlockId || ''
+                        };
+                    }
+                }
                 const rawClasses = localStorage.getItem(CLASSES_STORAGE_KEY);
                 if (rawClasses) {
                     const parsed = JSON.parse(rawClasses);
-                    if (Array.isArray(parsed)) classSchedule = parsed;
+                    if (Array.isArray(parsed)) {
+                        classSchedule = parsed.map(item => ({
+                            ...item,
+                            dayOfWeek: Number(item.dayOfWeek)
+                        })).filter(item => Number.isInteger(item.dayOfWeek) && item.dayOfWeek >= 0 && item.dayOfWeek <= 6);
+                    }
                 }
                 const savedWeek1 = localStorage.getItem(SEMESTER_WEEK1_KEY);
                 if (savedWeek1) {
@@ -3016,6 +3104,130 @@
             } catch (e) {}
             updateSidebarBadgesAndWeek();
             showToast(`Updated Semester Week 1 to ${formatPrettyDate(val)}! 🗓️`, '📚');
+        }
+
+        function saveCurrentSemester() {
+            const name = document.getElementById('semesterNameInput').value.trim();
+            const startDate = document.getElementById('semesterStartInput').value;
+            const endDate = document.getElementById('semesterEndInput').value;
+            if (!name || !startDate || !endDate) {
+                showToast('Enter the semester name, start date and end date.', '🌸');
+                return;
+            }
+            if (endDate < startDate) {
+                showToast('Semester end date must be after the start date.', '🥺');
+                return;
+            }
+            currentSemester.name = name;
+            currentSemester.startDate = startDate;
+            currentSemester.endDate = endDate;
+            if (!semesterWeek1Monday) {
+                semesterWeek1Monday = startDate;
+                localStorage.setItem(SEMESTER_WEEK1_KEY, startDate);
+            }
+            saveSemesterSetup();
+            renderSemesterSetup();
+            showToast(`Saved ${name}!`, '📚');
+        }
+
+        function addSemesterBlock() {
+            const name = document.getElementById('semesterBlockNameInput').value.trim();
+            const startDate = document.getElementById('semesterBlockStartInput').value;
+            const endDate = document.getElementById('semesterBlockEndInput').value;
+            if (!name || !startDate || !endDate) {
+                showToast('Enter the block name and both dates.', '🌸');
+                return;
+            }
+            if (endDate < startDate) {
+                showToast('Block end date must be after the start date.', '🥺');
+                return;
+            }
+            const block = {
+                id: 'semester-block-' + Date.now(),
+                name,
+                startDate,
+                endDate
+            };
+            currentSemester.blocks.push(block);
+            if (!currentSemester.activeBlockId) currentSemester.activeBlockId = block.id;
+            saveSemesterSetup();
+            document.getElementById('semesterBlockNameInput').value = '';
+            document.getElementById('semesterBlockStartInput').value = '';
+            document.getElementById('semesterBlockEndInput').value = '';
+            renderSemesterSetup();
+            showToast(`Added ${name}!`, '🎀');
+        }
+
+        function setActiveSemesterBlock(blockId) {
+            currentSemester.activeBlockId = blockId;
+            saveSemesterSetup();
+            renderSemesterSetup();
+        }
+
+        function removeSemesterBlock(blockId) {
+            openConfirmModal(
+                'Remove Semester Block?',
+                'This removes the block, but not classes assigned to it.',
+                () => {
+                    currentSemester.blocks = currentSemester.blocks.filter(block => block.id !== blockId);
+                    if (currentSemester.activeBlockId === blockId) {
+                        currentSemester.activeBlockId = currentSemester.blocks[0]?.id || '';
+                    }
+                    classSchedule.forEach(item => {
+                        if (item.blockId === blockId) item.blockId = '';
+                    });
+                    saveSemesterSetup();
+                    saveClassesToStorage();
+                    renderSemesterSetup();
+                    renderAll();
+                    showToast('Semester block removed.', '🌸');
+                }
+            );
+        }
+
+        function saveSemesterSetup() {
+            try {
+                localStorage.setItem(SEMESTER_BLOCKS_KEY, JSON.stringify(currentSemester));
+            } catch (e) {
+                console.error('Failed to save semester setup:', e);
+            }
+        }
+
+        function renderSemesterSetup() {
+            document.getElementById('semesterNameInput').value = currentSemester.name || '';
+            document.getElementById('semesterStartInput').value = currentSemester.startDate || '';
+            document.getElementById('semesterEndInput').value = currentSemester.endDate || '';
+
+            const activeBlock = currentSemester.blocks.find(block => block.id === currentSemester.activeBlockId);
+            const badge = document.getElementById('activeSemesterBlockBadge');
+            if (badge) badge.textContent = activeBlock ? `Active: ${activeBlock.name}` : 'No Active Block';
+
+            const list = document.getElementById('semesterBlockList');
+            if (!list) return;
+            if (currentSemester.blocks.length === 0) {
+                list.innerHTML = '<p class="text-[11px] font-semibold text-melody-cocoaLight">No subject blocks added yet.</p>';
+            } else {
+                list.innerHTML = currentSemester.blocks.map(block => {
+                    const active = block.id === currentSemester.activeBlockId;
+                    return `
+                        <div class="flex items-center gap-1 rounded-full border ${active ? 'bg-melody-100 border-melody-300 text-melody-700' : 'bg-melody-50 border-melody-200 text-melody-cocoa'}">
+                            <button type="button" onclick="setActiveSemesterBlock('${block.id}')" class="px-2.5 py-1.5 text-[10px] sm:text-xs font-bold">
+                                ${active ? '✓ ' : ''}${escapeHtml(block.name)}<span class="opacity-70"> · ${formatPrettyDate(block.startDate)}–${formatPrettyDate(block.endDate)}</span>
+                            </button>
+                            <button type="button" onclick="removeSemesterBlock('${block.id}')" class="w-7 h-7 text-rose-500 hover:text-rose-700" title="Remove block"><i class="fa-solid fa-xmark text-xs"></i></button>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            const blockSelect = document.getElementById('classBlockInput');
+            if (blockSelect) {
+                const currentValue = blockSelect.value;
+                blockSelect.innerHTML = '<option value="">Whole Semester</option>' + currentSemester.blocks.map(block =>
+                    `<option value="${block.id}">${escapeHtml(block.name)}</option>`
+                ).join('');
+                blockSelect.value = currentSemester.blocks.some(block => block.id === currentValue) ? currentValue : (currentSemester.activeBlockId || '');
+            }
         }
 
         function computeDeadlineFromWeekNumber(weekNum) {
@@ -3437,7 +3649,7 @@
         const DAY_NAMES_FULL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const CLASS_TYPE_META = {
             'Lecture':  { icon: '📖', bg: 'bg-pink-100', text: 'text-pink-700', border: 'border-pink-200' },
-            'Tutorial': { icon: '✏️', bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-200' },
+            'Tutorial': { icon: '✏️', bg: 'bg-[#E5FFFF]', text: 'text-[#008F99]', border: 'border-[#00DDE0]' },
             'Lab':      { icon: '💻', bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-200' },
             'Workshop': { icon: '🎨', bg: 'bg-amber-100', text: 'text-amber-800', border: 'border-amber-200' }
         };
@@ -3465,12 +3677,20 @@
             const code = document.getElementById('classCodeInput').value.trim().toUpperCase();
             const subject = document.getElementById('classSubjectInput').value.trim();
             const type = document.getElementById('classTypeInput').value;
-            const dayOfWeek = parseInt(document.getElementById('classDayInput').value, 10);
+            const multipleMode = document.getElementById('multipleWeekdaysToggle').checked;
+            let selectedDays = multipleMode
+                ? Array.from(document.querySelectorAll('.multiple-weekday:checked')).map(input => parseInt(input.value, 10))
+                : [parseInt(document.getElementById('classDayInput').value, 10)];
             const startTime = document.getElementById('classStartInput').value;
             const endTime = document.getElementById('classEndInput').value;
             const room = document.getElementById('classRoomInput').value.trim();
+            const blockId = document.getElementById('classBlockInput').value;
 
             if (!code || !subject) return;
+            if (multipleMode && selectedDays.length === 0) {
+                showToast('Choose at least one weekday.', '🌸');
+                return;
+            }
 
             if (editId) {
                 const existing = classSchedule.find(c => c.id === editId);
@@ -3478,25 +3698,45 @@
                     existing.code = code;
                     existing.subject = subject;
                     existing.type = type;
-                    existing.dayOfWeek = dayOfWeek;
+                    existing.dayOfWeek = selectedDays[0];
                     existing.startTime = startTime;
                     existing.endTime = endTime;
                     existing.room = room;
+                    existing.blockId = blockId;
+
+                    if (multipleMode) {
+                        selectedDays.slice(1).forEach(dayOfWeek => {
+                            classSchedule.push({
+                                id: 'melody-class-' + Date.now() + '-' + dayOfWeek,
+                                code,
+                                subject,
+                                type,
+                                dayOfWeek,
+                                startTime,
+                                endTime,
+                                room,
+                                blockId
+                            });
+                        });
+                    }
                     showToast(`Updated ${code} in your timetable! 🏫`, '✨');
                 }
             } else {
-                classSchedule.push({
-                    id: 'melody-class-' + Date.now(),
-                    code,
-                    subject,
-                    type,
-                    dayOfWeek,
-                    startTime,
-                    endTime,
-                    room
+                selectedDays.forEach((dayOfWeek, index) => {
+                    classSchedule.push({
+                        id: 'melody-class-' + Date.now() + '-' + index,
+                        code,
+                        subject,
+                        type,
+                        dayOfWeek,
+                        startTime,
+                        endTime,
+                        room,
+                        blockId
+                    });
                 });
                 spawnSparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 22);
-                showToast(`Added ${code} (${DAY_NAMES_FULL[dayOfWeek]}) to timetable! 🏫`, '🎀');
+                showToast(`Added ${code} for ${selectedDays.length} weekday${selectedDays.length === 1 ? '' : 's'}! 🏫`, '🎀');
             }
 
             saveClassesToStorage();
@@ -3517,6 +3757,7 @@
             document.getElementById('classStartInput').value = item.startTime;
             document.getElementById('classEndInput').value = item.endTime;
             document.getElementById('classRoomInput').value = item.room || '';
+            document.getElementById('classBlockInput').value = item.blockId || '';
 
             document.getElementById('classFormTitle').innerHTML = `<span>🎀</span><span>Edit ${escapeHtml(item.code)}</span>`;
             document.getElementById('classSaveBtnText').textContent = 'Update Class';
@@ -3532,6 +3773,7 @@
             document.getElementById('classStartInput').value = '09:00';
             document.getElementById('classEndInput').value = '11:00';
             document.getElementById('classRoomInput').value = '';
+            document.getElementById('classBlockInput').value = currentSemester.activeBlockId || '';
 
             document.getElementById('classFormTitle').innerHTML = `<span>🎀</span><span>Add Weekly Class</span>`;
             document.getElementById('classSaveBtnText').textContent = 'Save to Weekly Timetable';
@@ -3627,7 +3869,7 @@
 
                     upNextBanner.innerHTML = `
                         <div class="flex items-center gap-3 min-w-0">
-                            <div class="w-11 h-11 rounded-2xl bg-white border-2 border-purple-200 flex items-center justify-center text-xl shrink-0">🏫</div>
+                            <div class="w-11 h-11 rounded-2xl bg-white border-2 border-[#00DDE0] flex items-center justify-center text-xl shrink-0">🏫</div>
                             <div class="min-w-0">
                                 <div class="flex items-center gap-2 flex-wrap">
                                     ${statusTag}
@@ -3668,6 +3910,7 @@
 
             listEl.innerHTML = filtered.map(c => {
                 const tMeta = CLASS_TYPE_META[c.type] || CLASS_TYPE_META.Lecture;
+                const block = currentSemester.blocks.find(item => item.id === c.blockId);
                 return `
                     <div class="bg-white hover:bg-melody-50/60 rounded-2xl p-3.5 border-2 border-melody-200 shadow-sm flex flex-col justify-between gap-2 transition">
                         <div class="flex items-start justify-between gap-2">
@@ -3680,6 +3923,7 @@
                                     <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-melody-100 text-melody-700">
                                         ${DAY_NAMES_FULL[c.dayOfWeek]}
                                     </span>
+                                    ${block ? `<span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-melody-100 text-melody-700 border border-melody-300">${escapeHtml(block.name)}</span>` : ''}
                                 </div>
                                 <h4 class="font-bold text-xs sm:text-sm text-melody-cocoa mt-1 truncate" title="${escapeHtml(c.subject)}">
                                     ${escapeHtml(c.subject)}
@@ -4346,9 +4590,9 @@
                 const btn = document.getElementById(`statusTab-${st}`);
                 if (!btn) return;
                 if (st === currentStatusFilter) {
-                    btn.className = 'status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap bg-melody-500 text-white shadow-sm';
+                    btn.className = 'status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center bg-melody-500 text-white shadow-sm';
                 } else {
-                    btn.className = 'status-tab px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap text-melody-cocoa hover:bg-melody-100';
+                    btn.className = 'status-tab px-1.5 sm:px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center justify-center text-melody-cocoa hover:bg-melody-100';
                 }
             });
 
@@ -4626,7 +4870,7 @@
 
                 dayClasses.forEach(c => {
                     combinedPills.push(`
-                        <div class="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[10px] font-bold truncate bg-purple-100 text-purple-800 border border-purple-200">
+                        <div class="hidden sm:flex items-center gap-1 px-1.5 py-0.5 rounded-md text-[10px] font-bold truncate bg-[#E5FFFF] text-[#007D88] border border-[#00DDE0]">
                             <span class="shrink-0">🏫</span>
                             <span class="truncate">${escapeHtml(c.code)} ${escapeHtml(c.startTime)}</span>
                         </div>
@@ -4647,7 +4891,8 @@
                     ...dayTasks.slice(0, 4).map(t => {
                         const prio = PRIORITY_META[t.priority] || PRIORITY_META.medium;
                         return `<span class="w-2 h-2 rounded-full inline-block" style="background:${prio.dot}"></span>`;
-                    })
+                    }),
+                    ...dayClasses.slice(0, 4).map(() => `<span class="w-2 h-2 rounded-full inline-block bg-[#00FFFF] border border-[#008F99]"></span>`)
                 ].slice(0, 5).join('');
 
                 cellsHtml += `
@@ -4763,15 +5008,15 @@
                 if (dayClasses.length > 0) {
                     classesContainer.classList.remove('hidden');
                     classesContainer.innerHTML = `
-                        <div class="bg-melody-lavender/45 rounded-2xl p-3 border border-purple-200 space-y-1.5">
-                            <div class="text-[11px] font-bubbly font-bold text-melody-lavenderDark flex items-center gap-1.5">
+                        <div class="bg-[#F0FFFF] rounded-2xl p-3 border border-[#00DDE0] space-y-1.5">
+                            <div class="text-[11px] font-bubbly font-bold text-[#008F99] flex items-center gap-1.5">
                                 <span>🏫</span>
                                 <span>Classes Scheduled on This Day (${dayClasses.length})</span>
                             </div>
                             ${dayClasses.map(c => `
-                                <div class="bg-white/90 rounded-xl px-2.5 py-1.5 border border-purple-100 flex items-center justify-between gap-2 text-xs">
+                                <div class="bg-white/90 rounded-xl px-2.5 py-1.5 border border-[#B8FFFF] flex items-center justify-between gap-2 text-xs">
                                     <span class="font-bold text-melody-cocoa truncate">${escapeHtml(c.code)} — ${escapeHtml(c.subject)} (${escapeHtml(c.type)})</span>
-                                    <span class="text-[11px] font-bold text-melody-lavenderDark shrink-0">${formatTime12h(c.startTime)}–${formatTime12h(c.endTime)}</span>
+                                    <span class="text-[11px] font-bold text-[#008F99] shrink-0">${formatTime12h(c.startTime)}–${formatTime12h(c.endTime)}</span>
                                 </div>
                             `).join('')}
                         </div>
@@ -4999,9 +5244,6 @@
                             <h4 class="font-bubbly font-bold text-base text-melody-700">
                                 No Friend Birthdays Recorded Yet!
                             </h4>
-                            <p class="text-xs text-melody-cocoaLight font-medium mt-1 max-w-md mx-auto">
-                                Enter a friend's name & birthday on the left — My Melody will automatically highlight their special day on your calendar every single year ♪
-                            </p>
                         </div>
                     `;
                 }
@@ -5158,6 +5400,7 @@
             loadUniModulesFromStorage();
             loadExpensesFromStorage();
             resetExpenseForm();
+            renderSemesterSetup();
 
             setViewMode('list');
             renderAll();
