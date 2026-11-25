@@ -1292,13 +1292,21 @@
                 <!-- Current Semester & Monthly Subject Blocks -->
                 <div class="bg-white/95 rounded-2xl p-4 border-2 border-melody-300 shadow-sm mb-5">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                        <div>
-                            <h3 class="font-bubbly font-bold text-sm sm:text-base text-melody-700">Current Semester Setup</h3>
+                        <div class="min-w-0">
+                            <div class="flex items-center gap-2">
+                                <h3 class="font-bubbly font-bold text-lg sm:text-2xl text-melody-700 leading-tight">Current Semester Setup</h3>
+                                <button type="button" onclick="toggleCardContent('semesterSetupContent', 'semesterSetupChevron')" class="w-8 h-8 rounded-xl bg-melody-50 hover:bg-melody-100 text-melody-600 border border-melody-200 flex items-center justify-center shrink-0" title="Collapse Current Semester Setup" aria-label="Toggle Current Semester Setup">
+                                    <i id="semesterSetupChevron" class="fa-solid fa-chevron-up text-xs transition-transform"></i>
+                                </button>
+                            </div>
                             <p class="text-[11px] text-melody-cocoaLight font-semibold">Add the subject blocks or rotations in this semester.</p>
                         </div>
-                        <span id="activeSemesterBlockBadge" class="bg-melody-100 text-melody-700 border border-melody-300 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full">No Active Block</span>
+                        <div class="flex items-center gap-1.5">
+                            <span id="activeSemesterBlockBadge" class="bg-melody-100 text-melody-700 border border-melody-300 text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full">No Active Block</span>
+                        </div>
                     </div>
 
+                    <div id="semesterSetupContent">
                     <div class="grid grid-cols-1 sm:grid-cols-[1fr_1fr_1fr_auto] gap-2">
                         <div>
                             <label class="block text-[10px] font-bold text-melody-700 uppercase mb-1">Semester</label>
@@ -1333,6 +1341,7 @@
                         </div>
                         <div id="semesterBlockList" class="flex flex-wrap gap-2 mt-3"></div>
                     </div>
+                    </div>
                 </div>
 
                 <!-- Live Up Next Class Banner -->
@@ -1348,11 +1357,17 @@
                                 <span>🎀</span>
                                 <span>Add Weekly Class</span>
                             </h3>
-                            <button type="button" id="cancelEditClassBtn" onclick="resetClassForm()" class="hidden text-xs font-bold text-melody-500 hover:text-melody-700 underline">
-                                Cancel Edit
-                            </button>
+                            <div class="flex items-center gap-2">
+                                <button type="button" id="cancelEditClassBtn" onclick="resetClassForm()" class="hidden text-xs font-bold text-melody-500 hover:text-melody-700 underline">
+                                    Cancel Edit
+                                </button>
+                                <button type="button" onclick="toggleCardContent('classFormContent', 'classFormChevron')" class="w-8 h-8 rounded-xl bg-melody-50 hover:bg-melody-100 text-melody-600 border border-melody-200 flex items-center justify-center shrink-0" title="Collapse Add Weekly Class" aria-label="Toggle Add Weekly Class">
+                                    <i id="classFormChevron" class="fa-solid fa-chevron-up text-xs transition-transform"></i>
+                                </button>
+                            </div>
                         </div>
 
+                        <div id="classFormContent">
                         <form id="classTimetableForm" onsubmit="handleSaveClassItem(event)" class="space-y-3">
                             <input type="hidden" id="classEditId">
 
@@ -1433,6 +1448,7 @@
                                 <span id="classSaveBtnText">Save to Weekly Timetable</span>
                             </button>
                         </form>
+                        </div>
                     </div>
 
                     <!-- Right Column: Day Filter Tabs + Class Cards Grid -->
@@ -1529,7 +1545,7 @@
                                         type="date" 
                                         id="friendBirthDateInput" 
                                         required
-                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-3 py-2.5 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa cursor-pointer transition"
+                                        class="w-full min-w-0 max-w-full box-border pl-9 pr-3 py-3 rounded-2xl bg-melody-50 border-2 border-melody-200 focus:border-melody-500 focus:bg-white focus:outline-none text-sm font-bold text-melody-cocoa cursor-pointer transition"
                                     >
                                 </div>
                                 <p class="text-[11px] text-melody-cocoaLight mt-1 font-medium">
@@ -3653,6 +3669,15 @@
             'Lab':      { icon: '💻', bg: 'bg-emerald-100', text: 'text-emerald-700', border: 'border-emerald-200' },
             'Workshop': { icon: '🎨', bg: 'bg-amber-100', text: 'text-amber-800', border: 'border-amber-200' }
         };
+
+        function toggleCardContent(contentId, chevronId) {
+            const content = document.getElementById(contentId);
+            const chevron = document.getElementById(chevronId);
+            if (!content || !chevron) return;
+
+            const collapsed = content.classList.toggle('hidden');
+            chevron.className = `fa-solid ${collapsed ? 'fa-chevron-down' : 'fa-chevron-up'} text-xs transition-transform`;
+        }
 
         function toggleShowClassesOnCalendar() {
             const toggle = document.getElementById('showClassesOnCalendarToggle');
