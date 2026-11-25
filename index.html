@@ -568,6 +568,17 @@
                         <span class="sidebar-badge bg-melody-mint text-melody-mintDark border border-emerald-200 text-[10px] font-bubbly px-2 py-0.5 rounded-full shrink-0">iOS</span>
                     </button>
                 </nav>
+                <div class="sidebar-footer-card mx-3 mt-4 mb-3 rounded-2xl border-2 border-melody-200 bg-gradient-to-br from-white to-melody-50 p-3 shadow-sm">
+                    <div id="cloudSyncStatus" class="w-full truncate rounded-full border border-melody-200 bg-white/80 px-2.5 py-1 text-center text-[10px] font-bold text-melody-cocoaLight" role="status" aria-live="polite">
+                        Cloud sync setup required
+                    </div>
+                    <button id="googleSignInButton" type="button" onclick="handleGoogleSignIn()" class="btn-kawaii-soft mt-2 w-full rounded-xl border border-melody-300 bg-melody-100 px-3 py-2 text-xs font-bold text-melody-700 transition hover:bg-melody-200">
+                        <i class="fa-brands fa-google mr-1"></i>Sign in with Google
+                    </button>
+                    <button id="googleSignOutButton" type="button" onclick="handleGoogleSignOut()" class="hidden mt-2 w-full rounded-xl border border-melody-300 bg-white px-3 py-2 text-xs font-bold text-melody-700 transition hover:bg-melody-100">
+                        Sign out
+                    </button>
+                </div>
             </div>
         </aside>
 
@@ -634,17 +645,6 @@
                         <button onclick="navigateToSection('expensesTrackerSection', 'nav-expenses')" id="todayExpensePill" class="bg-melody-butter/90 hover:bg-amber-100 text-melody-butterDark px-2.5 sm:px-3 py-1 rounded-full border border-amber-300 inline-flex items-center gap-1.5 transition shadow-sm" title="Open Expenses Tracker">
                             <span>🍓</span>
                             <span>Today: RM 0.00</span>
-                        </button>
-                    </div>
-                    <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2 w-full text-[11px] sm:text-xs">
-                        <span id="cloudSyncStatus" class="max-w-full truncate rounded-full border border-melody-200 bg-white/80 px-2.5 py-1 font-bold text-melody-cocoaLight" role="status" aria-live="polite">
-                            Cloud sync setup required
-                        </span>
-                        <button id="googleSignInButton" type="button" onclick="handleGoogleSignIn()" class="btn-kawaii-soft rounded-xl border border-melody-300 bg-melody-100 px-3 py-1.5 font-bold text-melody-700 transition hover:bg-melody-200">
-                            <i class="fa-brands fa-google mr-1"></i>Sign in with Google
-                        </button>
-                        <button id="googleSignOutButton" type="button" onclick="handleGoogleSignOut()" class="hidden rounded-xl border border-melody-300 bg-white px-3 py-1.5 font-bold text-melody-700 transition hover:bg-melody-100">
-                            Sign out
                         </button>
                     </div>
                 </div>
