@@ -834,6 +834,7 @@
                                     <option value="Pet">🐶 Pet</option>
                                     <option value="Self-Care">🍓 Self-Care</option>
                                     <option value="Shopping">🎀 Shopping</option>
+                                    <option value="Others">✏️ Others</option>
                                 </select>
                             </div>
                         </div>
@@ -897,6 +898,9 @@
                             </button>
                             <button onclick="setCategoryFilter('Shopping')" id="catPill-Shopping" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
                                 🎁 Shopping
+                            </button>
+                            <button onclick="setCategoryFilter('Others')" id="catPill-Others" class="cat-pill px-3 py-1 rounded-full text-xs font-bold border transition shrink-0">
+                                ✏️ Others
                             </button>
                         </div>
 
@@ -1278,8 +1282,9 @@
                     </label>
                 </div>
 
+                <div class="flex flex-col gap-6">
                 <!-- Current Semester & Monthly Subject Blocks -->
-                <div class="bg-white/95 rounded-2xl p-4 border-2 border-melody-300 shadow-sm mb-5">
+                <div class="order-4 bg-white/95 rounded-2xl p-4 border-2 border-melody-300 shadow-sm">
                     <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
                         <div class="min-w-0">
                             <div class="flex items-center gap-2">
@@ -1334,13 +1339,13 @@
                 </div>
 
                 <!-- Live Up Next Class Banner -->
-                <div id="upNextClassBanner" class="bg-gradient-to-r from-[#DFFFFF] via-white to-melody-100/70 rounded-2xl p-3.5 sm:p-4 border-2 border-[#00DDE0] mb-5 shadow-sm">
+                <div id="upNextClassBanner" class="order-1 bg-gradient-to-r from-melody-50 via-white to-melody-100/70 rounded-2xl p-3.5 sm:p-4 border-2 border-melody-300 shadow-sm">
                     <!-- Dynamically populated -->
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                <div class="contents">
                     <!-- Left Form: Add / Edit Weekly Class -->
-                    <div class="lg:col-span-5 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm min-w-0 overflow-hidden">
+                    <div class="order-3 bg-white rounded-3xl p-4 sm:p-5 border-2 border-melody-200 shadow-kawaii-sm min-w-0 overflow-hidden">
                         <div class="flex items-center justify-between mb-3">
                             <h3 id="classFormTitle" class="font-bubbly font-bold text-base sm:text-lg text-melody-700 flex items-center gap-2">
                                 <span>🎀</span>
@@ -1441,7 +1446,7 @@
                     </div>
 
                     <!-- Right Column: Day Filter Tabs + Class Cards Grid -->
-                    <div class="lg:col-span-7 flex flex-col gap-3.5 min-w-0">
+                    <div class="order-2 flex flex-col gap-3.5 min-w-0">
                         <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
                             <button onclick="setTimetableDayFilter('all')" id="ttDayTab-all" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">All Week 🌸</button>
                             <button onclick="setTimetableDayFilter('1')" id="ttDayTab-1" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Mon</button>
@@ -1457,6 +1462,7 @@
                             <!-- Dynamically rendered -->
                         </div>
                     </div>
+                </div>
                 </div>
             </section>
 
@@ -1912,6 +1918,7 @@
                             <option value="Pet">🐶 Pet</option>
                             <option value="Self-Care">💅 Self-Care</option>
                             <option value="Shopping">🎁 Shopping</option>
+                            <option value="Others">✏️ Others</option>
                         </select>
                     </div>
                 </div>
@@ -2419,7 +2426,7 @@
 
         let currentViewMode = 'list'; // 'list' | 'calendar'
         let currentStatusFilter = 'all'; // 'all' | 'pending' | 'completed' | 'overdue'
-        let currentCategoryFilter = 'all'; // 'all' | 'Home' | 'Study' | 'Pet' | 'Self-Care' | 'Shopping'
+        let currentCategoryFilter = 'all'; // 'all' | 'Home' | 'Study' | 'Pet' | 'Self-Care' | 'Shopping' | 'Others'
         let activeDateFilter = null; // null or 'YYYY-MM-DD'
         
         // Calendar Navigation State
@@ -2437,7 +2444,8 @@
             'Study':     { icon: '📚', badgeBg: 'bg-indigo-100', badgeText: 'text-indigo-700', border: 'border-indigo-200' },
             'Pet':       { icon: '🐶', badgeBg: 'bg-amber-100', badgeText: 'text-amber-800', border: 'border-amber-200' },
             'Self-Care': { icon: '💅', badgeBg: 'bg-rose-100', badgeText: 'text-rose-700', border: 'border-rose-200' },
-            'Shopping':  { icon: '🎁', badgeBg: 'bg-purple-100', badgeText: 'text-purple-700', border: 'border-purple-200' }
+            'Shopping':  { icon: '🎁', badgeBg: 'bg-purple-100', badgeText: 'text-purple-700', border: 'border-purple-200' },
+            'Others':    { icon: '✏️', badgeBg: 'bg-melody-100', badgeText: 'text-melody-700', border: 'border-melody-200' }
         };
 
         // Priority Metadata
@@ -3440,127 +3448,160 @@
         }
 
 
-        /**
-         * Smart parser that abstracts Week numbers / Dates, Assignment Titles,
-         * and Descriptions ("What to do") from OCR text lines.
-         */
         function parseAssignmentTimelineText(rawText) {
-            const lines = rawText
-                .split(/\r?\n/)
-                .map(l => l.trim())
-                .filter(l => l.length > 3);
-
-            const monthMap = {
-                jan: 1, january: 1, feb: 2, february: 2, mar: 3, march: 3,
-                apr: 4, april: 4, may: 5, jun: 6, june: 6, jul: 7, july: 7,
-                aug: 8, august: 8, sep: 9, sept: 9, september: 9, oct: 10, october: 10,
-                nov: 11, november: 11, dec: 12, december: 12
-            };
-
+            const lines = String(rawText || '').split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+            const monthNames = 'January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec';
+            const monthMap = { jan: 1, feb: 2, mar: 3, apr: 4, may: 5, jun: 6, jul: 7, aug: 8, sep: 9, oct: 10, nov: 11, dec: 12 };
             const currentYear = new Date().getFullYear();
             const parsedRows = [];
+            const seenRows = new Set();
 
-            lines.forEach((line, idx) => {
-                // Skip obvious table header lines
-                if (/^(week|date|no\.?|#)\s*[|\t\-:]?\s*(assignment|task|assessment|title)/i.test(line)) {
-                    return;
+            function toIsoDate(year, month, day) {
+                const date = new Date(Date.UTC(year, month - 1, day));
+                if (date.getUTCFullYear() !== year || date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return '';
+                return `${String(year).padStart(4, '0')}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            }
+
+            function parseDate(text) {
+                const value = String(text || '');
+                let match = value.match(/\b(20\d{2})[-/](\d{1,2})[-/](\d{1,2})\b/);
+                if (match) return toIsoDate(Number(match[1]), Number(match[2]), Number(match[3]));
+
+                match = value.match(/\b(\d{1,2})[/-](\d{1,2})(?:[/-](\d{2,4}))?\b/);
+                if (match) {
+                    let year = match[3] ? Number(match[3]) : currentYear;
+                    if (year < 100) year += 2000;
+                    return toIsoDate(year, Number(match[2]), Number(match[1]));
                 }
 
-                let detectedWeek = null;
-                let detectedDate = null;
-                let workingLine = line;
+                const dayFirst = new RegExp(`\\b(\\d{1,2})\\s+(${monthNames})\\.?[,]?\\s*(20\\d{2})?\\b`, 'i');
+                const monthFirst = new RegExp(`\\b(${monthNames})\\.?\\s+(\\d{1,2})(?:,?\\s+(20\\d{2}))?\\b`, 'i');
+                match = value.match(dayFirst);
+                if (match) return toIsoDate(Number(match[3] || currentYear), monthMap[match[2].slice(0, 3).toLowerCase()], Number(match[1]));
+                match = value.match(monthFirst);
+                if (match) return toIsoDate(Number(match[3] || currentYear), monthMap[match[1].slice(0, 3).toLowerCase()], Number(match[2]));
+                return '';
+            }
 
-                // 1. Detect Week pattern: "Week 5", "Wk 5", "W05", "Week 10"
-                const weekMatch = workingLine.match(/\b(?:week|wk|w)\s*#?\s*(\d{1,2})\b/i);
-                if (weekMatch) {
-                    const wkNum = parseInt(weekMatch[1], 10);
-                    if (wkNum >= 1 && wkNum <= 52) {
-                        detectedWeek = wkNum;
-                        detectedDate = computeDeadlineFromWeekNumber(wkNum);
-                        workingLine = workingLine.replace(weekMatch[0], ' ').trim();
-                    }
-                }
+            function parseWeek(text) {
+                const match = String(text || '').match(/\b(?:session|sess\.?|week|wk|day)\s*#?\s*(\d{1,2})\b/i);
+                if (!match) return '';
+                const number = Number(match[1]);
+                return number >= 1 && number <= 52 ? number : '';
+            }
 
-                // 2. Detect explicit ISO date YYYY-MM-DD
-                const isoMatch = workingLine.match(/\b(20\d{2})[-\/](\d{1,2})[-\/](\d{1,2})\b/);
-                if (isoMatch) {
-                    detectedDate = `${isoMatch[1]}-${String(isoMatch[2]).padStart(2, '0')}-${String(isoMatch[3]).padStart(2, '0')}`;
-                    workingLine = workingLine.replace(isoMatch[0], ' ').trim();
-                }
+            function splitColumns(line) {
+                if (line.includes('|')) return line.split('|').map(cell => cell.trim());
+                if (line.includes('\t')) return line.split('\t').map(cell => cell.trim());
+                return line.split(/\s{2,}/).map(cell => cell.trim());
+            }
 
-                // 3. Detect DD/MM/YYYY or DD-MM-YYYY
-                if (!detectedDate || detectedWeek) {
-                    const dmyMatch = workingLine.match(/\b(\d{1,2})[\/\-](\d{1,2})(?:[\/\-](20\d{2}|\d{2}))?\b/);
-                    if (dmyMatch) {
-                        const day = parseInt(dmyMatch[1], 10);
-                        const mon = parseInt(dmyMatch[2], 10);
-                        let yr = dmyMatch[3] ? parseInt(dmyMatch[3], 10) : currentYear;
-                        if (yr < 100) yr += 2000;
-                        if (mon >= 1 && mon <= 12 && day >= 1 && day <= 31) {
-                            detectedDate = `${yr}-${String(mon).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                            workingLine = workingLine.replace(dmyMatch[0], ' ').trim();
-                        }
-                    }
-                }
+            function findAssessmentHeaders(cells) {
+                const date = cells.findIndex(cell => /\bdate\b/i.test(cell));
+                const session = cells.findIndex(cell => /\b(session|day|week|wk)\b/i.test(cell));
+                const title = cells.findIndex(cell => /\b(assessment|deliverable|assignment|task|title|component)\b/i.test(cell));
+                const weight = cells.findIndex(cell => /\b(weight|percentage|percent|worth|contribution|marks?)\b/i.test(cell));
+                return date >= 0 && title >= 0 ? { date, session, title, weight } : null;
+            }
 
-                // 4. Detect "28 Nov" or "Nov 28"
-                if (!detectedDate || detectedWeek) {
-                    const textDateMatch1 = workingLine.match(/\b(\d{1,2})\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\b/i);
-                    const textDateMatch2 = workingLine.match(/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\s+(\d{1,2})\b/i);
-                    if (textDateMatch1) {
-                        const day = parseInt(textDateMatch1[1], 10);
-                        const mon = monthMap[textDateMatch1[2].toLowerCase()];
-                        if (mon && day >= 1 && day <= 31) {
-                            detectedDate = `${currentYear}-${String(mon).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                            workingLine = workingLine.replace(textDateMatch1[0], ' ').trim();
-                        }
-                    } else if (textDateMatch2) {
-                        const mon = monthMap[textDateMatch2[1].toLowerCase()];
-                        const day = parseInt(textDateMatch2[2], 10);
-                        if (mon && day >= 1 && day <= 31) {
-                            detectedDate = `${currentYear}-${String(mon).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                            workingLine = workingLine.replace(textDateMatch2[0], ' ').trim();
-                        }
-                    }
-                }
+            function extractPercentages(text) {
+                return [...String(text || '').matchAll(/\b\d+(?:\.\d+)?\s*%/g)]
+                    .map(match => match[0].replace(/\s+/g, ''))
+                    .filter((value, index, values) => values.indexOf(value) === index)
+                    .join(', ');
+            }
 
-                // Only treat line as an assignment row if it has a Week/Date OR contains assignment keywords
-                const hasAssignmentKeyword = /\b(assignment|quiz|project|lab|report|essay|midterm|final|presentation|proposal|submission|tutorial|test|case study)\b/i.test(workingLine);
-                if (!detectedWeek && !detectedDate && !hasAssignmentKeyword) {
-                    return;
-                }
+            function cleanTitle(text) {
+                const datePattern = new RegExp(`\\b(?:\\d{1,2}\\s+(?:${monthNames})\\.?[,]?\\s*(?:20\\d{2})?|(?:${monthNames})\\.?\\s+\\d{1,2}(?:,?\\s+20\\d{2})?|\\d{4}[-/]\\d{1,2}[-/]\\d{1,2}|\\d{1,2}[/-]\\d{1,2}(?:[/-]\\d{2,4})?)\\b`, 'ig');
+                return String(text || '')
+                    .replace(/^[\s•·▪*-]+/, '')
+                    .replace(/\b(?:session|sess\.?|week|wk|day)\s*#?\s*\d{1,2}\b(?:\s*\([^)]*\))?/ig, ' ')
+                    .replace(datePattern, ' ')
+                    .replace(/\b\d+(?:\.\d+)?\s*%/g, ' ')
+                    .replace(/\(\s*\)/g, ' ')
+                    .replace(/\bheld\s+from\b[\s\S]*$/i, ' ')
+                    .replace(/\s+[—–-]\s+(?:overflow\b|if needed\b|deadline\b|notes?\b|time\b)[\s\S]*$/i, ' ')
+                    .replace(/\b(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/ig, ' ')
+                    .replace(/^[\s|:;,—–-]+|[\s|:;,—–-]+$/g, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
 
-                // Clean leading delimiters like "|", "-", ":"
-                workingLine = workingLine.replace(/^[\s|\-:•]+/, '').trim();
-                if (!workingLine) return;
+            function addAssignment(date, weekNum, rawTitle, weightText) {
+                const title = cleanTitle(rawTitle);
+                const week = weekNum || '';
+                const dueDate = date || (week ? computeDeadlineFromWeekNumber(week) : '');
+                if (!title || !dueDate) return;
 
-                // Split remaining text into Assignment Title and Description ("What to do")
-                let title = workingLine;
-                let description = '';
-
-                if (workingLine.includes('|')) {
-                    const parts = workingLine.split('|').map(p => p.trim()).filter(Boolean);
-                    title = parts[0] || workingLine;
-                    description = parts.slice(1).join(' • ');
-                } else if (workingLine.includes(' - ')) {
-                    const parts = workingLine.split(' - ').map(p => p.trim()).filter(Boolean);
-                    title = parts[0] || workingLine;
-                    description = parts.slice(1).join(' - ');
-                } else if (workingLine.includes(':')) {
-                    const colonIdx = workingLine.indexOf(':');
-                    title = workingLine.slice(0, colonIdx).trim();
-                    description = workingLine.slice(colonIdx + 1).trim();
-                }
-
+                const key = `${dueDate}|${week}|${title.toLowerCase()}`;
+                if (seenRows.has(key)) return;
+                seenRows.add(key);
                 parsedRows.push({
-                    id: 'staged-' + Date.now() + '-' + idx,
-                    weekNum: detectedWeek || '',
-                    dueDate: detectedDate || TODAY_STR,
-                    title: title || `Assignment ${idx + 1}`,
-                    description: description || 'Complete and submit before deadline',
-                    priority: /final|midterm|project/i.test(title) ? 'high' : 'medium'
+                    id: `staged-${Date.now()}-${parsedRows.length}`,
+                    weekNum: week,
+                    dueDate,
+                    title,
+                    description: extractPercentages(weightText) || extractPercentages(rawTitle),
+                    priority: /final|midterm|exam|project/i.test(title) ? 'high' : 'medium'
                 });
+            }
+
+            let hasStructuredTable = false;
+            lines.forEach((line, index) => {
+                const header = findAssessmentHeaders(splitColumns(line));
+                if (!header) return;
+                hasStructuredTable = true;
+                for (let rowIndex = index + 1; rowIndex < lines.length; rowIndex++) {
+                    const cells = splitColumns(lines[rowIndex]);
+                    if (findAssessmentHeaders(cells)) break;
+                    const lastColumn = Math.max(header.date, header.session, header.title, header.weight);
+                    if (cells.length <= lastColumn) continue;
+                    addAssignment(
+                        parseDate(cells[header.date]),
+                        header.session >= 0 ? parseWeek(cells[header.session]) : '',
+                        cells[header.title],
+                        header.weight >= 0 ? cells[header.weight] : ''
+                    );
+                }
             });
+
+            if (!hasStructuredTable || parsedRows.length === 0) {
+                const assignmentPattern = /\b(assignment|assessment|deliverable|quiz|exam|test|presentation|project|report|essay|lab|homework|midterm|final|submission|due|RJ\s*\d+)\b/i;
+                const ignoredLinePattern = /^(?:class\b|no class\b|deadline\b|held\b|notes?\b|time\b|weight\b|date\b|course schedule\b|key assessments?\b)/i;
+                let currentDate = '';
+                let currentWeek = '';
+
+                lines.forEach(line => {
+                    if (/^(?:date|session\s*\/?\s*day|assessment\s*\/?\s*deliverable|weight|notes?\s*\/?\s*time)\b/i.test(line)) return;
+
+                    if (line.includes('|') || line.includes('\t')) {
+                        const cells = splitColumns(line);
+                        const date = cells.map(parseDate).find(Boolean) || currentDate;
+                        const week = cells.map(parseWeek).find(Boolean) || currentWeek;
+                        const titleCell = cells.find(cell => assignmentPattern.test(cell) && !ignoredLinePattern.test(cell));
+                        if (titleCell) {
+                            const weight = cells.find(cell => /\d+(?:\.\d+)?\s*%/.test(cell)) || '';
+                            addAssignment(date, week, titleCell, weight);
+                        }
+                        return;
+                    }
+
+                    const week = parseWeek(line);
+                    const date = parseDate(line);
+                    if (week) {
+                        currentWeek = week;
+                        if (!date) currentDate = '';
+                    }
+                    if (date) {
+                        currentDate = date;
+                        if (!week && /\b(?:mon|tue|wed|thu|fri|sat|sun)(?:day)?\b/i.test(line)) currentWeek = '';
+                    }
+
+                    if (ignoredLinePattern.test(line) || !assignmentPattern.test(line)) return;
+                    const title = cleanTitle(line);
+                    if (title) addAssignment(date || currentDate, week || currentWeek, title, line);
+                });
+            }
 
             stagedExtractedAssignments = parsedRows;
             renderExtractedStagingList();
@@ -3635,9 +3676,37 @@
             renderExtractedStagingList();
         }
 
+        function clearAssignmentUploadState() {
+            const fileInput = document.getElementById('assignmentImageInput');
+            const previewBox = document.getElementById('uploadedAssignmentPreviewBox');
+            const previewImg = document.getElementById('uploadedAssignmentImg');
+            const pdfPreview = document.getElementById('uploadedAssignmentPdfPreview');
+            const pdfName = document.getElementById('uploadedAssignmentPdfName');
+            const rawText = document.getElementById('rawOcrTextArea');
+            const progressBox = document.getElementById('ocrProgressContainer');
+            const progressBar = document.getElementById('ocrProgressBar');
+            const statusLabel = document.getElementById('ocrStatusLabel');
+            const percentLabel = document.getElementById('ocrPercentLabel');
+
+            if (fileInput) fileInput.value = '';
+            if (previewBox) previewBox.classList.add('hidden');
+            if (previewImg) {
+                previewImg.removeAttribute('src');
+                previewImg.classList.add('hidden');
+            }
+            if (pdfPreview) pdfPreview.classList.add('hidden');
+            if (pdfName) pdfName.textContent = '';
+            if (rawText) rawText.value = '';
+            if (progressBox) progressBox.classList.add('hidden');
+            if (progressBar) progressBar.style.width = '0%';
+            if (statusLabel) statusLabel.textContent = 'Scanning image...';
+            if (percentLabel) percentLabel.textContent = '0%';
+        }
+
         function clearExtractedStaging() {
             stagedExtractedAssignments = [];
             renderExtractedStagingList();
+            clearAssignmentUploadState();
         }
 
         function importAllStagedAssignments() {
@@ -3667,7 +3736,9 @@
             calCurrentMonth = m - 1;
 
             stagedExtractedAssignments = [];
+            renderExtractedStagingList();
             saveTasksToStorage();
+            clearAssignmentUploadState();
             playKawaiiSound('check');
             spawnSparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 32);
             showToast(`Imported ${importedCount} assignment deadline${importedCount === 1 ? '' : 's'} onto your calendar! 🎓✨`, '📚');
@@ -3795,6 +3866,14 @@
             chevron.className = `fa-solid ${collapsed ? 'fa-chevron-down' : 'fa-chevron-up'} text-xs transition-transform`;
         }
 
+        function toggleMultipleWeekdays() {
+            const toggle = document.getElementById('multipleWeekdaysToggle');
+            const panel = document.getElementById('multipleWeekdaysPanel');
+            if (!toggle || !panel) return;
+
+            panel.classList.toggle('hidden', !toggle.checked);
+        }
+
         function toggleShowClassesOnCalendar() {
             const toggle = document.getElementById('showClassesOnCalendarToggle');
             showClassesOnCalendar = toggle ? toggle.checked : true;
@@ -3916,6 +3995,11 @@
             document.getElementById('classEndInput').value = '11:00';
             document.getElementById('classRoomInput').value = '';
             document.getElementById('classBlockInput').value = currentSemester.activeBlockId || '';
+            document.getElementById('multipleWeekdaysToggle').checked = false;
+            document.querySelectorAll('.multiple-weekday').forEach(input => {
+                input.checked = false;
+            });
+            toggleMultipleWeekdays();
 
             document.getElementById('classFormTitle').innerHTML = `<span>🎀</span><span>Add Weekly Class</span>`;
             document.getElementById('classSaveBtnText').textContent = 'Save to Weekly Timetable';
@@ -4738,7 +4822,7 @@
                 }
             });
 
-            ['all', 'Home', 'Study', 'Pet', 'Self-Care', 'Shopping'].forEach(cat => {
+            ['all', 'Home', 'Study', 'Pet', 'Self-Care', 'Shopping', 'Others'].forEach(cat => {
                 const pill = document.getElementById(`catPill-${cat}`);
                 if (!pill) return;
                 if (cat === currentCategoryFilter) {
@@ -5029,12 +5113,12 @@
 
                 // Mobile & compact color dots + birthday indicator
                 const mobileDots = [
-                    ...dayBirthdays.map(() => `<span class="w-2 h-2 rounded-full inline-block bg-amber-400 border border-amber-600"></span>`),
+                    ...dayBirthdays.map(() => `<span class="w-2 h-2 rounded-full inline-block bg-amber-400"></span>`),
                     ...dayTasks.slice(0, 4).map(t => {
                         const prio = PRIORITY_META[t.priority] || PRIORITY_META.medium;
                         return `<span class="w-2 h-2 rounded-full inline-block" style="background:${prio.dot}"></span>`;
                     }),
-                    ...dayClasses.slice(0, 4).map(() => `<span class="w-2 h-2 rounded-full inline-block bg-[#00FFFF] border border-[#008F99]"></span>`)
+                    ...dayClasses.slice(0, 4).map(() => `<span class="w-2 h-2 rounded-full inline-block bg-[#00FFFF]"></span>`)
                 ].slice(0, 5).join('');
 
                 cellsHtml += `
