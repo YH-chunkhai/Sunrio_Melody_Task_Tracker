@@ -5848,11 +5848,16 @@
             try {
                 const provider = new firebase.auth.GoogleAuthProvider();
                 provider.setCustomParameters({ prompt: 'select_account' });
-                await cloudAuth.signInWithRedirect(provider);
+                await cloudAuth.signInWithPopup(provider);
             } catch (error) {
                 console.error('Google sign-in could not start:', error);
-                updateCloudStatus(`Google sign-in failed · ${error.message}`, false);
-                showToast('Google sign-in failed. Check the Firebase authorized domain.', 'âš ï¸');
+                const detail = error.code === 'auth/popup-blocked'
+                    ? 'Allow pop-ups for this site, then try again.'
+                    : error.message;
+                updateCloudStatus(`Google sign-in failed · ${detail}`, false);
+                showToast(error.code === 'auth/popup-blocked'
+                    ? 'Safari blocked the sign-in window. Allow pop-ups and retry.'
+                    : 'Google sign-in failed. Check the Firebase authorized domain.', 'âš ï¸');
             }
         }
 
