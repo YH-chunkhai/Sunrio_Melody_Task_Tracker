@@ -1501,15 +1501,15 @@
 
                     <!-- Right Column: Day Filter Tabs + Class Cards Grid -->
                     <div class="order-2 flex flex-col gap-3.5 min-w-0">
-                        <div class="flex items-center gap-1.5 overflow-x-auto pb-1">
-                            <button onclick="setTimetableDayFilter('all')" id="ttDayTab-all" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">All Week 🌸</button>
-                            <button onclick="setTimetableDayFilter('1')" id="ttDayTab-1" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Mon</button>
-                            <button onclick="setTimetableDayFilter('2')" id="ttDayTab-2" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Tue</button>
-                            <button onclick="setTimetableDayFilter('3')" id="ttDayTab-3" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Wed</button>
-                            <button onclick="setTimetableDayFilter('4')" id="ttDayTab-4" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Thu</button>
-                            <button onclick="setTimetableDayFilter('5')" id="ttDayTab-5" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Fri</button>
-                            <button onclick="setTimetableDayFilter('6')" id="ttDayTab-6" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Sat</button>
-                            <button onclick="setTimetableDayFilter('0')" id="ttDayTab-0" class="tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0">Sun</button>
+                        <div class="grid grid-cols-4 sm:grid-cols-8 gap-1.5 min-w-0">
+                            <button onclick="setTimetableDayFilter('all')" id="ttDayTab-all" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">All Week 🌸</button>
+                            <button onclick="setTimetableDayFilter('1')" id="ttDayTab-1" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Mon</button>
+                            <button onclick="setTimetableDayFilter('2')" id="ttDayTab-2" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Tue</button>
+                            <button onclick="setTimetableDayFilter('3')" id="ttDayTab-3" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Wed</button>
+                            <button onclick="setTimetableDayFilter('4')" id="ttDayTab-4" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Thu</button>
+                            <button onclick="setTimetableDayFilter('5')" id="ttDayTab-5" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Fri</button>
+                            <button onclick="setTimetableDayFilter('6')" id="ttDayTab-6" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Sat</button>
+                            <button onclick="setTimetableDayFilter('0')" id="ttDayTab-0" class="tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition">Sun</button>
                         </div>
 
                         <div id="classTimetableListContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -3148,6 +3148,7 @@
             }
 
             const el = document.getElementById(sectionId);
+            if (sectionId === 'classTimetableSection') renderClassTimetableSection();
             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
@@ -4104,10 +4105,11 @@
             ['all', '1', '2', '3', '4', '5', '6', '0'].forEach(d => {
                 const tab = document.getElementById(`ttDayTab-${d}`);
                 if (!tab) return;
+                const layoutClasses = 'tt-day-tab flex items-center justify-center min-w-0 whitespace-nowrap px-0 sm:px-3 py-1.5 rounded-xl text-[10px] sm:text-xs font-bold border transition';
                 if (d === currentTimetableDayFilter) {
-                    tab.className = 'tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0 bg-melody-500 text-white border-melody-500 shadow-sm';
+                    tab.className = `${layoutClasses} bg-melody-500 text-white border-melody-500 shadow-sm`;
                 } else {
-                    tab.className = 'tt-day-tab px-3 py-1.5 rounded-xl text-xs font-bold border transition shrink-0 bg-white text-melody-cocoa border-melody-200 hover:bg-melody-100';
+                    tab.className = `${layoutClasses} bg-white text-melody-cocoa border-melody-200 hover:bg-melody-100`;
                 }
             });
 
