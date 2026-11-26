@@ -2505,6 +2505,15 @@
             'Others':    { icon: '✏️', badgeBg: 'bg-melody-100', badgeText: 'text-melody-700', border: 'border-melody-200' }
         };
 
+        function normalizeTaskCategory(category) {
+            if (category === 'Melody') return 'Home';
+            if (category === 'Work') return 'Pet';
+            return typeof category === 'string'
+                && Object.prototype.hasOwnProperty.call(CATEGORY_META, category)
+                ? category
+                : 'Others';
+        }
+
         // Priority Metadata
         const PRIORITY_META = {
             'low': {
@@ -2744,10 +2753,9 @@
                 if (raw !== null) {
                     const parsed = JSON.parse(raw);
                     if (Array.isArray(parsed)) {
-                        tasks = parsed.map(task => ({
-                            ...task,
-                            category: task.category === 'Melody' ? 'Home' : task.category === 'Work' ? 'Pet' : task.category
-                        }));
+                        tasks = parsed
+                            .filter(task => task && typeof task === 'object' && !Array.isArray(task))
+                            .map(task => ({ ...task, category: normalizeTaskCategory(task.category) }));
                         return;
                     }
                 }
@@ -4534,7 +4542,7 @@
             const dueDate = document.getElementById('quickDateInput').value || TODAY_STR;
             const time = document.getElementById('quickTimeInput').value || '14:00';
             const priority = document.getElementById('quickPriorityInput').value || 'medium';
-            const category = document.getElementById('quickCategoryInput').value || 'Melody';
+            const category = normalizeTaskCategory(document.getElementById('quickCategoryInput').value || 'Home');
 
             const newTask = {
                 id: 'melody-task-' + Date.now(),
@@ -4578,7 +4586,7 @@
                 dueDate: selectedCalendarDate,
                 time: '12:00',
                 priority,
-                category: 'Melody',
+                category: 'Home',
                 completed: false,
                 createdAt: Date.now()
             };
@@ -4627,7 +4635,7 @@
                 document.getElementById('modalDateInput').value = t.dueDate;
                 document.getElementById('modalTimeInput').value = t.time || '14:00';
                 document.getElementById('modalPriorityInput').value = t.priority;
-                document.getElementById('modalCategoryInput').value = t.category;
+                document.getElementById('modalCategoryInput').value = normalizeTaskCategory(t.category);
                 document.getElementById('modalNotesInput').value = t.notes || '';
             } else {
                 modalTitle.textContent = 'Add New Task 🍓';
@@ -4637,7 +4645,7 @@
                 document.getElementById('modalDateInput').value = prefillDate || selectedCalendarDate || TODAY_STR;
                 document.getElementById('modalTimeInput').value = '14:00';
                 document.getElementById('modalPriorityInput').value = 'medium';
-                document.getElementById('modalCategoryInput').value = 'Melody';
+                document.getElementById('modalCategoryInput').value = 'Home';
                 document.getElementById('modalNotesInput').value = '';
             }
 
@@ -4664,7 +4672,7 @@
             const dueDate = document.getElementById('modalDateInput').value || TODAY_STR;
             const time = document.getElementById('modalTimeInput').value || '14:00';
             const priority = document.getElementById('modalPriorityInput').value;
-            const category = document.getElementById('modalCategoryInput').value;
+            const category = normalizeTaskCategory(document.getElementById('modalCategoryInput').value);
             const notes = document.getElementById('modalNotesInput').value.trim();
 
             if (!title) return;
@@ -5780,10 +5788,9 @@
                 }
             };
 
-            stored.tasks = stored.tasks.map(task => ({
-                ...task,
-                category: task.category === 'Melody' ? 'Home' : task.category === 'Work' ? 'Pet' : task.category
-            }));
+            stored.tasks = stored.tasks
+                .filter(task => task && typeof task === 'object' && !Array.isArray(task))
+                .map(task => ({ ...task, category: normalizeTaskCategory(task.category) }));
             stored.classes = stored.classes.map(item => ({
                 ...item,
                 dayOfWeek: Number(item.dayOfWeek)
