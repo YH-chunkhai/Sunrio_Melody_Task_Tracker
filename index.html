@@ -5955,8 +5955,13 @@
                 showToast('Google sign-in requires an HTTPS website or localhost.', 'âš ï¸');
                 return;
             }
+            if (!cloudAuth) initializeFirebaseCloudSync();
             if (!cloudAuth) {
-                showToast('Firebase is not ready. Check the configuration and internet connection.', 'âš ï¸');
+                const status = document.getElementById('cloudSyncStatus')?.textContent || '';
+                console.error('Google sign-in cannot start because Firebase Auth is unavailable:', status);
+                showToast(status.includes('SDK unavailable')
+                    ? 'Firebase could not load. Check your internet connection or content blocker.'
+                    : 'Firebase Auth could not initialize. Check the cloud status message and reload.', 'âš ï¸');
                 return;
             }
             try {
