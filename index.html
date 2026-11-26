@@ -4467,6 +4467,8 @@
             } else if (mode === 'calendar') {
                 taskSec.className = 'hidden';
                 calSec.className = 'lg:col-span-12 max-w-5xl mx-auto w-full flex flex-col gap-5';
+                renderCalendar();
+                renderSelectedDatePanel();
             }
         }
 
