@@ -5911,8 +5911,15 @@
                 showToast('Planner data is connected to your Google account.', 'âœ¨');
             } catch (error) {
                 console.error('Failed to load or initialize planner cloud data:', error);
-                updateCloudStatus(`Cloud sync unavailable · ${error.message}`, true);
-                showToast('Could not load cloud data. Check Firebase setup and Firestore rules.', 'âš ï¸');
+                const errorMessage = error && typeof error.message === 'string' && error.message
+                    ? error.message
+                    : String(error || 'Unknown cloud sync error');
+                const permissionDenied = error?.code === 'permission-denied'
+                    || /missing or insufficient permissions/i.test(errorMessage);
+                updateCloudStatus(`Cloud sync unavailable · ${errorMessage}`, true);
+                showToast(permissionDenied
+                    ? 'Firestore denied access. Publish the secure per-user Firestore rules.'
+                    : `Cloud sync failed: ${errorMessage}`, 'âš ï¸');
             }
         }
 
