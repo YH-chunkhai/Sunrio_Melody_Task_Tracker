@@ -1728,25 +1728,28 @@
                             </div>
 
                             <p class="text-xs text-melody-cocoa font-medium leading-relaxed mb-3">
-                                Exports all pending tasks & assignment deadlines <strong>TODO Reminders</strong> with due dates, priority flags, and 30-minute early alerts — or sends them via <strong>Apple Shortcuts</strong>.
+                                Send pending tasks to Apple Reminders using a one-time Shortcut. Each reminder is scheduled for 30 minutes before its task time.
                             </p>
 
-                            <div class="bg-melody-50/80 p-3 rounded-2xl border border-melody-100 text-[11px] font-semibold text-melody-cocoaLight space-y-1">
-                                <div>✨ <strong>On iPhone Safari:</strong> Tap <em>"Sync to Apple Reminders (.ics)"</em> and select <strong>Add All</strong> in the Reminders sheet.</div>
-                                <div>⚡ <strong>Shortcuts Option:</strong> Copies your formatted reminder list & launches Apple Shortcuts.</div>
-                            </div>
+                            <details id="remindersShortcutSetup" open class="bg-melody-50/80 p-3 rounded-2xl border border-melody-100 text-[11px] font-semibold text-melody-cocoaLight">
+                                <summary class="cursor-pointer font-bold text-melody-700">One-time iPhone Shortcut setup (required)</summary>
+                                <ol class="list-decimal pl-4 mt-2 space-y-1">
+                                    <li>Open <strong>Shortcuts</strong>, tap <strong>+</strong>, and name it exactly <strong>Add Melody Reminders</strong>.</li>
+                                    <li>Add <strong>Get Dictionary from Input</strong>, then <strong>Get Dictionary Value</strong> for key <code>tasks</code>.</li>
+                                    <li>Add <strong>Repeat with Each</strong> using that tasks value.</li>
+                                    <li>Inside Repeat, get dictionary values for <code>title</code> and <code>remindAt</code> from <strong>Repeat Item</strong>.</li>
+                                    <li>Use <strong>Get Dates from Input</strong> on <code>remindAt</code>, then <strong>Add New Reminder</strong> with the title value and the date as its due date.</li>
+                                    <li>End Repeat and save. Return here and tap the button below.</li>
+                                </ol>
+                                <p class="mt-2">The Shortcut must be created on your iPhone; this webpage cannot install it automatically.</p>
+                                <p class="mt-1">This sends tasks when you tap the button; it is not live sync. Sending again may create duplicate reminders.</p>
+                            </details>
                         </div>
 
-                        <div class="flex flex-col sm:flex-row gap-2">
-                            <button onclick="syncToIosRemindersVtodo()" class="flex-1 btn-kawaii bg-gradient-to-r from-purple-500 to-melody-500 hover:from-purple-600 hover:to-melody-600 text-white font-bubbly font-bold py-3 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 border-2 border-white">
-                                <i class="fa-solid fa-bell"></i>
-                                <span>Sync to Apple Reminders (.ics)</span>
-                            </button>
-                            <button onclick="triggerAppleShortcutsRemindersSync()" class="btn-kawaii-soft bg-melody-100 hover:bg-melody-200 text-melody-700 border border-melody-300 font-bubbly font-bold py-3 px-3.5 rounded-2xl text-xs flex items-center justify-center gap-1.5 shrink-0" title="Copy reminders & open Apple Shortcuts">
-                                <i class="fa-solid fa-share-nodes"></i>
-                                <span>Shortcuts</span>
-                            </button>
-                        </div>
+                        <button onclick="triggerAppleShortcutsRemindersSync()" class="w-full btn-kawaii bg-gradient-to-r from-purple-500 to-melody-500 hover:from-purple-600 hover:to-melody-600 text-white font-bubbly font-bold py-3 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 border-2 border-white" title="Run the Add Melody Reminders Shortcut">
+                            <i class="fa-solid fa-bell"></i>
+                            <span>Send Tasks to Apple Reminders</span>
+                        </button>
                     </div>
 
                 </div>
@@ -4388,58 +4391,6 @@
             showToast(`Exported ${eventCount} event${eventCount === 1 ? '' : 's'} for iOS Apple Calendar! Open the file to Add All 📱✨`, '🗓️');
         }
 
-        /**
-         * Generates RFC 5545 VTODO .ics file which iOS Safari imports into the native Apple Reminders app
-         */
-        function syncToIosRemindersVtodo() {
-            const pendingTasks = tasks.filter(t => !t.completed);
-            if (pendingTasks.length === 0) {
-                showToast('All tasks are done! Add pending tasks or assignments to sync to iOS Reminders 🎀', '🔔');
-                return;
-            }
-
-            const dtStamp = getIcsTimestampUtc();
-            const priorityMap = { high: 1, medium: 5, low: 9 };
-
-            const lines = [
-                'BEGIN:VCALENDAR',
-                'VERSION:2.0',
-                'PRODID:-//My Melody Sweet Uni Planner//Kawaii Reminders 1.0//EN',
-                'CALSCALE:GREGORIAN',
-                'METHOD:PUBLISH',
-                'X-WR-CALNAME:My Melody Reminders 🎀'
-            ];
-
-            pendingTasks.forEach(t => {
-                const dueDt = formatIcsDateTimeLocal(t.dueDate, t.time || '14:00');
-                const icsPrio = priorityMap[t.priority] || 5;
-
-                lines.push(
-                    'BEGIN:VTODO',
-                    `UID:todo-${t.id}@melodyplanner.app`,
-                    `DTSTAMP:${dtStamp}`,
-                    `DUE:${dueDt}`,
-                    `SUMMARY:${escapeIcsText('🎀 ' + t.title)}`,
-                    `DESCRIPTION:${escapeIcsText((t.notes ? t.notes + ' | ' : '') + 'Category: ' + t.category)}`,
-                    `PRIORITY:${icsPrio}`,
-                    'STATUS:NEEDS-ACTION',
-                    'BEGIN:VALARM',
-                    'TRIGGER:-PT30M',
-                    'ACTION:DISPLAY',
-                    `DESCRIPTION:${escapeIcsText(t.title)}`,
-                    'END:VALARM',
-                    'END:VTODO'
-                );
-            });
-
-            lines.push('END:VCALENDAR');
-
-            downloadOrOpenIcsFile(lines.join('\r\n'), 'my_melody_ios_reminders.ics');
-            playKawaiiSound('check');
-            spawnSparkleBurst(window.innerWidth / 2, window.innerHeight / 2, 26);
-            showToast(`Exported ${pendingTasks.length} reminder${pendingTasks.length === 1 ? '' : 's'} for iOS Reminders app! 🔔📱`, '✨');
-        }
-
         function triggerAppleShortcutsRemindersSync() {
             const pendingTasks = tasks.filter(t => !t.completed);
             if (pendingTasks.length === 0) {
@@ -4447,25 +4398,46 @@
                 return;
             }
 
-            const formattedLines = pendingTasks.map(t => `• ${t.title} (Due: ${t.dueDate} ${t.time || ''})`).join('\n');
+            if (!/iPhone|iPad|iPod/i.test(navigator.userAgent) &&
+                !(navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
+                showToast('Open this planner on your iPhone or iPad to run its Apple Shortcut.', '📱');
+                return;
+            }
 
-            // Copy to clipboard via execCommand fallback for universal browser/iframe support
-            const tempArea = document.createElement('textarea');
-            tempArea.value = formattedLines;
-            document.body.appendChild(tempArea);
-            tempArea.select();
-            try {
-                document.execCommand('copy');
-            } catch (e) {}
-            document.body.removeChild(tempArea);
+            const shortcutTasks = [];
+            for (const task of pendingTasks) {
+                const dateMatch = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(task.dueDate || ''));
+                const time = String(task.time || '14:00');
+                const timeMatch = /^(\d{2}):(\d{2})$/.exec(time);
+                if (!dateMatch || !timeMatch) {
+                    showToast(`Could not schedule "${task.title}": its date or time is invalid.`, '⚠️');
+                    return;
+                }
+
+                const [, year, month, day] = dateMatch;
+                const [, hour, minute] = timeMatch;
+                const dueAt = new Date(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
+                if (dueAt.getFullYear() !== Number(year) ||
+                    dueAt.getMonth() !== Number(month) - 1 ||
+                    dueAt.getDate() !== Number(day) ||
+                    dueAt.getHours() !== Number(hour) ||
+                    dueAt.getMinutes() !== Number(minute)) {
+                    showToast(`Could not schedule "${task.title}": its date or time is invalid.`, '⚠️');
+                    return;
+                }
+
+                const remindAt = new Date(dueAt.getTime() - 30 * 60 * 1000);
+                shortcutTasks.push({
+                    title: `${task.title} (Due ${task.dueDate} ${time})`,
+                    remindAt: remindAt.toISOString()
+                });
+            }
 
             playKawaiiSound('pop');
-            showToast('Copied reminders to clipboard! Opening Apple Shortcuts... 📱🎀', '⚡');
-
-            // Attempt to open Apple Shortcuts app on iOS
-            setTimeout(() => {
-                window.location.href = `shortcuts://run-shortcut?name=${encodeURIComponent('Add Melody Reminders')}&input=text&text=${encodeURIComponent(formattedLines)}`;
-            }, 400);
+            showToast(`Sending ${shortcutTasks.length} reminder${shortcutTasks.length === 1 ? '' : 's'} to Apple Shortcuts... 📱`, '⚡');
+            const payload = JSON.stringify({ tasks: shortcutTasks });
+            const shortcutUrl = `shortcuts://run-shortcut?name=${encodeURIComponent('Add Melody Reminders')}&input=text&text=${encodeURIComponent(payload)}`;
+            window.location.href = shortcutUrl;
         }
 
         /* ==========================================
