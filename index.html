@@ -5875,6 +5875,7 @@
 
             cloudSyncReady = false;
             updateCloudStatus(`Loading ${user.email || 'Google account'}…`, true);
+            let syncStage = 'reading Firestore planner data';
             try {
                 const localOwner = localStorage.getItem(CLOUD_USER_KEY);
                 const { data, hasCloudData } = await readCloudData(user);
@@ -5888,6 +5889,7 @@
                             return;
                         }
                     }
+                    syncStage = 'applying Firestore planner data';
                     applyCloudData(data);
                 } else if (hasLocalPlannerData()) {
                     if (localOwner !== user.uid) {
@@ -5899,9 +5901,11 @@
                             return;
                         }
                     }
+                    syncStage = "uploading this device's planner data";
                     await writeAllCloudData();
                     localStorage.setItem(CLOUD_USER_KEY, user.uid);
                 } else {
+                    syncStage = 'initializing the cloud planner';
                     applyCloudData({});
                     await writeAllCloudData();
                 }
@@ -5910,16 +5914,18 @@
                 updateCloudStatus(`Synced · ${user.email || 'Google account'}`, true);
                 showToast('Planner data is connected to your Google account.', 'âœ¨');
             } catch (error) {
-                console.error('Failed to load or initialize planner cloud data:', error);
+                const errorCode = error && typeof error.code === 'string' ? error.code : '';
                 const errorMessage = error && typeof error.message === 'string' && error.message
                     ? error.message
                     : String(error || 'Unknown cloud sync error');
-                const permissionDenied = error?.code === 'permission-denied'
+                console.error(`Failed while ${syncStage}:`, error);
+                const permissionDenied = errorCode === 'permission-denied'
                     || /missing or insufficient permissions/i.test(errorMessage);
-                updateCloudStatus(`Cloud sync unavailable · ${errorMessage}`, true);
+                const errorSummary = `${syncStage}${errorCode ? ` (${errorCode})` : ''}`;
+                updateCloudStatus(`Cloud sync failed · ${errorSummary}`, true);
                 showToast(permissionDenied
-                    ? 'Firestore denied access. Publish the secure per-user Firestore rules.'
-                    : `Cloud sync failed: ${errorMessage}`, 'âš ï¸');
+                    ? 'Firestore denied access. Verify the active rules and Firebase project match this account.'
+                    : `Cloud sync failed during ${errorSummary}: ${errorMessage}`, 'âš ï¸');
             }
         }
 
