@@ -4939,7 +4939,7 @@
 
             container.innerHTML = filtered.map(task => {
                 const prio = PRIORITY_META[task.priority] || PRIORITY_META.medium;
-                const cat = CATEGORY_META[task.category] || CATEGORY_META.Melody;
+                const cat = CATEGORY_META[task.category] || CATEGORY_META.Others;
                 const overdue = isTaskOverdue(task);
 
                 return `
@@ -5296,7 +5296,7 @@
 
             listEl.innerHTML = dayTasks.map(task => {
                 const prio = PRIORITY_META[task.priority] || PRIORITY_META.medium;
-                const cat = CATEGORY_META[task.category] || CATEGORY_META.Melody;
+                const cat = CATEGORY_META[task.category] || CATEGORY_META.Others;
                 return `
                     <div class="bg-white rounded-2xl p-3 border-2 ${task.completed ? 'border-melody-100 opacity-70' : 'border-melody-200'} flex items-center justify-between gap-2.5 shadow-sm">
                         <div class="flex items-center gap-2.5 min-w-0 flex-1">
